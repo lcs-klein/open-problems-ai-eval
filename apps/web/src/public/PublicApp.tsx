@@ -1,6 +1,15 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import type { PublicBundle, ReleaseRecord } from '@opae/core';
-import { EditorialMark, PlusIcon, RotateCcwIcon, ShieldIcon, Toast } from '@opae/ui';
+import {
+  EditorialMark,
+  LanguageToggle,
+  LocaleProvider,
+  PlusIcon,
+  RotateCcwIcon,
+  ShieldIcon,
+  Toast,
+  useLocale,
+} from '@opae/ui';
 import { OpenProblemsTab, type ProblemFilterMode } from '../../../public/src/OpenProblemsTab';
 import { ChallengesTab } from '../../../public/src/ChallengesTab';
 import { MethodsAuditTab, SourcesTab } from '../../../public/src/SourcesMethodsVersionsTabs';
@@ -39,31 +48,8 @@ function parseHash(): { tab: TabId; itemId?: string; problemFilter?: string } {
   };
 }
 
-const COMPACT_HEADINGS: Record<Exclude<TabId, 'problems'>, { title: string; subtitle: string }> = {
-  challenges: {
-    title: 'Specific Research Challenges',
-    subtitle:
-      'Tier 3 · Volatile, actionable questions grounded in literature and mapped to Open Problems.',
-  },
-  sources: {
-    title: 'Public Literature Sources',
-    subtitle: 'Sanitized evidence catalog with extraction counts and reverse links to Open Problems.',
-  },
-  methods: {
-    title: 'Audit & Reproducibility',
-    subtitle: 'Upstream funnel, combinatorial frontier, self-critical bias audit, and SHA-256 replay kits.',
-  },
-  versions: {
-    title: 'Agenda Versions & Snapshots',
-    subtitle: 'Frozen screening runs and moderated consensus milestones with JSON snapshot downloads.',
-  },
-  governance: {
-    title: 'Governance & Deliberation Log',
-    subtitle: 'Direct community proposals, pre-moderated peer reviews, and signed editorial decisions.',
-  },
-};
-
-export const PublicApp: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) => {
+const PublicAppShell: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) => {
+  const { t, isZh } = useLocale();
   const initialRoute = parseHash();
   const [bundle, setBundle] = useState<PublicBundle | null>(null);
   const [releases, setReleases] = useState<ReleaseRecord[]>([]);
@@ -131,7 +117,9 @@ export const PublicApp: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) =>
       <div className="ed-shell">
         <main className="ed-container" style={{ paddingTop: '64px' }}>
           <div className="ed-panel">
-            <p className="ed-muted">Loading Open Problems in AI Evaluation…</p>
+            <p className="ed-muted">
+              {t('loading.agenda', 'Loading Open Problems in AI Evaluation…')}
+            </p>
           </div>
         </main>
       </div>
@@ -143,12 +131,16 @@ export const PublicApp: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) =>
       <div className="ed-shell">
         <main className="ed-container" style={{ paddingTop: '64px' }}>
           <div className="ed-panel ed-stack" style={{ gap: '12px' }}>
-            <h1 className="ed-panel-title">Unable to reach Agenda API</h1>
-            <p className="ed-small ed-muted">{loadError || 'No data returned.'}</p>
+            <h1 className="ed-panel-title">
+              {t('error.apiTitle', 'Unable to reach Agenda API')}
+            </h1>
+            <p className="ed-small ed-muted">
+              {loadError || t('error.noData', 'No data returned.')}
+            </p>
             <div>
               <button type="button" className="ed-btn is-primary" onClick={() => void loadData()}>
                 <RotateCcwIcon size={14} />
-                <span>Retry</span>
+                <span>{t('common.retry', 'Retry')}</span>
               </button>
             </div>
           </div>
@@ -156,6 +148,44 @@ export const PublicApp: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) =>
       </div>
     );
   }
+
+  const compactHeadings: Record<Exclude<TabId, 'problems'>, { title: string; subtitle: string }> = {
+    challenges: {
+      title: t('heading.challenges.title', 'Specific Research Challenges'),
+      subtitle: t(
+        'heading.challenges.subtitle',
+        'Tier 3 · Volatile, actionable questions grounded in literature and mapped to Open Problems.'
+      ),
+    },
+    sources: {
+      title: t('heading.sources.title', 'Public Literature Sources'),
+      subtitle: t(
+        'heading.sources.subtitle',
+        'Sanitized evidence catalog with extraction counts and reverse links to Open Problems.'
+      ),
+    },
+    methods: {
+      title: t('heading.methods.title', 'Methodology & Reproducibility'),
+      subtitle: t(
+        'heading.methods.subtitle',
+        'How these open problems and challenges were screened from literature, known editorial limits, and downloadable Python replay kits.'
+      ),
+    },
+    versions: {
+      title: t('heading.versions.title', 'Agenda Versions & Snapshots'),
+      subtitle: t(
+        'heading.versions.subtitle',
+        'Frozen screening runs and moderated consensus milestones with JSON snapshot downloads.'
+      ),
+    },
+    governance: {
+      title: t('heading.governance.title', 'Governance & Deliberation Log'),
+      subtitle: t(
+        'heading.governance.subtitle.online',
+        'Direct community proposals, pre-moderated peer reviews, and signed editorial decisions.'
+      ),
+    },
+  };
 
   const navigateTab = (next: TabId) => {
     setTab(next);
@@ -214,6 +244,8 @@ export const PublicApp: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) =>
     (bundle.participation.reviews?.length ?? 0) +
     (bundle.participation.decisions?.length ?? 0);
 
+  const govLabelText = t('nav.governance', 'Governance');
+
   return (
     <div className="ed-shell">
       <header className="ed-topbar">
@@ -229,23 +261,23 @@ export const PublicApp: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) =>
               syncHash('problems');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            title="Back to Open Problems home"
+            title={t('brand.homeTitle', 'Back to Open Problems home')}
           >
             <EditorialMark size={18} />
-            <span>AI Eval Agenda</span>
+            <span>{t('brand.name', 'AI Eval Agenda')}</span>
           </button>
 
           <nav className="ed-nav" aria-label="Primary navigation">
             {(
               [
-                ['problems', 'Open Problems'],
-                ['challenges', 'Challenges'],
-                ['sources', 'Sources'],
-                ['methods', 'Audit & Replay'],
-                ['versions', 'Versions'],
+                ['problems', t('nav.problems', 'Open Problems')],
+                ['challenges', t('nav.challenges', 'Challenges')],
+                ['sources', t('nav.sources', 'Sources')],
+                ['methods', t('nav.methods', 'Methodology')],
+                ['versions', t('nav.versions', 'Versions')],
                 [
                   'governance',
-                  govRecordCount > 0 ? `Governance (${govRecordCount})` : 'Governance',
+                  govRecordCount > 0 ? `${govLabelText} (${govRecordCount})` : govLabelText,
                 ],
               ] as Array<[TabId, string]>
             ).map(([id, label]) => (
@@ -266,10 +298,10 @@ export const PublicApp: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) =>
               type="button"
               className="ed-btn is-ghost is-sm"
               onClick={onGoAdmin}
-              title="Co-author & Moderator Login"
+              title={t('nav.editorialTitle', 'Co-author & Moderator Login')}
             >
               <ShieldIcon size={13} />
-              <span>Editorial</span>
+              <span>{t('nav.editorial', 'Editorial')}</span>
             </button>
             <button
               type="button"
@@ -277,8 +309,9 @@ export const PublicApp: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) =>
               onClick={() => handleOpenProposal(null)}
             >
               <PlusIcon size={14} />
-              <span>New Proposal</span>
+              <span>{t('nav.newProposal', 'New Proposal')}</span>
             </button>
+            <LanguageToggle />
           </div>
         </div>
       </header>
@@ -290,14 +323,26 @@ export const PublicApp: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) =>
               <div className="ed-eyebrow">
                 <span className="ed-eyebrow-dot" aria-hidden="true" />
                 <span>
-                  Participatory Research Agenda · Human Moderator Governance ·{' '}
+                  {t(
+                    'masthead.eyebrow',
+                    'Participatory Research Agenda · Human Moderator Governance · '
+                  )}
                   <span className="ed-mono">{bundle.participation.current_version}</span>
                 </span>
               </div>
               <h1 className="ed-lead">
-                <strong>{bundle.project.title || 'Open Problems in AI Evaluation'}.</strong>{' '}
-                {bundle.project.subtitle ||
-                  'A human-led participatory research agenda anchored in locked manuscript terminology, normative change justifications, and zero-gap numerical reproducibility.'}
+                <strong>
+                  {isZh
+                    ? t('masthead.title', 'Open Problems in AI Evaluation.')
+                    : `${bundle.project.title || 'Open Problems in AI Evaluation'}.`}
+                </strong>{' '}
+                {isZh
+                  ? t(
+                      'masthead.subtitle',
+                      'A human-led participatory research agenda anchored in locked manuscript terminology, normative change justifications, and zero-gap numerical reproducibility.'
+                    )
+                  : bundle.project.subtitle ||
+                    'A human-led participatory research agenda anchored in locked manuscript terminology, normative change justifications, and zero-gap numerical reproducibility.'}
               </h1>
             </section>
 
@@ -307,7 +352,9 @@ export const PublicApp: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) =>
                 className="ed-metric-cell"
                 onClick={() => setProblemFilterMode('all')}
               >
-                <span className="ed-metric-label">Fixed Categories</span>
+                <span className="ed-metric-label">
+                  {t('metrics.categories', 'Fixed Categories')}
+                </span>
                 <span className="ed-metric-value">{Object.keys(bundle.categories).length}</span>
               </button>
               <button
@@ -315,7 +362,7 @@ export const PublicApp: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) =>
                 className="ed-metric-cell"
                 onClick={() => setProblemFilterMode('all')}
               >
-                <span className="ed-metric-label">Open Problems</span>
+                <span className="ed-metric-label">{t('metrics.problems', 'Open Problems')}</span>
                 <span className="ed-metric-value">{bundle.open_problems.length}</span>
               </button>
               <button
@@ -323,7 +370,9 @@ export const PublicApp: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) =>
                 className="ed-metric-cell"
                 onClick={() => navigateTab('challenges')}
               >
-                <span className="ed-metric-label">Specific Challenges</span>
+                <span className="ed-metric-label">
+                  {t('metrics.challenges', 'Specific Challenges')}
+                </span>
                 <span className="ed-metric-value">{bundle.specific_challenges.length}</span>
               </button>
               <button
@@ -331,7 +380,7 @@ export const PublicApp: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) =>
                 className="ed-metric-cell"
                 onClick={() => navigateTab('sources')}
               >
-                <span className="ed-metric-label">Public Sources</span>
+                <span className="ed-metric-label">{t('metrics.sources', 'Public Sources')}</span>
                 <span className="ed-metric-value">{bundle.references.length}</span>
               </button>
               <button
@@ -341,7 +390,9 @@ export const PublicApp: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) =>
                   setProblemFilterMode((prev) => (prev === 'term_alert' ? 'all' : 'term_alert'))
                 }
               >
-                <span className="ed-metric-label">Terminology Alerts</span>
+                <span className="ed-metric-label">
+                  {t('metrics.termAlerts', 'Terminology Alerts')}
+                </span>
                 <span className={`ed-metric-value ${termAlertCount > 0 ? 'is-accent' : ''}`}>
                   {termAlertCount}
                 </span>
@@ -351,9 +402,9 @@ export const PublicApp: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) =>
         ) : (
           <header className="ed-compact-header">
             <div>
-              <h1 className="ed-compact-title">{COMPACT_HEADINGS[tab].title}</h1>
+              <h1 className="ed-compact-title">{compactHeadings[tab].title}</h1>
               <p className="ed-small ed-muted" style={{ marginTop: '4px' }}>
-                {COMPACT_HEADINGS[tab].subtitle}
+                {compactHeadings[tab].subtitle}
               </p>
             </div>
             <span className="ed-mono ed-faint ed-small">
@@ -433,11 +484,14 @@ export const PublicApp: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) =>
 
       <footer className="ed-footer">
         <span>
-          Open Problems in AI Evaluation · Live Participatory Platform (Sanitized Public Edition)
+          {t(
+            'footer.online',
+            'Open Problems in AI Evaluation · Live Participatory Platform (Sanitized Public Edition)'
+          )}
         </span>
         <div className="ed-inline" style={{ gap: '12px' }}>
           <button type="button" className="ed-btn is-ghost is-sm" onClick={onGoAdmin}>
-            Editorial Login
+            {t('footer.editorialLogin', 'Editorial Login')}
           </button>
           <span className="ed-mono">
             Schema v{bundle.schema_version} · {bundle.participation.current_version}
@@ -447,3 +501,9 @@ export const PublicApp: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) =>
     </div>
   );
 };
+
+export const PublicApp: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) => (
+  <LocaleProvider>
+    <PublicAppShell onGoAdmin={onGoAdmin} />
+  </LocaleProvider>
+);

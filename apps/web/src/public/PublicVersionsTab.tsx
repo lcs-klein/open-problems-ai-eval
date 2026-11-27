@@ -1,12 +1,13 @@
 import React, { useMemo, useState } from 'react';
 import type { CategoryCode, PublicBundle, ReleaseRecord } from '@opae/core';
-import { ChevronDownIcon, DownloadIcon } from '@opae/ui';
+import { ChevronDownIcon, DownloadIcon, useLocale } from '@opae/ui';
 
 export const PublicVersionsTab: React.FC<{
   bundle: PublicBundle;
   releases: ReleaseRecord[];
   onOpenProblem: (problemId: string) => void;
 }> = ({ bundle, releases, onOpenProblem }) => {
+  const { t, catLabel } = useLocale();
   const [expandedRelease, setExpandedRelease] = useState<string | null>(null);
 
   const problemById = useMemo(() => {
@@ -33,7 +34,11 @@ export const PublicVersionsTab: React.FC<{
             <div className="ed-between">
               <div className="ed-inline" style={{ flexWrap: 'wrap' }}>
                 <span className="ed-tag is-ink ed-mono">{rel.id}</span>
-                {rel.is_current && <span className="ed-tag is-add">Current Working Release</span>}
+                {rel.is_current && (
+                  <span className="ed-tag is-add">
+                    {t('versions.currentRelease', 'Current Working Release')}
+                  </span>
+                )}
                 {rel.kind && (
                   <span className="ed-tag" style={{ textTransform: 'capitalize' }}>
                     {rel.kind}
@@ -41,7 +46,10 @@ export const PublicVersionsTab: React.FC<{
                 )}
                 {rel.date && <span className="ed-mono ed-small ed-faint">{rel.date}</span>}
                 {rel.published_by_name && (
-                  <span className="ed-small ed-faint">by {rel.published_by_name}</span>
+                  <span className="ed-small ed-faint">
+                    {t('common.by', 'by ')}
+                    {rel.published_by_name}
+                  </span>
                 )}
               </div>
 
@@ -51,7 +59,7 @@ export const PublicVersionsTab: React.FC<{
                 className="ed-btn is-sm"
               >
                 <DownloadIcon size={13} />
-                <span>Download Snapshot JSON</span>
+                <span>{t('versions.downloadSnapshot', 'Download Snapshot JSON')}</span>
               </a>
             </div>
 
@@ -65,12 +73,14 @@ export const PublicVersionsTab: React.FC<{
             </div>
 
             <div className="ed-chip-row">
-              <span className="ed-tag ed-mono">{ids.length} Open Problems</span>
+              <span className="ed-tag ed-mono">
+                {t('versions.openProblemsCount', '{count} Open Problems', { count: ids.length })}
+              </span>
               {(Object.entries(bundle.categories) as Array<[CategoryCode, string]>).map(
                 ([code, label]) =>
                   catCounts[code] ? (
                     <span key={code} className="ed-tag">
-                      <span className="ed-mono">{code}</span> {label}:{' '}
+                      <span className="ed-mono">{code}</span> {catLabel(code, label)}:{' '}
                       <strong className="ed-mono">{catCounts[code]}</strong>
                     </span>
                   ) : null
@@ -86,8 +96,10 @@ export const PublicVersionsTab: React.FC<{
               >
                 <span>
                   {isExpanded
-                    ? 'Hide included Open Problems'
-                    : `Browse all ${ids.length} included Open Problems`}
+                    ? t('versions.hideIncluded', 'Hide included Open Problems')
+                    : t('versions.browseIncluded', 'Browse all {count} included Open Problems', {
+                        count: ids.length,
+                      })}
                 </span>
                 <ChevronDownIcon size={13} />
               </button>
@@ -98,9 +110,9 @@ export const PublicVersionsTab: React.FC<{
                 <table className="ed-table">
                   <thead>
                     <tr>
-                      <th>ID</th>
-                      <th>Category</th>
-                      <th>Open Problem Title</th>
+                      <th>{t('versions.th.id', 'ID')}</th>
+                      <th>{t('versions.th.category', 'Category')}</th>
+                      <th>{t('versions.th.title', 'Open Problem Title')}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -118,10 +130,12 @@ export const PublicVersionsTab: React.FC<{
                             </button>
                           </td>
                           <td className="ed-small ed-muted">
-                            {info ? `${info.category} · ${bundle.categories[info.category]}` : '—'}
+                            {info
+                              ? `${info.category} · ${catLabel(info.category, bundle.categories[info.category])}`
+                              : '—'}
                           </td>
                           <td className="ed-small">
-                            {info?.title ?? 'Archived snapshot entry'}
+                            {info?.title ?? t('versions.archivedEntry', 'Archived snapshot entry')}
                           </td>
                         </tr>
                       );
@@ -134,7 +148,9 @@ export const PublicVersionsTab: React.FC<{
         );
       })}
       {releases.length === 0 && (
-        <div className="ed-empty">No frozen release snapshots recorded yet.</div>
+        <div className="ed-empty">
+          {t('versions.empty', 'No frozen release snapshots recorded yet.')}
+        </div>
       )}
     </div>
   );

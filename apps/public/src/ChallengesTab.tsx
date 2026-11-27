@@ -6,6 +6,7 @@ import {
   RotateCcwIcon,
   SearchIcon,
   XIcon,
+  useLocale,
 } from '@opae/ui';
 import type { ProposalPrefill } from './ProposalDrawer';
 
@@ -22,6 +23,7 @@ export const ChallengesTab: React.FC<{
   onOpenProblem,
   onProposeChallengeUpdate,
 }) => {
+  const { t, catLabel } = useLocale();
   const [catFilter, setCatFilter] = useState<'ALL' | CategoryCode>('ALL');
   const [kindFilter, setKindFilter] = useState<string>('ALL');
   const [query, setQuery] = useState('');
@@ -101,8 +103,11 @@ export const ChallengesTab: React.FC<{
               className="ed-search-input"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search challenges by ID, title, Open Problem, or source..."
-              aria-label="Search specific challenges"
+              placeholder={t(
+                'challenges.searchPlaceholder',
+                'Search challenges by ID, title, Open Problem, or source...'
+              )}
+              aria-label={t('challenges.searchPlaceholder', 'Search specific challenges')}
             />
           </div>
 
@@ -114,7 +119,7 @@ export const ChallengesTab: React.FC<{
               value={problemFilter}
               onChange={(e) => onProblemFilterChange(e.target.value)}
             >
-              <option value="">All Open Problems</option>
+              <option value="">{t('challenges.allProblems', 'All Open Problems')}</option>
               {bundle.open_problems.map((p) => (
                 <option key={p.id} value={p.id}>
                   {p.id} — {p.title.slice(0, 48)}
@@ -129,7 +134,7 @@ export const ChallengesTab: React.FC<{
               value={kindFilter}
               onChange={(e) => setKindFilter(e.target.value)}
             >
-              <option value="ALL">All Origins</option>
+              <option value="ALL">{t('challenges.allOrigins', 'All Origins')}</option>
               {kinds.map((k) => (
                 <option key={k} value={k}>
                   {k}
@@ -146,7 +151,7 @@ export const ChallengesTab: React.FC<{
             aria-pressed={catFilter === 'ALL'}
             onClick={() => setCatFilter('ALL')}
           >
-            All Categories
+            {t('challenges.allCategories', 'All Categories')}
           </button>
           {(Object.entries(bundle.categories) as Array<[CategoryCode, string]>).map(
             ([code, label]) => (
@@ -158,7 +163,7 @@ export const ChallengesTab: React.FC<{
                 onClick={() => setCatFilter(code)}
               >
                 <span className="ed-mono" style={{ opacity: 0.7 }}>{code}</span>
-                <span>{label}</span>
+                <span>{catLabel(code, label)}</span>
               </button>
             )
           )}
@@ -167,14 +172,21 @@ export const ChallengesTab: React.FC<{
 
       {hasFilters && (
         <div className="ed-active-filters" aria-label="Active challenge filters">
-          <span className="ed-faint">Showing {filtered.length} of {bundle.specific_challenges.length}:</span>
+          <span className="ed-faint">
+            {t('challenges.showing', 'Showing {shown} of {total}:', {
+              shown: filtered.length,
+              total: bundle.specific_challenges.length,
+            })}
+          </span>
           {problemFilter && (
             <button
               type="button"
               className="ed-tag is-ink ed-mono"
               onClick={() => onProblemFilterChange('')}
             >
-              <span>Problem: {problemFilter}</span>
+              <span>
+                {t('challenges.problemChip', 'Problem: {id}', { id: problemFilter })}
+              </span>
               <XIcon size={11} />
             </button>
           )}
@@ -184,7 +196,9 @@ export const ChallengesTab: React.FC<{
               className="ed-tag is-ink"
               onClick={() => setCatFilter('ALL')}
             >
-              <span>{catFilter} · {bundle.categories[catFilter]}</span>
+              <span>
+                {catFilter} · {catLabel(catFilter, bundle.categories[catFilter])}
+              </span>
               <XIcon size={11} />
             </button>
           )}
@@ -205,7 +219,7 @@ export const ChallengesTab: React.FC<{
             onClick={resetAll}
           >
             <RotateCcwIcon size={12} />
-            <span>Reset all</span>
+            <span>{t('common.resetAll', 'Reset all')}</span>
           </button>
         </div>
       )}
@@ -242,7 +256,7 @@ export const ChallengesTab: React.FC<{
                   onClick={() => handleClaimOrUpdate(c)}
                 >
                   <EditIcon size={12} />
-                  <span>Claim / Update</span>
+                  <span>{t('challenges.claimUpdate', 'Claim / Update')}</span>
                 </button>
               </div>
             </div>
@@ -254,7 +268,9 @@ export const ChallengesTab: React.FC<{
             {c.evidence && c.evidence.length > 0 && (
               <div className="ed-lineage-box" style={{ gap: '6px' }}>
                 <span className="ed-section-label">
-                  Literature Evidence ({c.evidence.length})
+                  {t('challenges.evidence', 'Literature Evidence ({count})', {
+                    count: c.evidence.length,
+                  })}
                 </span>
                 <div className="ed-stack" style={{ gap: '6px' }}>
                   {c.evidence.map((ev, idx) => (
@@ -285,10 +301,10 @@ export const ChallengesTab: React.FC<{
 
         {filtered.length === 0 && (
           <div className="ed-empty ed-stack" style={{ gap: '10px', justifyItems: 'start' }}>
-            <span>No specific challenges match the current filter.</span>
+            <span>{t('challenges.empty', 'No specific challenges match the current filter.')}</span>
             <button type="button" className="ed-btn is-sm" onClick={resetAll}>
               <RotateCcwIcon size={13} />
-              <span>Reset all filters</span>
+              <span>{t('common.resetAll', 'Reset all filters')}</span>
             </button>
           </div>
         )}

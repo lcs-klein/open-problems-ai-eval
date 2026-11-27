@@ -250,6 +250,28 @@ button.ed-brand:hover {
   gap: 8px;
 }
 
+.ed-lang-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 7px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ed-ink-faint);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.ed-lang-btn:hover {
+  background: var(--ed-subtle);
+  color: var(--ed-ink);
+}
+
 /* Container & Editorial Masthead */
 .ed-container {
   max-width: 1360px;
@@ -1212,6 +1234,9 @@ button.ed-tag.is-ink:hover {
   height: 0;
   border-top: 2px solid var(--ed-ink-muted);
 }
+.ed-legend-line.is-ink {
+  border-top-color: var(--ed-ink);
+}
 .ed-legend-line.is-dashed {
   border-top-style: dashed;
   border-top-color: var(--ed-ink-faint);
@@ -1233,6 +1258,101 @@ button.ed-tag.is-ink:hover {
   background: var(--ed-del);
 }
 
+/* Page Sub-tabs & Methodology Step Cards */
+.ed-subtabs {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 6px;
+  border-radius: 12px;
+  border: 1px solid var(--ed-border);
+  background: var(--ed-surface);
+}
+
+.ed-subtab-btn {
+  flex: 1 1 200px;
+  display: grid;
+  gap: 2px;
+  text-align: left;
+  padding: 10px 14px;
+  border-radius: 9px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ed-ink-muted);
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.ed-subtab-btn:hover {
+  background: var(--ed-white);
+  border-color: var(--ed-border);
+  color: var(--ed-ink);
+}
+
+.ed-subtab-btn[aria-selected='true'],
+.ed-subtab-btn[aria-selected='true']:hover {
+  background: var(--ed-ink);
+  border-color: var(--ed-ink);
+  color: var(--ed-surface);
+}
+
+.ed-subtab-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.ed-subtab-desc {
+  font-size: 12px;
+  color: var(--ed-ink-faint);
+  line-height: 1.4;
+}
+
+.ed-subtab-btn[aria-selected='true'] .ed-subtab-desc {
+  color: rgba(250, 249, 246, 0.76);
+}
+
+.ed-step-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ed-step-card {
+  background: var(--ed-surface);
+  border: 1px solid var(--ed-border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: grid;
+  align-content: start;
+  gap: 6px;
+}
+
+.ed-step-num {
+  font-family: var(--ed-font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ed-accent);
+}
+
+.ed-step-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ed-ink);
+  line-height: 1.35;
+}
+
+.ed-step-body {
+  font-size: 12.5px;
+  color: var(--ed-ink-muted);
+  line-height: 1.5;
+}
+
 .ed-frontier-readout {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -1250,15 +1370,26 @@ button.ed-tag.is-ink:hover {
 
 .ed-funnel {
   display: grid;
-  gap: 10px;
+  gap: 14px;
 }
 
 .ed-funnel-row {
   display: grid;
-  grid-template-columns: 190px minmax(0, 1fr) 54px;
+  grid-template-columns: minmax(210px, 280px) minmax(0, 1fr) 60px;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   font-size: 13px;
+}
+
+.ed-funnel-label {
+  display: grid;
+  gap: 2px;
+}
+
+.ed-funnel-caption {
+  font-size: 12px;
+  color: var(--ed-ink-faint);
+  line-height: 1.35;
 }
 
 .ed-funnel-track {
@@ -1491,6 +1622,9 @@ button.ed-tag.is-ink:hover {
   .ed-workspace {
     grid-template-columns: 1fr;
   }
+  .ed-step-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .ed-inspector {
     display: none;
   }
@@ -1580,9 +1714,17 @@ button.ed-tag.is-ink:hover {
   .ed-rubric-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+  .ed-step-grid {
+    grid-template-columns: 1fr;
+  }
   .ed-funnel-row {
-    grid-template-columns: 130px minmax(0, 1fr) 46px;
-    font-size: 12px;
+    grid-template-columns: minmax(0, 1fr) 48px;
+    gap: 6px 10px;
+    font-size: 12.5px;
+  }
+  .ed-funnel-track {
+    grid-column: 1 / -1;
+    order: 3;
   }
   .ed-inspector,
   .ed-panel {

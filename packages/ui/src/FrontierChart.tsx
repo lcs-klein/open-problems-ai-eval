@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocale } from './i18n';
 
 export interface FrontierPoint {
   k: number;
@@ -15,18 +16,30 @@ export interface FrontierPoint {
 export const FrontierChart: React.FC<{
   points: FrontierPoint[];
   title?: string;
+  subtitle?: string;
   highlightKs?: number[];
+  presetLabels?: Record<number, string>;
 }> = ({
   points,
-  title = 'Combinatorial Optimization Frontier F(S)',
+  title,
+  subtitle,
   highlightKs = [35, 36, 48],
+  presetLabels,
 }) => {
+  const { t } = useLocale();
+  const resolvedTitle = title ?? t('chart.defaultTitle', 'Portfolio Size Trade-off · Composite Score F(S)');
+  const resolvedSubtitle =
+    subtitle ??
+    t(
+      'chart.defaultSubtitle',
+      'Compare how overall quality and topic coverage change across portfolio sizes (K = 7 to 48). Click or hover any dot to inspect.'
+    );
   const defaultFocus =
     points.find((p) => p.k === 48) ?? points[points.length - 1] ?? null;
   const [activeK, setActiveK] = useState<number | null>(defaultFocus?.k ?? null);
 
   if (!points.length) {
-    return <p className="ed-muted ed-small">No frontier points available.</p>;
+    return <p className="ed-muted ed-small">{t('chart.noPoints', 'No frontier points available.')}</p>;
   }
 
   const activePoint =
@@ -34,10 +47,10 @@ export const FrontierChart: React.FC<{
 
   const width = 680;
   const height = 250;
-  const padL = 52;
+  const padL = 56;
   const padR = 24;
   const padT = 22;
-  const padB = 36;
+  const padB = 38;
 
   const minK = Math.min(...points.map((p) => p.k));
   const maxK = Math.max(...points.map((p) => p.k));
@@ -67,17 +80,19 @@ export const FrontierChart: React.FC<{
         .join(' ')
     : '';
 
-  const yTicks = [0, 0.25, 0.5, 0.75, 1].map((t) =>
-    Math.round(minY + t * (maxY - minY))
+  const yTicks = [0, 0.25, 0.5, 0.75, 1].map((tVal) =>
+    Math.round(minY + tVal * (maxY - minY))
   );
 
   return (
     <div className="ed-panel ed-stack" style={{ gap: '14px' }}>
       <div className="ed-between">
         <div>
-          <span className="ed-section-label">{title}</span>
-          <p className="ed-small ed-muted" style={{ marginTop: '2px' }}>
-            Click or hover any portfolio size K to inspect exact solver score and coverage.
+          <h3 className="ed-panel-title" style={{ fontSize: '17px' }}>
+            {resolvedTitle}
+          </h3>
+          <p className="ed-small ed-muted" style={{ marginTop: '4px' }}>
+            {resolvedSubtitle}
           </p>
         </div>
         <div className="ed-chip-row">
@@ -89,17 +104,42 @@ export const FrontierChart: React.FC<{
               aria-pressed={activePoint.k === hk}
               onClick={() => setActiveK(hk)}
             >
-              K={hk}
+              {presetLabels?.[hk] ?? `K=${hk}`}
             </button>
           ))}
         </div>
+      </div>
+
+      <div className="ed-crosswalk-legend" aria-label="Chart legend">
+        <span className="ed-inline">
+          <span className="ed-legend-line is-ink" aria-hidden="true" />
+          <span>
+            <strong>{t('chart.legend.expanded', 'Expanded F(S)')}</strong>{' '}
+            {t('chart.legend.expandedDesc', '(current rubric + all coverage units, max 100)')}
+          </span>
+        </span>
+        {hasBridge && (
+          <span className="ed-inline">
+            <span className="ed-legend-line is-dashed" aria-hidden="true" />
+            <span>
+              <strong>{t('chart.legend.bridge', 'Bridge baseline')}</strong>{' '}
+              {t('chart.legend.bridgeDesc', '(earlier coverage dictionary, without added units)')}
+            </span>
+          </span>
+        )}
+        <span className="ed-inline">
+          <span className="ed-legend-dot is-mod" aria-hidden="true" />
+          <span>
+            {t('chart.legend.refs', 'Key reference sizes')} ({highlightKs.map((k) => `K=${k}`).join(', ')})
+          </span>
+        </span>
       </div>
 
       <svg
         viewBox={`0 0 ${width} ${height}`}
         style={{ width: '100%', height: 'auto', display: 'block' }}
         role="img"
-        aria-label={title}
+        aria-label={resolvedTitle}
       >
         {yTicks.map((yv) => (
           <g key={yv}>
@@ -182,7 +222,7 @@ export const FrontierChart: React.FC<{
         })}
 
         <text x={width / 2} y={height - 8} textAnchor="middle" fontSize="11" fill="#8A8780">
-          Portfolio size K ({minK}..{maxK})
+          {t('chart.axisX', 'Number of selected Open Problems · K ({min}..{max})', { min: minK, max: maxK })}
         </text>
         <text
           x={14}
@@ -192,31 +232,43 @@ export const FrontierChart: React.FC<{
           fill="#8A8780"
           transform={`rotate(-90 14 ${height / 2})`}
         >
-          Objective F(S)
+          {t('chart.axisY', 'Composite score F(S) (max 100)')}
         </text>
       </svg>
 
       {activePoint && (
         <div className="ed-frontier-readout">
           <div className="ed-frontier-stat">
-            <span className="ed-section-label">Selected Size</span>
-            <strong className="ed-mono">K = {activePoint.k}</strong>
+            <span className="ed-section-label">{t('chart.stat.size', 'Portfolio Size')}</span>
+            <strong className="ed-mono">
+              {t('chart.stat.sizeVal', 'K = {k} problems', { k: activePoint.k })}
+            </strong>
           </div>
           <div className="ed-frontier-stat">
-            <span className="ed-section-label">Expanded F(S)</span>
+            <span className="ed-section-label">{t('chart.stat.expanded', 'Expanded F(S)')}</span>
             <strong className="ed-mono" style={{ color: 'var(--ed-accent)' }}>
-              {activePoint.objective.toFixed(2)}
+              {activePoint.objective.toFixed(2)}{' '}
+              <span className="ed-faint" style={{ fontWeight: 400, fontSize: '12px' }}>
+                / 100
+              </span>
             </strong>
           </div>
           {typeof activePoint.bridge_score === 'number' && activePoint.bridge_score > 0 && (
             <div className="ed-frontier-stat">
-              <span className="ed-section-label">Bridge Score</span>
-              <strong className="ed-mono">{activePoint.bridge_score.toFixed(2)}</strong>
+              <span className="ed-section-label">{t('chart.stat.bridge', 'Bridge Baseline')}</span>
+              <strong className="ed-mono">
+                {activePoint.bridge_score.toFixed(2)}{' '}
+                <span className="ed-faint" style={{ fontWeight: 400, fontSize: '12px' }}>
+                  / 100
+                </span>
+              </strong>
             </div>
           )}
           {typeof activePoint.needs_coverage === 'number' && (
             <div className="ed-frontier-stat">
-              <span className="ed-section-label">Stakeholder Coverage</span>
+              <span className="ed-section-label">
+                {t('chart.stat.stakeholder', 'Stakeholder Coverage')}
+              </span>
               <strong className="ed-mono">
                 {(activePoint.needs_coverage * 100).toFixed(1)}%
               </strong>
@@ -224,7 +276,9 @@ export const FrontierChart: React.FC<{
           )}
           {typeof activePoint.research_coverage === 'number' && (
             <div className="ed-frontier-stat">
-              <span className="ed-section-label">Research Coverage</span>
+              <span className="ed-section-label">
+                {t('chart.stat.research', 'Research Coverage')}
+              </span>
               <strong className="ed-mono">
                 {(activePoint.research_coverage * 100).toFixed(1)}%
               </strong>

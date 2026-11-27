@@ -15,6 +15,7 @@ import {
   TerminologyAlertsPanel,
   XIcon,
   applyTerminologyFixes,
+  useLocale,
 } from '@opae/ui';
 
 declare const __OPAE_GITHUB_REPO__: string;
@@ -66,6 +67,7 @@ export const ProposalDrawer: React.FC<{
   onProposalCreated: (proposal: ProposalDraft) => void;
   onNotify: (message: string) => void;
 }> = ({ open, bundle, prefill, onClose, onProposalCreated, onNotify }) => {
+  const { t, catLabel } = useLocale();
   const [draft, setDraft] = useState<ProposalDraft>(() => {
     try {
       const saved = localStorage.getItem(DRAFT_STORAGE_KEY);
@@ -100,7 +102,8 @@ export const ProposalDrawer: React.FC<{
         challenge_milestone: prefill.challenge_milestone ?? '',
         challenge_owner: prefill.challenge_owner ?? '',
         challenge_status: prefill.challenge_status ?? '',
-        is_original_synthesis: prefill.proposal_type === 'revise' || prefill.proposal_type === 'challenge_update',
+        is_original_synthesis:
+          prefill.proposal_type === 'revise' || prefill.proposal_type === 'challenge_update',
       }));
     }
   }, [open, prefill]);
@@ -164,7 +167,7 @@ export const ProposalDrawer: React.FC<{
     setTouched((prev) => (prev[field] ? prev : { ...prev, [field]: true }));
 
   const showError = (field: string) =>
-    (attemptedSubmit || touched[field]) ? validation.fieldErrors[field] : undefined;
+    attemptedSubmit || touched[field] ? validation.fieldErrors[field] : undefined;
 
   const toggleTargetId = (id: string) => {
     markTouched('target_problem_ids');
@@ -186,7 +189,7 @@ export const ProposalDrawer: React.FC<{
         validation.terminology_alerts
       ),
     }));
-    onNotify('Restored locked manuscript terminology in draft.');
+    onNotify(t('drawer.termsRestoredToast', 'Restored locked manuscript terminology in draft.'));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -221,7 +224,7 @@ export const ProposalDrawer: React.FC<{
     setTouched({});
     setAttemptedSubmit(false);
     setPackagedJson('');
-    onNotify('Proposal draft cleared.');
+    onNotify(t('drawer.draftClearedToast', 'Proposal draft cleared.'));
   };
 
   const needsTargets = draft.proposal_type !== 'add';
@@ -230,15 +233,15 @@ export const ProposalDrawer: React.FC<{
 
   const readiness = [
     {
-      label: 'Targets & Title',
+      label: t('drawer.readiness.targets', 'Targets & Title'),
       done: !validation.fieldErrors.target_problem_ids && !validation.fieldErrors.proposed_title,
     },
     {
-      label: 'Why Changed',
+      label: t('drawer.readiness.why', 'Why Changed'),
       done: !validation.fieldErrors.why_changed,
     },
     {
-      label: 'Evidence / AI Disclosure',
+      label: t('drawer.readiness.evidence', 'Evidence / AI Disclosure'),
       done:
         !validation.fieldErrors.source_url &&
         !validation.fieldErrors.source_verification &&
@@ -246,15 +249,14 @@ export const ProposalDrawer: React.FC<{
         !validation.fieldErrors.human_verification_steps,
     },
     {
-      label: 'Author & COI',
+      label: t('drawer.readiness.author', 'Author & COI'),
       done: !validation.fieldErrors.proposer_name && !validation.fieldErrors.coi_statement,
     },
   ];
 
-  const repo = (
+  const repo =
     bundle.participation.github?.repository?.trim() ||
-    (typeof __OPAE_GITHUB_REPO__ === 'string' ? __OPAE_GITHUB_REPO__.trim() : '')
-  );
+    (typeof __OPAE_GITHUB_REPO__ === 'string' ? __OPAE_GITHUB_REPO__.trim() : '');
   const issueTemplate = bundle.participation.github?.issue_template || 'agenda-proposal.yml';
   const githubIssueUrl = repo
     ? `https://github.com/${repo}/issues/new?template=${encodeURIComponent(issueTemplate)}&title=${encodeURIComponent(`[Proposal] ${draft.proposed_title || draft.target_problem_ids.join(', ')}`)}`
@@ -267,15 +269,15 @@ export const ProposalDrawer: React.FC<{
         className="ed-drawer"
         role="dialog"
         aria-modal="true"
-        aria-label="Structured Agenda Proposal"
+        aria-label={t('drawer.offlineTitle', 'Structured Agenda Proposal')}
       >
         <div className="ed-drawer-head">
           <div>
             <span className="ed-section-label">
-              {prefill?.contextLabel || 'Structured Agenda Proposal'}
+              {prefill?.contextLabel || t('drawer.eyebrow', 'Structured Agenda Proposal')}
             </span>
             <h2 className="ed-panel-title" style={{ marginTop: '4px' }}>
-              New Participatory Proposal
+              {t('drawer.offlineTitle', 'New Participatory Proposal')}
             </h2>
           </div>
           <div className="ed-inline">
@@ -283,16 +285,16 @@ export const ProposalDrawer: React.FC<{
               type="button"
               className="ed-btn is-ghost is-sm"
               onClick={handleResetDraft}
-              title="Reset draft"
+              title={t('common.clear', 'Reset draft')}
             >
               <RotateCcwIcon size={13} />
-              <span>Clear</span>
+              <span>{t('common.clear', 'Clear')}</span>
             </button>
             <button
               type="button"
               className="ed-btn is-ghost is-sm"
               onClick={onClose}
-              aria-label="Close proposal drawer"
+              aria-label={t('common.close', 'Close proposal drawer')}
             >
               <XIcon size={16} />
             </button>
@@ -311,7 +313,7 @@ export const ProposalDrawer: React.FC<{
 
           <div className="ed-field-row">
             <label className="ed-field" style={{ flex: '1 1 210px' }}>
-              Proposal Type
+              {t('drawer.proposalType', 'Proposal Type')}
               <select
                 className="ed-select"
                 value={draft.proposal_type}
@@ -324,18 +326,20 @@ export const ProposalDrawer: React.FC<{
                   }));
                 }}
               >
-                <option value="revise">Revise existing Open Problem</option>
-                <option value="add">Add new Open Problem</option>
-                <option value="merge">Merge Open Problems (≥ 2 IDs)</option>
-                <option value="split">Split Open Problem</option>
-                <option value="retire">Retire Open Problem</option>
-                <option value="challenge">Add Specific Challenge</option>
-                <option value="challenge_update">Update Challenge Milestone / Owner</option>
+                <option value="revise">{t('drawer.type.revise', 'Revise existing Open Problem')}</option>
+                <option value="add">{t('drawer.type.add', 'Add new Open Problem')}</option>
+                <option value="merge">{t('drawer.type.merge', 'Merge Open Problems (≥ 2 IDs)')}</option>
+                <option value="split">{t('drawer.type.split', 'Split Open Problem')}</option>
+                <option value="retire">{t('drawer.type.retire', 'Retire Open Problem')}</option>
+                <option value="challenge">{t('drawer.type.challenge', 'Add Specific Challenge')}</option>
+                <option value="challenge_update">
+                  {t('drawer.type.challenge_update', 'Update Challenge Milestone / Owner')}
+                </option>
               </select>
             </label>
 
             <label className="ed-field" style={{ flex: '1 1 170px' }}>
-              Tier-1 Category
+              {t('drawer.category', 'Tier-1 Category')}
               <select
                 className="ed-select"
                 value={draft.category}
@@ -346,7 +350,7 @@ export const ProposalDrawer: React.FC<{
                 {(Object.entries(bundle.categories) as Array<[CategoryCode, string]>).map(
                   ([code, name]) => (
                     <option key={code} value={code}>
-                      {code} · {name}
+                      {code} · {catLabel(code, name)}
                     </option>
                   )
                 )}
@@ -358,10 +362,10 @@ export const ProposalDrawer: React.FC<{
             <div className="ed-field">
               <span>
                 {isChallengeUpdate
-                  ? 'Select Target Specific Challenge(s)'
+                  ? t('drawer.selectChallenge', 'Select Target Specific Challenge(s)')
                   : draft.proposal_type === 'merge'
-                    ? 'Select Open Problems to Merge (pick at least 2)'
-                    : 'Select Target Open Problem(s)'}
+                    ? t('drawer.selectMerge', 'Select Open Problems to Merge (pick at least 2)')
+                    : t('drawer.selectProblem', 'Select Target Open Problem(s)')}
               </span>
               <div className="ed-picker">
                 {draft.target_problem_ids.length > 0 && (
@@ -390,7 +394,9 @@ export const ProposalDrawer: React.FC<{
                     value={pickerQuery}
                     onChange={(e) => setPickerQuery(e.target.value)}
                     placeholder={
-                      isChallengeTargetPlaceholder(isChallengeUpdate)
+                      isChallengeUpdate
+                        ? t('drawer.filterChallenges', 'Filter challenges by ID or keyword...')
+                        : t('drawer.filterProblems', 'Filter open problems by ID, § section, or title...')
                     }
                   />
                 </div>
@@ -422,7 +428,7 @@ export const ProposalDrawer: React.FC<{
                   })}
                   {pickerPool.length === 0 && (
                     <span className="ed-small ed-faint" style={{ padding: '6px 8px' }}>
-                      No matching agenda items.
+                      {t('drawer.noMatching', 'No matching agenda items.')}
                     </span>
                   )}
                 </div>
@@ -434,14 +440,19 @@ export const ProposalDrawer: React.FC<{
           )}
 
           <label className="ed-field">
-            {isRetire ? 'Retirement Summary (optional)' : 'Proposed Title'}
+            {isRetire
+              ? t('drawer.retireSummary', 'Retirement Summary (optional)')
+              : t('drawer.proposedTitle', 'Proposed Title')}
             <input
               type="text"
               className="ed-input"
               value={draft.proposed_title}
               onBlur={() => markTouched('proposed_title')}
               onChange={(e) => setDraft({ ...draft, proposed_title: e.target.value })}
-              placeholder="Concise title preserving manuscript terminology..."
+              placeholder={t(
+                'drawer.titlePlaceholder',
+                'Concise title preserving manuscript terminology...'
+              )}
             />
             {showError('proposed_title') && (
               <span className="ed-field-error">{showError('proposed_title')}</span>
@@ -450,14 +461,17 @@ export const ProposalDrawer: React.FC<{
 
           {!isRetire && (
             <label className="ed-field">
-              Proposed Description
+              {t('drawer.proposedDesc', 'Proposed Description')}
               <textarea
                 className="ed-textarea"
                 value={draft.proposed_description}
                 onChange={(e) =>
                   setDraft({ ...draft, proposed_description: e.target.value })
                 }
-                placeholder="3–4 lines stating the evaluation obstacle, claim, and decision it informs..."
+                placeholder={t(
+                  'drawer.descPlaceholder',
+                  '3–4 lines stating the evaluation obstacle, claim, and decision it informs...'
+                )}
               />
             </label>
           )}
@@ -465,13 +479,13 @@ export const ProposalDrawer: React.FC<{
           <TerminologyAlertsPanel
             alerts={validation.terminology_alerts}
             onFixTerms={handleRestoreLockedTerms}
-            fixLabel="Auto-restore locked terms"
+            fixLabel={t('term.autoRestore', 'Auto-restore locked terms')}
           />
 
           {isChallengeUpdate && (
             <div className="ed-field-row">
               <label className="ed-field" style={{ flex: '1 1 180px' }}>
-                Proposed Owner / Team
+                {t('drawer.owner', 'Proposed Owner / Team')}
                 <input
                   type="text"
                   className="ed-input"
@@ -479,11 +493,11 @@ export const ProposalDrawer: React.FC<{
                   onChange={(e) =>
                     setDraft({ ...draft, challenge_owner: e.target.value })
                   }
-                  placeholder="Name or lab claiming this challenge"
+                  placeholder={t('drawer.ownerPlaceholder', 'Name or lab claiming this challenge')}
                 />
               </label>
               <label className="ed-field" style={{ flex: '1 1 180px' }}>
-                Status
+                {t('drawer.status', 'Status')}
                 <select
                   className="ed-select"
                   value={draft.challenge_status ?? ''}
@@ -491,14 +505,14 @@ export const ProposalDrawer: React.FC<{
                     setDraft({ ...draft, challenge_status: e.target.value })
                   }
                 >
-                  <option value="">Keep current status</option>
+                  <option value="">{t('drawer.statusKeep', 'Keep current status')}</option>
                   <option value="Open for owners">Open for owners</option>
                   <option value="Active investigation">Active investigation</option>
                   <option value="Benchmark / evidence submitted">Benchmark / evidence submitted</option>
                 </select>
               </label>
               <label className="ed-field" style={{ flex: '1 1 100%' }}>
-                First Concrete Milestone
+                {t('drawer.milestone', 'First Concrete Milestone')}
                 <input
                   type="text"
                   className="ed-input"
@@ -506,31 +520,40 @@ export const ProposalDrawer: React.FC<{
                   onChange={(e) =>
                     setDraft({ ...draft, challenge_milestone: e.target.value })
                   }
-                  placeholder="Observable deliverable or benchmark protocol..."
+                  placeholder={t(
+                    'drawer.milestonePlaceholder',
+                    'Observable deliverable or benchmark protocol...'
+                  )}
                 />
               </label>
             </div>
           )}
 
           <label className="ed-field">
-            What Changed (Factual Summary)
+            {t('drawer.whatChanged', 'What Changed (Factual Summary)')}
             <input
               type="text"
               className="ed-input"
               value={draft.what_changed}
               onChange={(e) => setDraft({ ...draft, what_changed: e.target.value })}
-              placeholder="e.g. Restores manuscript terms 'capabilities' and 'propensities'"
+              placeholder={t(
+                'drawer.whatPlaceholder',
+                "e.g. Restores manuscript terms 'capabilities' and 'propensities'"
+              )}
             />
           </label>
 
           <label className="ed-field">
-            Why This Change Is Needed (Normative Justification · ≥ 15 chars)
+            {t('drawer.whyChanged', 'Why This Change Is Needed (Normative Justification · ≥ 15 chars)')}
             <textarea
               className="ed-textarea"
               value={draft.why_changed}
               onBlur={() => markTouched('why_changed')}
               onChange={(e) => setDraft({ ...draft, why_changed: e.target.value })}
-              placeholder="Explain what defect, ambiguity, terminology drift, or overlap justifies this change..."
+              placeholder={t(
+                'drawer.whyPlaceholder',
+                'Explain what defect, ambiguity, terminology drift, or overlap justifies this change...'
+              )}
             />
             {showError('why_changed') && (
               <span className="ed-field-error">{showError('why_changed')}</span>
@@ -545,13 +568,18 @@ export const ProposalDrawer: React.FC<{
                 setDraft({ ...draft, is_original_synthesis: e.target.checked })
               }
             />
-            <span>Original synthesis / terminology alignment (no new external URL required)</span>
+            <span>
+              {t(
+                'drawer.originalSynth',
+                'Original synthesis / terminology alignment (no new external URL required)'
+              )}
+            </span>
           </label>
 
           {!draft.is_original_synthesis && (
             <div className="ed-field-row">
               <label className="ed-field" style={{ flex: '1 1 220px' }}>
-                Public Source URL (https://)
+                {t('drawer.sourceUrl', 'Public Source URL (https://)')}
                 <input
                   type="url"
                   className="ed-input"
@@ -565,7 +593,7 @@ export const ProposalDrawer: React.FC<{
                 )}
               </label>
               <label className="ed-field" style={{ flex: '1 1 220px' }}>
-                Source Verification Note
+                {t('drawer.sourceNote', 'Source Verification Note')}
                 <input
                   type="text"
                   className="ed-input"
@@ -574,7 +602,7 @@ export const ProposalDrawer: React.FC<{
                   onChange={(e) =>
                     setDraft({ ...draft, source_verification: e.target.value })
                   }
-                  placeholder="Section / page checked by human"
+                  placeholder={t('drawer.sourceNotePlaceholder', 'Section / page checked by human')}
                 />
                 {showError('source_verification') && (
                   <span className="ed-field-error">{showError('source_verification')}</span>
@@ -591,13 +619,15 @@ export const ProposalDrawer: React.FC<{
                 setDraft({ ...draft, used_ai_assistance: e.target.checked })
               }
             />
-            <span>AI assistance was used in drafting or screening (mandatory disclosure)</span>
+            <span>
+              {t('drawer.usedAi', 'AI assistance was used in drafting or screening (mandatory disclosure)')}
+            </span>
           </label>
 
           {draft.used_ai_assistance && (
             <div className="ed-field-row">
               <label className="ed-field" style={{ flex: '1 1 220px' }}>
-                AI Assistance Disclosure
+                {t('drawer.aiDetails', 'AI Assistance Disclosure')}
                 <input
                   type="text"
                   className="ed-input"
@@ -606,14 +636,14 @@ export const ProposalDrawer: React.FC<{
                   onChange={(e) =>
                     setDraft({ ...draft, ai_disclosure_details: e.target.value })
                   }
-                  placeholder="Model name and exact role..."
+                  placeholder={t('drawer.aiDetailsPlaceholder', 'Model name and exact role...')}
                 />
                 {showError('ai_disclosure_details') && (
                   <span className="ed-field-error">{showError('ai_disclosure_details')}</span>
                 )}
               </label>
               <label className="ed-field" style={{ flex: '1 1 220px' }}>
-                Human Verification Steps
+                {t('drawer.humanVerify', 'Human Verification Steps')}
                 <input
                   type="text"
                   className="ed-input"
@@ -622,7 +652,10 @@ export const ProposalDrawer: React.FC<{
                   onChange={(e) =>
                     setDraft({ ...draft, human_verification_steps: e.target.value })
                   }
-                  placeholder="How you checked terminology and citations..."
+                  placeholder={t(
+                    'drawer.humanVerifyPlaceholder',
+                    'How you checked terminology and citations...'
+                  )}
                 />
                 {showError('human_verification_steps') && (
                   <span className="ed-field-error">
@@ -635,21 +668,21 @@ export const ProposalDrawer: React.FC<{
 
           <div className="ed-field-row">
             <label className="ed-field" style={{ flex: '1 1 200px' }}>
-              Author / Pseudonym
+              {t('drawer.author', 'Author / Pseudonym')}
               <input
                 type="text"
                 className="ed-input"
                 value={draft.proposer_name}
                 onBlur={() => markTouched('proposer_name')}
                 onChange={(e) => setDraft({ ...draft, proposer_name: e.target.value })}
-                placeholder="Full name, ORCID, or pseudonym"
+                placeholder={t('drawer.authorPlaceholder', 'Full name, ORCID, or pseudonym')}
               />
               {showError('proposer_name') && (
                 <span className="ed-field-error">{showError('proposer_name')}</span>
               )}
             </label>
             <label className="ed-field" style={{ flex: '1 1 220px' }}>
-              Conflict of Interest (COI)
+              {t('drawer.coi', 'Conflict of Interest (COI)')}
               <input
                 type="text"
                 className="ed-input"
@@ -667,13 +700,13 @@ export const ProposalDrawer: React.FC<{
             <div className="ed-panel-soft ed-stack" style={{ gap: '10px' }}>
               <div className="ed-between">
                 <strong className="ed-small" style={{ color: 'var(--ed-add)' }}>
-                  Compliant Proposal Packaged — Next Step
+                  {t('drawer.packagedTitle', 'Compliant Proposal Packaged — Next Step')}
                 </strong>
                 <div className="ed-inline">
                   <CopyButton
                     text={packagedJson}
-                    label="Copy JSON"
-                    copiedLabel="Copied JSON"
+                    label={t('common.copyJson', 'Copy JSON')}
+                    copiedLabel={t('common.copiedJson', 'Copied JSON')}
                     className="ed-btn is-sm is-primary"
                     onCopied={() => onNotify('Proposal JSON copied to clipboard.')}
                   />
@@ -683,15 +716,16 @@ export const ProposalDrawer: React.FC<{
                     onClick={handleDownloadJson}
                   >
                     <DownloadIcon size={13} />
-                    <span>Download</span>
+                    <span>{t('common.download', 'Download')}</span>
                   </button>
                 </div>
               </div>
               <p className="ed-small ed-muted">
-                This offline-first release does not transmit forms directly. Copy or download the
-                JSON below and paste it into the repository&apos;s{' '}
-                <code className="ed-mono">{issueTemplate}</code> GitHub Issue form for human
-                moderator review.
+                {t(
+                  'drawer.packagedBody',
+                  'This offline-first release does not transmit forms directly. Copy or download the JSON below and paste it into the repository’s GitHub Issue form for human moderator review:'
+                )}{' '}
+                <code className="ed-mono">{issueTemplate}</code>
               </p>
               {githubIssueUrl && (
                 <a
@@ -701,7 +735,7 @@ export const ProposalDrawer: React.FC<{
                   className="ed-btn is-sm"
                   style={{ justifySelf: 'start' }}
                 >
-                  Open GitHub Issue Template
+                  {t('drawer.openGithub', 'Open GitHub Issue Template')}
                 </a>
               )}
               <pre className="ed-code-block" style={{ maxHeight: '180px' }}>
@@ -713,18 +747,18 @@ export const ProposalDrawer: React.FC<{
 
         <div className="ed-drawer-foot">
           <span className="ed-small ed-faint">
-            Auto-saved locally · Offline-first (Strict CSP)
+            {t('drawer.footOffline', 'Auto-saved locally · Offline-first (Strict CSP)')}
           </span>
           <div className="ed-inline">
             <button type="button" className="ed-btn" onClick={onClose}>
-              Close
+              {t('common.close', 'Close')}
             </button>
             <button
               type="submit"
               form="proposal-drawer-form"
               className="ed-btn is-primary"
             >
-              Package Proposal JSON
+              {t('drawer.packageOffline', 'Package Proposal JSON')}
             </button>
           </div>
         </div>
@@ -732,9 +766,3 @@ export const ProposalDrawer: React.FC<{
     </>
   );
 };
-
-function isChallengeTargetPlaceholder(isChallengeUpdate: boolean): string {
-  return isChallengeUpdate
-    ? 'Filter challenges by ID or keyword...'
-    : 'Filter open problems by ID, § section, or title...';
-}

@@ -5,7 +5,14 @@ import type {
   ProposalDraft,
   PublicBundle,
 } from '@opae/core';
-import { EditorialMark, PlusIcon, Toast } from '@opae/ui';
+import {
+  EditorialMark,
+  LanguageToggle,
+  LocaleProvider,
+  PlusIcon,
+  Toast,
+  useLocale,
+} from '@opae/ui';
 import rawBundle from '@data/public_bundle.json';
 import { OpenProblemsTab, type ProblemFilterMode } from './OpenProblemsTab';
 import { ChallengesTab } from './ChallengesTab';
@@ -59,30 +66,8 @@ function parseHash(): { tab: TabId; itemId?: string; problemFilter?: string } {
   };
 }
 
-const COMPACT_HEADINGS: Record<Exclude<TabId, 'problems'>, { title: string; subtitle: string }> = {
-  challenges: {
-    title: 'Specific Research Challenges',
-    subtitle: 'Tier 3 · Volatile, actionable questions grounded in literature and mapped to Open Problems.',
-  },
-  sources: {
-    title: 'Public Literature Sources',
-    subtitle: 'Sanitized evidence catalog with extraction counts and reverse links to Open Problems.',
-  },
-  methods: {
-    title: 'Audit & Reproducibility',
-    subtitle: 'Upstream funnel, combinatorial frontier, self-critical bias audit, and SHA-256 replay kits.',
-  },
-  versions: {
-    title: 'Agenda Versions & Snapshots',
-    subtitle: 'Human-readable release log of frozen screening runs and moderated consensus milestones.',
-  },
-  governance: {
-    title: 'Governance & Deliberation Log',
-    subtitle: 'Community proposals, peer reviews, and human moderator sign-offs persisted locally.',
-  },
-};
-
-export const App: React.FC = () => {
+const OfflineAppShell: React.FC = () => {
+  const { t, isZh } = useLocale();
   const initialRoute = parseHash();
   const [tab, setTab] = useState<TabId>(initialRoute.tab);
   const [focusedProblemId, setFocusedProblemId] = useState<string>(
@@ -165,6 +150,44 @@ export const App: React.FC = () => {
     return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
 
+  const compactHeadings: Record<Exclude<TabId, 'problems'>, { title: string; subtitle: string }> = {
+    challenges: {
+      title: t('heading.challenges.title', 'Specific Research Challenges'),
+      subtitle: t(
+        'heading.challenges.subtitle',
+        'Tier 3 · Volatile, actionable questions grounded in literature and mapped to Open Problems.'
+      ),
+    },
+    sources: {
+      title: t('heading.sources.title', 'Public Literature Sources'),
+      subtitle: t(
+        'heading.sources.subtitle',
+        'Sanitized evidence catalog with extraction counts and reverse links to Open Problems.'
+      ),
+    },
+    methods: {
+      title: t('heading.methods.title', 'Methodology & Reproducibility'),
+      subtitle: t(
+        'heading.methods.subtitle',
+        'How these open problems and challenges were screened from literature, known editorial limits, and downloadable Python replay kits.'
+      ),
+    },
+    versions: {
+      title: t('heading.versions.title', 'Agenda Versions & Snapshots'),
+      subtitle: t(
+        'heading.versions.subtitle',
+        'Human-readable release log of frozen screening runs and moderated consensus milestones.'
+      ),
+    },
+    governance: {
+      title: t('heading.governance.title', 'Governance & Deliberation Log'),
+      subtitle: t(
+        'heading.governance.subtitle.offline',
+        'Community proposals, peer reviews, and human moderator sign-offs persisted locally.'
+      ),
+    },
+  };
+
   const navigateTab = (next: TabId) => {
     setTab(next);
     if (next === 'challenges') {
@@ -227,6 +250,7 @@ export const App: React.FC = () => {
     (p) => p.terminology_alerts.length > 0
   ).length;
   const govRecordCount = proposals.length + reviews.length + decisions.length;
+  const govLabelText = t('nav.governance', 'Governance');
 
   return (
     <div className="ed-shell">
@@ -236,23 +260,23 @@ export const App: React.FC = () => {
             type="button"
             className="ed-brand"
             onClick={handleBrandHome}
-            title="Back to Open Problems home"
+            title={t('brand.homeTitle', 'Back to Open Problems home')}
           >
             <EditorialMark size={18} />
-            <span>AI Eval Agenda</span>
+            <span>{t('brand.name', 'AI Eval Agenda')}</span>
           </button>
 
           <nav className="ed-nav" aria-label="Primary navigation">
             {(
               [
-                ['problems', 'Open Problems'],
-                ['challenges', 'Challenges'],
-                ['sources', 'Sources'],
-                ['methods', 'Audit & Replay'],
-                ['versions', 'Versions'],
+                ['problems', t('nav.problems', 'Open Problems')],
+                ['challenges', t('nav.challenges', 'Challenges')],
+                ['sources', t('nav.sources', 'Sources')],
+                ['methods', t('nav.methods', 'Methodology')],
+                ['versions', t('nav.versions', 'Versions')],
                 [
                   'governance',
-                  govRecordCount > 0 ? `Governance (${govRecordCount})` : 'Governance',
+                  govRecordCount > 0 ? `${govLabelText} (${govRecordCount})` : govLabelText,
                 ],
               ] as Array<[TabId, string]>
             ).map(([id, label]) => (
@@ -275,8 +299,9 @@ export const App: React.FC = () => {
               onClick={() => handleOpenProposal(null)}
             >
               <PlusIcon size={14} />
-              <span>New Proposal</span>
+              <span>{t('nav.newProposal', 'New Proposal')}</span>
             </button>
+            <LanguageToggle />
           </div>
         </div>
       </header>
@@ -288,14 +313,26 @@ export const App: React.FC = () => {
               <div className="ed-eyebrow">
                 <span className="ed-eyebrow-dot" aria-hidden="true" />
                 <span>
-                  Participatory Research Agenda · Human Moderator Governance ·{' '}
+                  {t(
+                    'masthead.eyebrow',
+                    'Participatory Research Agenda · Human Moderator Governance · '
+                  )}
                   <span className="ed-mono">{bundle.participation.current_version}</span>
                 </span>
               </div>
               <h1 className="ed-lead">
-                <strong>{bundle.project.title || 'Open Problems in AI Evaluation'}.</strong>{' '}
-                {bundle.project.subtitle ||
-                  'A human-led participatory research agenda anchored in locked manuscript terminology, normative change justifications, and zero-gap numerical reproducibility.'}
+                <strong>
+                  {isZh
+                    ? t('masthead.title', 'Open Problems in AI Evaluation.')
+                    : `${bundle.project.title || 'Open Problems in AI Evaluation'}.`}
+                </strong>{' '}
+                {isZh
+                  ? t(
+                      'masthead.subtitle',
+                      'A human-led participatory research agenda anchored in locked manuscript terminology, normative change justifications, and zero-gap numerical reproducibility.'
+                    )
+                  : bundle.project.subtitle ||
+                    'A human-led participatory research agenda anchored in locked manuscript terminology, normative change justifications, and zero-gap numerical reproducibility.'}
               </h1>
             </section>
 
@@ -304,49 +341,48 @@ export const App: React.FC = () => {
                 type="button"
                 className="ed-metric-cell"
                 onClick={() => setProblemFilterMode('all')}
-                title="View all 7 fixed categories"
               >
-                <span className="ed-metric-label">Fixed Categories</span>
+                <span className="ed-metric-label">
+                  {t('metrics.categories', 'Fixed Categories')}
+                </span>
                 <span className="ed-metric-value">{Object.keys(bundle.categories).length}</span>
               </button>
               <button
                 type="button"
                 className="ed-metric-cell"
                 onClick={() => setProblemFilterMode('all')}
-                title="Show all Open Problems"
               >
-                <span className="ed-metric-label">Open Problems</span>
+                <span className="ed-metric-label">{t('metrics.problems', 'Open Problems')}</span>
                 <span className="ed-metric-value">{bundle.open_problems.length}</span>
               </button>
               <button
                 type="button"
                 className="ed-metric-cell"
                 onClick={() => navigateTab('challenges')}
-                title="Browse Tier-3 Specific Challenges"
               >
-                <span className="ed-metric-label">Specific Challenges</span>
+                <span className="ed-metric-label">
+                  {t('metrics.challenges', 'Specific Challenges')}
+                </span>
                 <span className="ed-metric-value">{bundle.specific_challenges.length}</span>
               </button>
               <button
                 type="button"
                 className="ed-metric-cell"
                 onClick={() => navigateTab('sources')}
-                title="Browse public literature sources"
               >
-                <span className="ed-metric-label">Public Sources</span>
+                <span className="ed-metric-label">{t('metrics.sources', 'Public Sources')}</span>
                 <span className="ed-metric-value">{bundle.references.length}</span>
               </button>
               <button
                 type="button"
                 className="ed-metric-cell"
                 onClick={() =>
-                  setProblemFilterMode((prev) =>
-                    prev === 'term_alert' ? 'all' : 'term_alert'
-                  )
+                  setProblemFilterMode((prev) => (prev === 'term_alert' ? 'all' : 'term_alert'))
                 }
-                title="Filter Open Problems with Terminology Alerts"
               >
-                <span className="ed-metric-label">Terminology Alerts</span>
+                <span className="ed-metric-label">
+                  {t('metrics.termAlerts', 'Terminology Alerts')}
+                </span>
                 <span className={`ed-metric-value ${termAlertCount > 0 ? 'is-accent' : ''}`}>
                   {termAlertCount}
                 </span>
@@ -356,9 +392,9 @@ export const App: React.FC = () => {
         ) : (
           <header className="ed-compact-header">
             <div>
-              <h1 className="ed-compact-title">{COMPACT_HEADINGS[tab].title}</h1>
+              <h1 className="ed-compact-title">{compactHeadings[tab].title}</h1>
               <p className="ed-small ed-muted" style={{ marginTop: '4px' }}>
-                {COMPACT_HEADINGS[tab].subtitle}
+                {compactHeadings[tab].subtitle}
               </p>
             </div>
             <span className="ed-mono ed-faint ed-small">
@@ -391,9 +427,7 @@ export const App: React.FC = () => {
               problemFilter={challengeProblemFilter}
               onProblemFilterChange={(pid) => {
                 setChallengeProblemFilter(pid);
-                syncHash(
-                  pid ? `challenges?problem=${encodeURIComponent(pid)}` : 'challenges'
-                );
+                syncHash(pid ? `challenges?problem=${encodeURIComponent(pid)}` : 'challenges');
               }}
               onOpenProblem={handleOpenProblem}
               onProposeChallengeUpdate={handleOpenProposal}
@@ -407,9 +441,7 @@ export const App: React.FC = () => {
               onOpenProblem={handleOpenProblem}
             />
           )}
-          {tab === 'methods' && (
-            <MethodsAuditTab bundle={bundle} onNotify={setToast} />
-          )}
+          {tab === 'methods' && <MethodsAuditTab bundle={bundle} onNotify={setToast} />}
           {tab === 'versions' && (
             <VersionsTab bundle={bundle} onOpenProblem={handleOpenProblem} />
           )}
@@ -449,7 +481,10 @@ export const App: React.FC = () => {
 
       <footer className="ed-footer">
         <span>
-          Open Problems in AI Evaluation · Standalone Offline-First Release (Strict CSP · Sanitized)
+          {t(
+            'footer.offline',
+            'Open Problems in AI Evaluation · Standalone Offline-First Release (Strict CSP · Sanitized)'
+          )}
         </span>
         <span className="ed-mono">
           Schema v{bundle.schema_version} · {bundle.participation.current_version}
@@ -458,3 +493,9 @@ export const App: React.FC = () => {
     </div>
   );
 };
+
+export const App: React.FC = () => (
+  <LocaleProvider>
+    <OfflineAppShell />
+  </LocaleProvider>
+);

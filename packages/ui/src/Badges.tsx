@@ -1,8 +1,16 @@
 import React from 'react';
 import type { AuthorType, GovernanceStatus, TerminologyAlert } from '@opae/core';
 import { AlertCircleIcon, EditIcon } from './Icons';
+import { useLocale, type ZhKey } from './i18n';
 
 export const RUBRIC_SHORT = ['Relevance', 'Openness', 'Clarity', 'Impact', 'Value'];
+const RUBRIC_SHORT_KEYS: ZhKey[] = [
+  'rubric.short.0',
+  'rubric.short.1',
+  'rubric.short.2',
+  'rubric.short.3',
+  'rubric.short.4',
+];
 
 export const GOVERNANCE_LABELS: Record<GovernanceStatus, string> = {
   draft: 'Draft',
@@ -33,63 +41,79 @@ export function applyTerminologyFixes(text: string, alerts: TerminologyAlert[]):
   return out;
 }
 
-export const GovernanceBadge: React.FC<{ status: GovernanceStatus }> = ({ status }) => (
-  <span className={`ed-tag ${status === 'moderator_approved' ? 'is-ink' : ''}`}>
-    {GOVERNANCE_LABELS[status] ?? status}
-  </span>
-);
+export const GovernanceBadge: React.FC<{ status: GovernanceStatus }> = ({ status }) => {
+  const { govLabel } = useLocale();
+  return (
+    <span className={`ed-tag ${status === 'moderator_approved' ? 'is-ink' : ''}`}>
+      {govLabel(status, GOVERNANCE_LABELS[status] ?? status)}
+    </span>
+  );
+};
 
-export const AuthorTypeBadge: React.FC<{ type: AuthorType }> = ({ type }) => (
-  <span className={`ed-tag ${type === 'human' ? 'is-add' : ''}`}>
-    {AUTHOR_LABELS[type] ?? type}
-  </span>
-);
+export const AuthorTypeBadge: React.FC<{ type: AuthorType }> = ({ type }) => {
+  const { authorLabel } = useLocale();
+  return (
+    <span className={`ed-tag ${type === 'human' ? 'is-add' : ''}`}>
+      {authorLabel(type, AUTHOR_LABELS[type] ?? type)}
+    </span>
+  );
+};
 
-export const ScorePills: React.FC<{ scores: number[] }> = ({ scores }) => (
-  <div className="ed-rubric-grid" aria-label="Five-dimension rubric scores">
-    {scores.map((s, idx) => (
-      <div
-        key={idx}
-        className="ed-rubric-cell"
-        title={`Q${idx + 1} ${RUBRIC_SHORT[idx] ?? ''}: ${s}/4`}
-      >
-        <div className="ed-rubric-top ed-mono">
-          <span>Q{idx + 1}</span>
-          <strong>{s}/4</strong>
-        </div>
-        <div className="ed-rubric-dim">{RUBRIC_SHORT[idx] ?? ''}</div>
-        <div className="ed-rubric-track">
+export const ScorePills: React.FC<{ scores: number[] }> = ({ scores }) => {
+  const { t } = useLocale();
+  return (
+    <div className="ed-rubric-grid" aria-label={t('problems.rubricHeading', 'Five-dimension rubric scores')}>
+      {scores.map((s, idx) => {
+        const shortLabel = RUBRIC_SHORT_KEYS[idx]
+          ? t(RUBRIC_SHORT_KEYS[idx], RUBRIC_SHORT[idx] ?? '')
+          : RUBRIC_SHORT[idx] ?? '';
+        return (
           <div
-            className={`ed-rubric-fill ${s <= 2 ? 'is-low' : ''}`}
-            style={{ width: `${Math.min(100, Math.max(0, (s / 4) * 100))}%` }}
-          />
-        </div>
-      </div>
-    ))}
-  </div>
-);
+            key={idx}
+            className="ed-rubric-cell"
+            title={`Q${idx + 1} ${shortLabel}: ${s}/4`}
+          >
+            <div className="ed-rubric-top ed-mono">
+              <span>Q{idx + 1}</span>
+              <strong>{s}/4</strong>
+            </div>
+            <div className="ed-rubric-dim">{shortLabel}</div>
+            <div className="ed-rubric-track">
+              <div
+                className={`ed-rubric-fill ${s <= 2 ? 'is-low' : ''}`}
+                style={{ width: `${Math.min(100, Math.max(0, (s / 4) * 100))}%` }}
+              />
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 
 export const TerminologyAlertsPanel: React.FC<{
   alerts: TerminologyAlert[];
   onFixTerms?: () => void;
   fixLabel?: string;
-}> = ({ alerts, onFixTerms, fixLabel = 'Propose Term Fix' }) => {
+}> = ({ alerts, onFixTerms, fixLabel }) => {
+  const { t } = useLocale();
   if (!alerts.length) return null;
+  const buttonText = fixLabel ?? t('term.proposeFix', 'Propose Term Fix');
   return (
     <div className="ed-term-callout" role="alert">
       <div className="ed-term-head">
         <span className="ed-inline">
           <AlertCircleIcon size={15} />
-          <span>Terminology Lock ({alerts.length})</span>
+          <span>{t('term.lockCount', 'Terminology Lock ({count})', { count: alerts.length })}</span>
         </span>
         {onFixTerms ? (
           <button type="button" className="ed-btn is-accent-outline is-sm" onClick={onFixTerms}>
             <EditIcon size={12} />
-            <span>{fixLabel}</span>
+            <span>{buttonText}</span>
           </button>
         ) : (
           <span className="ed-mono" style={{ fontSize: '11.5px' }}>
-            Manuscript Priority
+            {t('term.manuscriptPriority', 'Manuscript Priority')}
           </span>
         )}
       </div>

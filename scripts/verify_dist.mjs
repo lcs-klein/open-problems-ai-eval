@@ -3,6 +3,7 @@ import path from 'node:path';
 
 const root = process.cwd();
 const publicOnly = process.argv.includes('--public-only');
+const zhCatalogPath = path.join(root, 'packages', 'ui', 'src', 'zhCatalog.json');
 
 const pubHtmlPath = path.join(root, 'dist', 'public', 'index.html');
 const intHtmlPath = path.join(
@@ -29,6 +30,17 @@ for (const p of requiredPaths) {
   }
 }
 
+const allowedCjkRuns = new Set();
+if (fs.existsSync(zhCatalogPath)) {
+  const catalog = JSON.parse(fs.readFileSync(zhCatalogPath, 'utf8'));
+  for (const val of Object.values(catalog)) {
+    if (typeof val !== 'string') continue;
+    for (const match of val.matchAll(/[\u4e00-\u9fff]+/g)) {
+      allowedCjkRuns.add(match[0]);
+    }
+  }
+}
+
 if (fs.existsSync(pubHtmlPath)) {
   const pubHtml = fs.readFileSync(pubHtmlPath, 'utf8');
   if (!pubHtml.includes('Content-Security-Policy')) {
@@ -41,8 +53,20 @@ if (fs.existsSync(pubHtmlPath)) {
     errors.push('Public HTML contains external <link href="http..."> dependency.');
   }
 
+  const unauthorizedCjk = [];
+  for (const match of pubHtml.matchAll(/[\u4e00-\u9fff]+/g)) {
+    if (!allowedCjkRuns.has(match[0])) {
+      unauthorizedCjk.push(match[0]);
+      if (unauthorizedCjk.length >= 5) break;
+    }
+  }
+  if (unauthorizedCjk.length > 0) {
+    errors.push(
+      `Sanitization leak in dist/public/index.html: unauthorized CJK text outside zhCatalog.json (${unauthorizedCjk.join(', ')})`
+    );
+  }
+
   const forbiddenPatterns = [
-    { label: 'CJK internal feedback characters', rx: /[\u4e00-\u9fff]/ },
     { label: 'Windows local user path', rx: /[A-Za-z]:\\{1,2}Users\\{1,2}/i },
     { label: 'macOS local user path', rx: /\/Users\/[^/\s"']+\// },
     { label: 'Linux local user path', rx: /\/home\/[^/\s"']+\// },
@@ -72,11 +96,11 @@ if (errors.length > 0) {
 const pubKb = (fs.statSync(pubHtmlPath).size / 1024).toFixed(1);
 if (publicOnly) {
   console.log(
-    `[verify_dist] PASSED (public-only) — Public standalone HTML (${pubKb} KB) + reproduce/*.zip verified.`
+    `[verify_dist] PASSED (public-only) — Public standalone HTML (${pubKb} KB) + reproduce/*.zip verified (${allowedCjkRuns.size} allowlisted UI CJK tokens).`
   );
 } else {
   const intKb = (fs.statSync(intHtmlPath).size / 1024).toFixed(1);
   console.log(
-    `[verify_dist] PASSED — Public standalone HTML (${pubKb} KB) + Internal standalone HTML (${intKb} KB) + reproduce/*.zip verified.`
+    `[verify_dist] PASSED — Public standalone HTML (${pubKb} KB) + Internal standalone HTML (${intKb} KB) + reproduce/*.zip verified (${allowedCjkRuns.size} allowlisted UI CJK tokens).`
   );
 }

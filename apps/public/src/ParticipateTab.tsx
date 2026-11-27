@@ -11,6 +11,7 @@ import {
   DownloadIcon,
   PlusIcon,
   ShieldIcon,
+  useLocale,
 } from '@opae/ui';
 
 export const GovernanceTab: React.FC<{
@@ -36,6 +37,7 @@ export const GovernanceTab: React.FC<{
   onOpenProblem,
   onNotify,
 }) => {
+  const { t } = useLocale();
   const [moderatorMode, setModeratorMode] = useState(false);
   const [reviewForm, setReviewForm] = useState({
     target_id: initialTargetId || bundle.open_problems[0]?.id || 'C.F2a',
@@ -105,7 +107,7 @@ export const GovernanceTab: React.FC<{
     a.download = `governance-log-${Date.now()}.json`;
     a.click();
     URL.revokeObjectURL(url);
-    onNotify('Governance log exported as JSON.');
+    onNotify(t('governance.exportToast', 'Governance log exported as JSON.'));
   };
 
   const problemIdSet = new Set(bundle.open_problems.map((p) => p.id));
@@ -114,14 +116,18 @@ export const GovernanceTab: React.FC<{
     <div className="ed-stack">
       <div className="ed-notice">
         <span>
-          <strong>Human-in-the-Loop Governance (Wikipedia Model):</strong> Community members submit
-          structured proposals and peer reviews; human moderators deliberate and sign off before any
-          canonical change enters a new release. All records below persist locally in your browser.
+          <strong>
+            {t('governance.notice.offlineLead', 'Human-in-the-Loop Governance (Wikipedia Model):')}
+          </strong>{' '}
+          {t(
+            'governance.notice.offlineBody',
+            'Community members submit structured proposals and peer reviews; human moderators deliberate and sign off before any canonical change enters a new release. All records below persist locally in your browser.'
+          )}
         </span>
         <div className="ed-inline">
           <button type="button" className="ed-btn is-primary is-sm" onClick={onNewProposal}>
             <PlusIcon size={13} />
-            <span>New Proposal</span>
+            <span>{t('nav.newProposal', 'New Proposal')}</span>
           </button>
           <button
             type="button"
@@ -130,7 +136,7 @@ export const GovernanceTab: React.FC<{
             disabled={proposals.length + reviews.length + decisions.length === 0}
           >
             <DownloadIcon size={13} />
-            <span>Export Log JSON</span>
+            <span>{t('governance.exportLogJson', 'Export Log JSON')}</span>
           </button>
         </div>
       </div>
@@ -139,22 +145,30 @@ export const GovernanceTab: React.FC<{
       <section className="ed-panel ed-stack" style={{ gap: '12px' }}>
         <div className="ed-between">
           <div>
-            <h2 className="ed-panel-title">1. Packaged Proposals ({proposals.length})</h2>
+            <h2 className="ed-panel-title">
+              {t('governance.s1.offlineTitle', '1. Packaged Proposals ({count})', {
+                count: proposals.length,
+              })}
+            </h2>
             <p className="ed-small ed-muted" style={{ marginTop: '2px' }}>
-              Proposals packaged in this browser via the Proposal Drawer, ready to paste into GitHub
-              Issues.
+              {t(
+                'governance.s1.offlineSubtitle',
+                'Proposals packaged in this browser via the Proposal Drawer, ready to paste into GitHub Issues.'
+              )}
             </p>
           </div>
           <button type="button" className="ed-btn is-sm" onClick={onNewProposal}>
             <PlusIcon size={13} />
-            <span>Draft Proposal</span>
+            <span>{t('governance.s1.draftProposal', 'Draft Proposal')}</span>
           </button>
         </div>
 
         {proposals.length === 0 ? (
           <div className="ed-empty">
-            No proposals packaged yet. Click <strong>New Proposal</strong> in the top bar—or use{' '}
-            <strong>Propose Revision / Restore Locked Terms</strong> directly on any Open Problem.
+            {t(
+              'governance.s1.emptyOffline',
+              'No proposals packaged yet. Click New Proposal in the top bar—or use Propose Revision / Restore Locked Terms directly on any Open Problem.'
+            )}
           </div>
         ) : (
           <div className="ed-card-list">
@@ -180,12 +194,15 @@ export const GovernanceTab: React.FC<{
                         </span>
                       )
                     )}
-                    <span className="ed-faint ed-small">by {p.proposer_name}</span>
+                    <span className="ed-faint ed-small">
+                      {t('common.by', 'by ')}
+                      {p.proposer_name}
+                    </span>
                   </div>
                   <CopyButton
                     text={JSON.stringify(p, null, 2)}
-                    label="Copy JSON"
-                    copiedLabel="Copied"
+                    label={t('common.copyJson', 'Copy JSON')}
+                    copiedLabel={t('common.copied', 'Copied')}
                     className="ed-btn is-ghost is-sm"
                     onCopied={() => onNotify(`Copied ${p.id} JSON.`)}
                   />
@@ -194,7 +211,7 @@ export const GovernanceTab: React.FC<{
                   <strong style={{ fontSize: '14px' }}>{p.proposed_title}</strong>
                 )}
                 <p className="ed-small ed-muted">
-                  <strong>Why:</strong> {p.why_changed}
+                  <strong>{t('governance.s1.why', 'Why:')}</strong> {p.why_changed}
                 </p>
               </div>
             ))}
@@ -205,17 +222,23 @@ export const GovernanceTab: React.FC<{
       {/* 2. Peer Review Desk */}
       <section className="ed-panel ed-form">
         <div>
-          <h2 className="ed-panel-title">2. Community Peer Review ({reviews.length})</h2>
+          <h2 className="ed-panel-title">
+            {t('governance.s2.title', '2. Community Peer Review ({count})', {
+              count: reviews.length,
+            })}
+          </h2>
           <p className="ed-small ed-muted" style={{ marginTop: '2px' }}>
-            Record scholarly critiques, wording suggestions, or objections preserving manuscript
-            terminology.
+            {t(
+              'governance.s2.offlineSubtitle',
+              'Record scholarly critiques, wording suggestions, or objections preserving manuscript terminology.'
+            )}
           </p>
         </div>
 
         <form className="ed-form" onSubmit={handleReviewSubmit}>
           <div className="ed-field-row">
             <label className="ed-field" style={{ flex: '2 1 260px' }}>
-              Target Open Problem
+              {t('governance.s2.targetProblem', 'Target Open Problem')}
               <select
                 className="ed-select"
                 value={reviewForm.target_id}
@@ -232,7 +255,7 @@ export const GovernanceTab: React.FC<{
             </label>
 
             <label className="ed-field" style={{ flex: '1 1 180px' }}>
-              Reviewer Name / ORCID
+              {t('governance.s2.reviewerName', 'Reviewer Name / ORCID')}
               <input
                 type="text"
                 className="ed-input"
@@ -240,13 +263,13 @@ export const GovernanceTab: React.FC<{
                 onChange={(e) =>
                   setReviewForm({ ...reviewForm, reviewer_name: e.target.value })
                 }
-                placeholder="Your name or pseudonym"
+                placeholder={t('governance.s2.reviewerPlaceholder', 'Your name or pseudonym')}
                 required
               />
             </label>
 
             <label className="ed-field" style={{ flex: '1 1 180px' }}>
-              Stance
+              {t('governance.s2.stance', 'Stance')}
               <select
                 className="ed-select"
                 value={reviewForm.stance}
@@ -257,20 +280,25 @@ export const GovernanceTab: React.FC<{
                   })
                 }
               >
-                <option value="support">Support</option>
-                <option value="revise">Request Revision</option>
-                <option value="object">Object / Preserve Manuscript Wording</option>
+                <option value="support">{t('governance.s2.stanceSupport', 'Support')}</option>
+                <option value="revise">{t('governance.s2.stanceRevise', 'Request Revision')}</option>
+                <option value="object">
+                  {t('governance.s2.stanceObject', 'Object / Preserve Manuscript Wording')}
+                </option>
               </select>
             </label>
           </div>
 
           <label className="ed-field">
-            Review Summary
+            {t('governance.s2.summaryOffline', 'Review Summary')}
             <textarea
               className="ed-textarea"
               value={reviewForm.summary}
               onChange={(e) => setReviewForm({ ...reviewForm, summary: e.target.value })}
-              placeholder="State concrete scientific, terminological, or scoping feedback..."
+              placeholder={t(
+                'governance.s2.summaryPlaceholder',
+                'State concrete scientific, terminological, or scoping feedback...'
+              )}
               required
             />
           </label>
@@ -281,7 +309,7 @@ export const GovernanceTab: React.FC<{
               className="ed-btn is-primary is-sm"
               disabled={!reviewForm.reviewer_name.trim() || !reviewForm.summary.trim()}
             >
-              Record Peer Review
+              {t('governance.s2.recordBtn', 'Record Peer Review')}
             </button>
           </div>
         </form>
@@ -328,11 +356,15 @@ export const GovernanceTab: React.FC<{
             <ShieldIcon size={16} />
             <div>
               <h2 className="ed-panel-title">
-                3. Human Moderator Sign-offs ({decisions.length})
+                {t('governance.s3.title', '3. Human Moderator Sign-offs ({count})', {
+                  count: decisions.length,
+                })}
               </h2>
               <p className="ed-small ed-muted" style={{ marginTop: '2px' }}>
-                Reserved for editorial board / human moderators logging collective decisions and
-                preserved minority dissents.
+                {t(
+                  'governance.s3.offlineSubtitle',
+                  'Reserved for editorial board / human moderators logging collective decisions and preserved minority dissents.'
+                )}
               </p>
             </div>
           </div>
@@ -342,7 +374,11 @@ export const GovernanceTab: React.FC<{
             aria-expanded={moderatorMode}
             onClick={() => setModeratorMode((v) => !v)}
           >
-            <span>{moderatorMode ? 'Hide Moderator Form' : 'Enter Moderator Mode'}</span>
+            <span>
+              {moderatorMode
+                ? t('governance.s3.hideModerator', 'Hide Moderator Form')
+                : t('governance.s3.enterModerator', 'Enter Moderator Mode')}
+            </span>
             <ChevronDownIcon size={13} />
           </button>
         </div>
@@ -351,7 +387,7 @@ export const GovernanceTab: React.FC<{
           <form className="ed-panel-soft ed-form" onSubmit={handleDecisionSubmit}>
             <div className="ed-field-row">
               <label className="ed-field" style={{ flex: '2 1 240px' }}>
-                Target Open Problem
+                {t('governance.s2.targetProblem', 'Target Open Problem')}
                 <select
                   className="ed-select"
                   value={decisionForm.target_id}
@@ -368,7 +404,7 @@ export const GovernanceTab: React.FC<{
               </label>
 
               <label className="ed-field" style={{ flex: '1 1 180px' }}>
-                Human Moderator Name
+                {t('governance.s3.moderatorName', 'Human Moderator Name')}
                 <input
                   type="text"
                   className="ed-input"
@@ -376,13 +412,13 @@ export const GovernanceTab: React.FC<{
                   onChange={(e) =>
                     setDecisionForm({ ...decisionForm, moderator_name: e.target.value })
                   }
-                  placeholder="Moderator full name"
+                  placeholder={t('governance.s3.moderatorPlaceholder', 'Moderator full name')}
                   required
                 />
               </label>
 
               <label className="ed-field" style={{ flex: '1 1 180px' }}>
-                Outcome
+                {t('governance.s3.outcome', 'Outcome')}
                 <select
                   className="ed-select"
                   value={decisionForm.outcome}
@@ -393,28 +429,35 @@ export const GovernanceTab: React.FC<{
                     })
                   }
                 >
-                  <option value="moderator_approved">Human Moderator Approved</option>
-                  <option value="deferred">Deferred for Full-Section Draft</option>
-                  <option value="rejected">Rejected</option>
+                  <option value="moderator_approved">
+                    {t('governance.s3.outcomeApproved', 'Human Moderator Approved')}
+                  </option>
+                  <option value="deferred">
+                    {t('governance.s3.outcomeDeferred', 'Deferred for Full-Section Draft')}
+                  </option>
+                  <option value="rejected">{t('governance.s3.outcomeRejected', 'Rejected')}</option>
                 </select>
               </label>
             </div>
 
             <label className="ed-field">
-              Decision Rationale
+              {t('governance.s3.rationale', 'Decision Rationale')}
               <textarea
                 className="ed-textarea"
                 value={decisionForm.rationale}
                 onChange={(e) =>
                   setDecisionForm({ ...decisionForm, rationale: e.target.value })
                 }
-                placeholder="Summarize collective deliberation outcome and manuscript alignment rationale..."
+                placeholder={t(
+                  'governance.s3.rationalePlaceholder',
+                  'Summarize collective deliberation outcome and manuscript alignment rationale...'
+                )}
                 required
               />
             </label>
 
             <label className="ed-field">
-              Minority Dissent (Optional, permanently preserved on record)
+              {t('governance.s3.dissent', 'Minority Dissent (Optional, permanently preserved on record)')}
               <input
                 type="text"
                 className="ed-input"
@@ -422,7 +465,10 @@ export const GovernanceTab: React.FC<{
                 onChange={(e) =>
                   setDecisionForm({ ...decisionForm, minority_dissent: e.target.value })
                 }
-                placeholder="Document any substantive dissenting perspective..."
+                placeholder={t(
+                  'governance.s3.dissentPlaceholder',
+                  'Document any substantive dissenting perspective...'
+                )}
               />
             </label>
 
@@ -434,7 +480,7 @@ export const GovernanceTab: React.FC<{
                   !decisionForm.moderator_name.trim() || !decisionForm.rationale.trim()
                 }
               >
-                Record Moderator Sign-off
+                {t('governance.s3.recordDecision', 'Record Moderator Sign-off')}
               </button>
             </div>
           </form>
@@ -471,7 +517,8 @@ export const GovernanceTab: React.FC<{
                 <p className="ed-small ed-muted">{d.rationale}</p>
                 {d.minority_dissent && (
                   <p className="ed-small ed-faint">
-                    <strong>Minority Dissent:</strong> {d.minority_dissent}
+                    <strong>{t('governance.s3.minorityDissent', 'Minority Dissent:')}</strong>{' '}
+                    {d.minority_dissent}
                   </p>
                 )}
               </div>
@@ -479,7 +526,11 @@ export const GovernanceTab: React.FC<{
           </div>
         ) : (
           <p className="ed-small ed-faint">
-            No moderator sign-offs recorded yet for {bundle.participation.current_version}.
+            {t(
+              'governance.s3.empty',
+              'No moderator sign-offs recorded yet for {version}.',
+              { version: bundle.participation.current_version }
+            )}
           </p>
         )}
       </section>
