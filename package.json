@@ -10,6 +10,17 @@
   "scripts": {
     "pipeline": "python pipeline/run_pipeline.py",
     "pipeline:test": "python -m unittest discover -s pipeline -p \"test_*.py\" -v",
+    "dev:web": "npm --workspace=@opae/web run dev",
+    "dev:worker": "npm --workspace=@opae/worker run dev",
+    "build:web": "npm --workspace=@opae/web run build && node scripts/postbuild_web.mjs",
+    "build": "npm run build:web",
+    "typecheck": "npm --workspace=@opae/web run typecheck && npm --workspace=@opae/worker run typecheck",
+    "db:migrate:local": "npm --workspace=@opae/worker run db:migrate:local",
+    "db:migrate:remote": "npm --workspace=@opae/worker run db:migrate:remote",
+    "db:seed:local": "node scripts/seed_d1.mjs --local",
+    "db:seed:remote": "node scripts/seed_d1.mjs --remote",
+    "db:create-admin:local": "node scripts/create_admin.mjs --local",
+    "db:create-admin:remote": "node scripts/create_admin.mjs --remote",
     "dev:public": "npm --workspace=@opae/public run dev",
     "dev:internal": "npm --workspace=@opae/internal run dev",
     "build:public": "npm --workspace=@opae/public run build",
@@ -17,10 +28,12 @@
     "build:pages": "npm run build:public && node scripts/postbuild.mjs",
     "build:all": "npm run pipeline && npm run build:public && npm run build:internal && node scripts/postbuild.mjs",
     "test:unit": "vitest run",
+    "verify:web": "npm run pipeline:test && npm run test:unit && npm run typecheck && npm run build:web && node scripts/verify_web_dist.mjs",
     "verify:public": "npm run pipeline:test && npm run test:unit && node scripts/verify_dist.mjs --public-only",
     "verify": "npm run pipeline:test && npm run test:unit && node scripts/verify_dist.mjs"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261123.1",
     "@types/node": "^22.10.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
@@ -28,7 +41,8 @@
     "typescript": "^5.7.2",
     "vite": "^6.0.3",
     "vite-plugin-singlefile": "^2.0.3",
-    "vitest": "^2.1.8"
+    "vitest": "^2.1.8",
+    "wrangler": "^4.168.0"
   },
   "dependencies": {
     "react": "^19.0.0",

@@ -2,6 +2,11 @@
 node_modules/
 dist/
 .vite/
+.wrangler/
+apps/worker/.dev.vars
+apps/worker/.wrangler/
+apps/worker/seed*.sql
+tmp/
 
 # Strictly excluded private / unredacted internal materials (DO NOT PUSH TO PUBLIC REPO)
 legacy/

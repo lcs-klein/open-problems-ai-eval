@@ -1,0 +1,17 @@
+{
+  "name": "@opae/web",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 5173",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@opae/core": "2.0.0",
+    "@opae/ui": "2.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
