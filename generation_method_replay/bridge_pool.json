@@ -1,0 +1,2461 @@
+[
+  {
+    "id": "V051",
+    "category": "F",
+    "scores": [
+      4,
+      3,
+      3,
+      4,
+      3
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P005"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N057",
+        "coverage": 1.0
+      },
+      {
+        "key": "N062",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R061",
+        "coverage": 1.0
+      },
+      {
+        "key": "R048",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V052",
+    "category": "F",
+    "scores": [
+      4,
+      3,
+      3,
+      4,
+      4
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P006"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N046",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R049",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V053",
+    "category": "F",
+    "scores": [
+      4,
+      3,
+      2,
+      3,
+      4
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P007"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N060",
+        "coverage": 1.0
+      },
+      {
+        "key": "N049",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R062",
+        "coverage": 1.0
+      },
+      {
+        "key": "R055",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V054",
+    "category": "F",
+    "scores": [
+      4,
+      3,
+      2,
+      4,
+      3
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P008"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N053",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R056",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V007",
+    "category": "F",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      3
+    ],
+    "operation": "rewrite",
+    "exception": null,
+    "parents": [
+      "P005"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N057",
+        "coverage": 1.0
+      },
+      {
+        "key": "N062",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R061",
+        "coverage": 1.0
+      },
+      {
+        "key": "R048",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V008",
+    "category": "F",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "rewrite",
+    "exception": null,
+    "parents": [
+      "P006"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N046",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R049",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V009",
+    "category": "F",
+    "scores": [
+      4,
+      3,
+      4,
+      3,
+      4
+    ],
+    "operation": "rewrite",
+    "exception": null,
+    "parents": [
+      "P007"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N060",
+        "coverage": 1.0
+      },
+      {
+        "key": "N049",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R062",
+        "coverage": 1.0
+      },
+      {
+        "key": "R055",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V010",
+    "category": "F",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      3
+    ],
+    "operation": "rewrite",
+    "exception": null,
+    "parents": [
+      "P008"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N053",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R056",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V067",
+    "category": "T",
+    "scores": [
+      4,
+      3,
+      3,
+      4,
+      3
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P021"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N017",
+        "coverage": 1
+      },
+      {
+        "key": "N005",
+        "coverage": 0.5
+      },
+      {
+        "key": "N039",
+        "coverage": 0.5
+      }
+    ],
+    "research": [
+      {
+        "key": "R006",
+        "coverage": 1
+      },
+      {
+        "key": "R014",
+        "coverage": 0.5
+      },
+      {
+        "key": "R013",
+        "coverage": 0.5
+      }
+    ]
+  },
+  {
+    "id": "V068",
+    "category": "T",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      3
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P022"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N014",
+        "coverage": 1
+      },
+      {
+        "key": "N001",
+        "coverage": 0.5
+      }
+    ],
+    "research": [
+      {
+        "key": "R005",
+        "coverage": 1
+      },
+      {
+        "key": "R010",
+        "coverage": 0.5
+      }
+    ]
+  },
+  {
+    "id": "V069",
+    "category": "T",
+    "scores": [
+      4,
+      3,
+      3,
+      4,
+      3
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P023"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N041",
+        "coverage": 1
+      },
+      {
+        "key": "N002",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R004",
+        "coverage": 1
+      },
+      {
+        "key": "R008",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V070",
+    "category": "T",
+    "scores": [
+      4,
+      3,
+      3,
+      4,
+      3
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P024"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N010",
+        "coverage": 1
+      },
+      {
+        "key": "N015",
+        "coverage": 0.5
+      }
+    ],
+    "research": [
+      {
+        "key": "R001",
+        "coverage": 1
+      },
+      {
+        "key": "R019",
+        "coverage": 0.5
+      }
+    ]
+  },
+  {
+    "id": "V071",
+    "category": "T",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      3
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P025"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N018",
+        "coverage": 1
+      },
+      {
+        "key": "N040",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R007",
+        "coverage": 1
+      },
+      {
+        "key": "R011",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V015",
+    "category": "T",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      3
+    ],
+    "operation": "rewrite",
+    "exception": null,
+    "parents": [
+      "P022"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N014",
+        "coverage": 1
+      },
+      {
+        "key": "N001",
+        "coverage": 0.5
+      }
+    ],
+    "research": [
+      {
+        "key": "R005",
+        "coverage": 1
+      },
+      {
+        "key": "R010",
+        "coverage": 0.5
+      }
+    ]
+  },
+  {
+    "id": "V016",
+    "category": "T",
+    "scores": [
+      4,
+      3,
+      3,
+      3,
+      4
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N001",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R010",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V017",
+    "category": "T",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      3
+    ],
+    "operation": "rewrite",
+    "exception": null,
+    "parents": [
+      "P021"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N017",
+        "coverage": 1
+      },
+      {
+        "key": "N005",
+        "coverage": 0.5
+      },
+      {
+        "key": "N039",
+        "coverage": 0.5
+      }
+    ],
+    "research": [
+      {
+        "key": "R006",
+        "coverage": 1
+      },
+      {
+        "key": "R014",
+        "coverage": 0.5
+      },
+      {
+        "key": "R013",
+        "coverage": 0.5
+      }
+    ]
+  },
+  {
+    "id": "V018",
+    "category": "T",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      3
+    ],
+    "operation": "rewrite",
+    "exception": null,
+    "parents": [
+      "P025"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N018",
+        "coverage": 1
+      },
+      {
+        "key": "N040",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R007",
+        "coverage": 1
+      },
+      {
+        "key": "R011",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V019",
+    "category": "T",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "rewrite",
+    "exception": null,
+    "parents": [
+      "P023"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N041",
+        "coverage": 1
+      },
+      {
+        "key": "N002",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R004",
+        "coverage": 1
+      },
+      {
+        "key": "R008",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V020",
+    "category": "T",
+    "scores": [
+      4,
+      2,
+      3,
+      4,
+      3
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N039",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R013",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V021",
+    "category": "T",
+    "scores": [
+      4,
+      3,
+      3,
+      4,
+      4
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N005",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R014",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V022",
+    "category": "T",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "rewrite",
+    "exception": null,
+    "parents": [
+      "P024"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N010",
+        "coverage": 1
+      },
+      {
+        "key": "N015",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R001",
+        "coverage": 1
+      },
+      {
+        "key": "R019",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V072",
+    "category": "V",
+    "scores": [
+      4,
+      3,
+      3,
+      4,
+      4
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P026"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N045",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R047",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V073",
+    "category": "V",
+    "scores": [
+      4,
+      3,
+      3,
+      4,
+      4
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P027"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N052",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R059",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V074",
+    "category": "V",
+    "scores": [
+      4,
+      3,
+      2,
+      4,
+      4
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P028"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N061",
+        "coverage": 1.0
+      },
+      {
+        "key": "N058",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R050",
+        "coverage": 1.0
+      },
+      {
+        "key": "R060",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V075",
+    "category": "V",
+    "scores": [
+      4,
+      3,
+      3,
+      4,
+      4
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P029"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N056",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R045",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V076",
+    "category": "V",
+    "scores": [
+      4,
+      3,
+      3,
+      4,
+      4
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P030"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N054",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R057",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V023",
+    "category": "V",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "rewrite",
+    "exception": null,
+    "parents": [
+      "P026"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N045",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R047",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V024",
+    "category": "V",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "rewrite",
+    "exception": null,
+    "parents": [
+      "P028"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N061",
+        "coverage": 1.0
+      },
+      {
+        "key": "N058",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R050",
+        "coverage": 1.0
+      },
+      {
+        "key": "R060",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V025",
+    "category": "V",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "rewrite",
+    "exception": null,
+    "parents": [
+      "P029"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N056",
+        "coverage": 1.0
+      },
+      {
+        "key": "N050",
+        "coverage": 0.5
+      }
+    ],
+    "research": [
+      {
+        "key": "R045",
+        "coverage": 1.0
+      },
+      {
+        "key": "R053",
+        "coverage": 0.5
+      }
+    ]
+  },
+  {
+    "id": "V026",
+    "category": "V",
+    "scores": [
+      4,
+      3,
+      3,
+      4,
+      3
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N050",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R053",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V027",
+    "category": "V",
+    "scores": [
+      4,
+      3,
+      3,
+      4,
+      4
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [
+      "P027",
+      "P030"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N052",
+        "coverage": 1.0
+      },
+      {
+        "key": "N054",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R059",
+        "coverage": 1.0
+      },
+      {
+        "key": "R057",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V047",
+    "category": "D",
+    "scores": [
+      4,
+      3,
+      3,
+      4,
+      4
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P001"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N059",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R064",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V048",
+    "category": "D",
+    "scores": [
+      4,
+      3,
+      3,
+      4,
+      4
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P002"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N063",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R063",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V049",
+    "category": "D",
+    "scores": [
+      4,
+      3,
+      2,
+      4,
+      4
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P003"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N044",
+        "coverage": 1.0
+      },
+      {
+        "key": "N047",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R046",
+        "coverage": 1.0
+      },
+      {
+        "key": "R051",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V050",
+    "category": "D",
+    "scores": [
+      4,
+      3,
+      3,
+      4,
+      4
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P004"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N048",
+        "coverage": 1.0
+      },
+      {
+        "key": "N055",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R052",
+        "coverage": 1.0
+      },
+      {
+        "key": "R058",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V001",
+    "category": "D",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "rewrite",
+    "exception": null,
+    "parents": [
+      "P002"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N063",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R063",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V002",
+    "category": "D",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "rewrite",
+    "exception": null,
+    "parents": [
+      "P003"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N044",
+        "coverage": 1.0
+      },
+      {
+        "key": "N047",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R046",
+        "coverage": 1.0
+      },
+      {
+        "key": "R051",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V003",
+    "category": "D",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "rewrite",
+    "exception": null,
+    "parents": [
+      "P004"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N048",
+        "coverage": 1.0
+      },
+      {
+        "key": "N055",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R052",
+        "coverage": 1.0
+      },
+      {
+        "key": "R058",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V004",
+    "category": "D",
+    "scores": [
+      4,
+      3,
+      4,
+      3,
+      3
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [
+      "V003",
+      "V050"
+    ],
+    "needs": [
+      {
+        "key": "N048",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R052",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V005",
+    "category": "D",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [
+      "V003",
+      "V050"
+    ],
+    "needs": [
+      {
+        "key": "N055",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R058",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V006",
+    "category": "D",
+    "scores": [
+      3,
+      2,
+      3,
+      3,
+      3
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N051",
+        "coverage": 1.0
+      }
+    ],
+    "research": [
+      {
+        "key": "R054",
+        "coverage": 1.0
+      }
+    ]
+  },
+  {
+    "id": "V059",
+    "category": "L",
+    "scores": [
+      4,
+      3,
+      3,
+      4,
+      3
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P013"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N004",
+        "coverage": 1
+      },
+      {
+        "key": "N012",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R009",
+        "coverage": 1
+      },
+      {
+        "key": "R016",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V060",
+    "category": "L",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      3
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P014"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N037",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R015",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V061",
+    "category": "L",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      3
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P015"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N003",
+        "coverage": 1
+      },
+      {
+        "key": "N013",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R021",
+        "coverage": 1
+      },
+      {
+        "key": "R002",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V062",
+    "category": "L",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      3
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P016"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N006",
+        "coverage": 1
+      },
+      {
+        "key": "N011",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R003",
+        "coverage": 1
+      },
+      {
+        "key": "R012",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V011",
+    "category": "L",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [
+      "V059"
+    ],
+    "needs": [
+      {
+        "key": "N004",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R009",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V012",
+    "category": "L",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      3
+    ],
+    "operation": "rewrite",
+    "exception": null,
+    "parents": [
+      "P015"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N003",
+        "coverage": 1
+      },
+      {
+        "key": "N013",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R021",
+        "coverage": 1
+      },
+      {
+        "key": "R002",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V013",
+    "category": "L",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "rewrite",
+    "exception": null,
+    "parents": [
+      "P014"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N037",
+        "coverage": 1
+      },
+      {
+        "key": "N038",
+        "coverage": 0.5
+      }
+    ],
+    "research": [
+      {
+        "key": "R015",
+        "coverage": 1
+      },
+      {
+        "key": "R020",
+        "coverage": 0.5
+      }
+    ]
+  },
+  {
+    "id": "V014",
+    "category": "L",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      3
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [
+      "V059"
+    ],
+    "needs": [
+      {
+        "key": "N012",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R016",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V055",
+    "category": "I",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P009"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N033",
+        "coverage": 1
+      },
+      {
+        "key": "N034",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R026",
+        "coverage": 1
+      },
+      {
+        "key": "R022",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V056",
+    "category": "I",
+    "scores": [
+      4,
+      3,
+      2,
+      4,
+      4
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P010"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N009",
+        "coverage": 1
+      },
+      {
+        "key": "N008",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R025",
+        "coverage": 1
+      },
+      {
+        "key": "R024",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V057",
+    "category": "I",
+    "scores": [
+      4,
+      3,
+      3,
+      4,
+      4
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P011"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N007",
+        "coverage": 1
+      },
+      {
+        "key": "N027",
+        "coverage": 1
+      },
+      {
+        "key": "N035",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R023",
+        "coverage": 1
+      },
+      {
+        "key": "R029",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V058",
+    "category": "I",
+    "scores": [
+      4,
+      3,
+      2,
+      3,
+      4
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P012"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N036",
+        "coverage": 1
+      },
+      {
+        "key": "N019",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R028",
+        "coverage": 1
+      },
+      {
+        "key": "R027",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V037",
+    "category": "I",
+    "scores": [
+      4,
+      3,
+      4,
+      3,
+      3
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [
+      "V056"
+    ],
+    "needs": [
+      {
+        "key": "N008",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R024",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V038",
+    "category": "I",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [
+      "V056"
+    ],
+    "needs": [
+      {
+        "key": "N009",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R025",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V039",
+    "category": "I",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [
+      "V057"
+    ],
+    "needs": [
+      {
+        "key": "N007",
+        "coverage": 1
+      },
+      {
+        "key": "N027",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R023",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V040",
+    "category": "I",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [
+      "V057"
+    ],
+    "needs": [
+      {
+        "key": "N035",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R029",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V041",
+    "category": "I",
+    "scores": [
+      4,
+      3,
+      4,
+      3,
+      4
+    ],
+    "operation": "rewrite",
+    "exception": null,
+    "parents": [
+      "P012"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N036",
+        "coverage": 1
+      },
+      {
+        "key": "N019",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R028",
+        "coverage": 1
+      },
+      {
+        "key": "R027",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V063",
+    "category": "P",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P017"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N029",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R039",
+        "coverage": 1
+      },
+      {
+        "key": "R043",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V064",
+    "category": "P",
+    "scores": [
+      4,
+      3,
+      3,
+      4,
+      4
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P018"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N030",
+        "coverage": 1
+      },
+      {
+        "key": "N042",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R042",
+        "coverage": 1
+      },
+      {
+        "key": "R041",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V065",
+    "category": "P",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P019"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N020",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R040",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V066",
+    "category": "P",
+    "scores": [
+      4,
+      3,
+      3,
+      4,
+      4
+    ],
+    "operation": "original",
+    "exception": null,
+    "parents": [
+      "P020"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N016",
+        "coverage": 1
+      },
+      {
+        "key": "N031",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R037",
+        "coverage": 1
+      },
+      {
+        "key": "R036",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V042",
+    "category": "P",
+    "scores": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N028",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R038",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V043",
+    "category": "P",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "rewrite",
+    "exception": null,
+    "parents": [
+      "P018"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N030",
+        "coverage": 1
+      },
+      {
+        "key": "N042",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R042",
+        "coverage": 1
+      },
+      {
+        "key": "R041",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V044",
+    "category": "P",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [
+      "V066",
+      "V046"
+    ],
+    "needs": [
+      {
+        "key": "N031",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R036",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V045",
+    "category": "P",
+    "scores": [
+      4,
+      3,
+      4,
+      3,
+      4
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [
+      "V066",
+      "V046"
+    ],
+    "needs": [
+      {
+        "key": "N016",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R037",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V046",
+    "category": "P",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "rewrite",
+    "exception": null,
+    "parents": [
+      "P020"
+    ],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N016",
+        "coverage": 1
+      },
+      {
+        "key": "N031",
+        "coverage": 1
+      }
+    ],
+    "research": [
+      {
+        "key": "R037",
+        "coverage": 1
+      },
+      {
+        "key": "R036",
+        "coverage": 1
+      }
+    ]
+  },
+  {
+    "id": "V031",
+    "category": "V",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [],
+    "needs": [],
+    "research": []
+  },
+  {
+    "id": "V030",
+    "category": "T",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      3
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [],
+    "needs": [],
+    "research": []
+  },
+  {
+    "id": "V032",
+    "category": "V",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N045",
+        "coverage": 0.5
+      }
+    ],
+    "research": [
+      {
+        "key": "R047",
+        "coverage": 0.5
+      }
+    ]
+  },
+  {
+    "id": "V028",
+    "category": "D",
+    "scores": [
+      4,
+      3,
+      4,
+      3,
+      4
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [],
+    "needs": [
+      {
+        "key": "N048",
+        "coverage": 0.5
+      }
+    ],
+    "research": [
+      {
+        "key": "R052",
+        "coverage": 0.5
+      }
+    ]
+  },
+  {
+    "id": "V029",
+    "category": "I",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      3
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [],
+    "needs": [],
+    "research": []
+  },
+  {
+    "id": "V033",
+    "category": "V",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      4
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [],
+    "needs": [],
+    "research": []
+  },
+  {
+    "id": "V036",
+    "category": "T",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      3
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [
+      "V019",
+      "V069"
+    ],
+    "needs": [
+      {
+        "key": "N041",
+        "coverage": 0.5
+      }
+    ],
+    "research": [
+      {
+        "key": "R004",
+        "coverage": 0.5
+      }
+    ]
+  },
+  {
+    "id": "V035",
+    "category": "T",
+    "scores": [
+      4,
+      3,
+      4,
+      4,
+      3
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [
+      "V019",
+      "V069"
+    ],
+    "needs": [
+      {
+        "key": "N041",
+        "coverage": 0.5
+      },
+      {
+        "key": "N002",
+        "coverage": 0.5
+      }
+    ],
+    "research": [
+      {
+        "key": "R004",
+        "coverage": 0.5
+      },
+      {
+        "key": "R008",
+        "coverage": 0.5
+      }
+    ]
+  },
+  {
+    "id": "V034",
+    "category": "P",
+    "scores": [
+      4,
+      2,
+      4,
+      3,
+      3
+    ],
+    "operation": "split",
+    "exception": null,
+    "parents": [],
+    "conflicts": [],
+    "needs": [],
+    "research": []
+  }
+]

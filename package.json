@@ -1,0 +1,37 @@
+{
+  "name": "open-problems-ai-eval",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "pipeline": "python pipeline/run_pipeline.py",
+    "pipeline:test": "python -m unittest discover -s pipeline -p \"test_*.py\" -v",
+    "dev:public": "npm --workspace=@opae/public run dev",
+    "dev:internal": "npm --workspace=@opae/internal run dev",
+    "build:public": "npm --workspace=@opae/public run build",
+    "build:internal": "npm --workspace=@opae/internal run build",
+    "build:pages": "npm run build:public && node scripts/postbuild.mjs",
+    "build:all": "npm run pipeline && npm run build:public && npm run build:internal && node scripts/postbuild.mjs",
+    "test:unit": "vitest run",
+    "verify:public": "npm run pipeline:test && npm run test:unit && node scripts/verify_dist.mjs --public-only",
+    "verify": "npm run pipeline:test && npm run test:unit && node scripts/verify_dist.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3",
+    "vite-plugin-singlefile": "^2.0.3",
+    "vitest": "^2.1.8"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}

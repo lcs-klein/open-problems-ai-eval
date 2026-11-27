@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "description": "Locked academic terminology from the human-authored manuscript. Machine-proposed rewrites must preserve these terms unless explicitly approved by a human moderator.",
+  "rules": [
+    {
+      "id": "TERM-001",
+      "locked_term": "capabilities",
+      "disallowed_substitutes": ["abilities", "ability"],
+      "severity": "error",
+      "paper_context": "Section F.2 (Capabilities vs. Propensities)",
+      "rationale": "'Capabilities' is an established technical term in AI evaluation distinguishing what a system can do from what it tends to do; replacing it with 'abilities' dilutes precision and overrides human author terminology."
+    },
+    {
+      "id": "TERM-002",
+      "locked_term": "propensities",
+      "disallowed_substitutes": ["tendencies", "tendency"],
+      "severity": "error",
+      "paper_context": "Section F.2 (Capabilities vs. Propensities)",
+      "rationale": "'Propensities' is the intentional technical term in the manuscript for behavioral dispositions under deployment; replacing it with 'tendencies' introduces machine-chosen terminology drift."
+    },
+    {
+      "id": "TERM-003",
+      "locked_term": "open problems",
+      "disallowed_substitutes": ["general questions"],
+      "severity": "warning",
+      "paper_context": "Taxonomy Tier 2 (Categories -> Open Problems -> Specific Challenges)",
+      "rationale": "Maintain strict 3-layer naming: Tier 1 = Categories (7), Tier 2 = Open Problems (30-50, synced with paper), Tier 3 = Specific Challenges / Questions (100s)."
+    },
+    {
+      "id": "TERM-004",
+      "locked_term": "construct validity",
+      "disallowed_substitutes": ["test accuracy", "score accuracy"],
+      "severity": "warning",
+      "paper_context": "Validity category",
+      "rationale": "Construct validity captures whether an evaluation actually measures the intended property, distinct from mere statistical accuracy."
+    },
+    {
+      "id": "TERM-005",
+      "locked_term": "sociotechnical",
+      "disallowed_substitutes": ["social and technical"],
+      "severity": "warning",
+      "paper_context": "Foundations & Deployment categories",
+      "rationale": "'Sociotechnical' denotes coupled human-AI-institutional systems rather than separable social and technical parts."
+    }
+  ]
+}

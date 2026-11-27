@@ -1,0 +1,32 @@
+[
+  {
+    "size": 35,
+    "shared": 27,
+    "new_in_bridge": 0,
+    "new_in_expanded": 7,
+    "bridge_set_on_bridge": 92.6109175377468,
+    "expanded_set_on_bridge": 90.72241579558653,
+    "bridge_set_on_expanded": 87.57157991650797,
+    "expanded_set_on_expanded": 90.30405226450075
+  },
+  {
+    "size": 36,
+    "shared": 27,
+    "new_in_bridge": 0,
+    "new_in_expanded": 7,
+    "bridge_set_on_bridge": 92.79742547425474,
+    "expanded_set_on_bridge": 91.13579171506001,
+    "bridge_set_on_expanded": 87.7580878530159,
+    "expanded_set_on_expanded": 90.66801791197041
+  },
+  {
+    "size": 48,
+    "shared": 45,
+    "new_in_bridge": 7,
+    "new_in_expanded": 9,
+    "bridge_set_on_bridge": 93.25246806039489,
+    "expanded_set_on_bridge": 92.63421893147503,
+    "bridge_set_on_expanded": 92.45117492127955,
+    "expanded_set_on_expanded": 92.76386988317
+  }
+]

@@ -1,0 +1,23 @@
+# Dependencies & build outputs
+node_modules/
+dist/
+.vite/
+
+# Strictly excluded private / unredacted internal materials (DO NOT PUSH TO PUBLIC REPO)
+legacy/
+data/internal/
+gpt_chat.md
+prompt.txt
+requirements_analysis.md
+
+# Duplicate root archives (canonical copies live in reproduce/)
+/generation_method_replay.zip
+/generation_upstream_replay.zip
+
+# Python & OS artifacts
+**/__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+.env
+.env.*

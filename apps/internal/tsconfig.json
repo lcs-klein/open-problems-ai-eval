@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "paths": {
+      "@opae/core": ["../../packages/core/src/index.ts"],
+      "@opae/ui": ["../../packages/ui/src/index.ts"],
+      "@data/*": ["../../data/internal/*"]
+    }
+  },
+  "include": ["src", "../../packages/core/src", "../../packages/ui/src"]
+}

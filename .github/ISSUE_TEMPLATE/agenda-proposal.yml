@@ -1,0 +1,24 @@
+name: Participatory Agenda Proposal
+description: Submit a compliant Open Problem or Specific Challenge proposal for human moderator review.
+title: "[Proposal] "
+labels: ["agenda-proposal", "needs-moderator-review"]
+body:
+  - type: textarea
+    id: proposal_json
+    attributes:
+      label: Packaged Proposal JSON
+      description: Paste the compliant Proposal JSON exported from the Participate & Review tab.
+      render: json
+    validations:
+      required: true
+  - type: checkboxes
+    id: governance_checks
+    attributes:
+      label: Governance & Traceability Checklist
+      options:
+        - label: I provided a clear normative justification ("Why this change is needed").
+          required: true
+        - label: I preserved human-authored manuscript terminology or explicitly justified any terminology change.
+          required: true
+        - label: I disclosed any AI assistance and human verification steps.
+          required: true

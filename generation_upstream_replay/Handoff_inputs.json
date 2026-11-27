@@ -1,0 +1,4114 @@
+{
+  "core": [
+    {
+      "id": "FX0128",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 14,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0421",
+      "primary": "GX14",
+      "status": "direct",
+      "table2": false,
+      "total": 14,
+      "sources": [
+        "SX0021"
+      ]
+    },
+    {
+      "id": "FX0425",
+      "primary": "GX14",
+      "status": "direct",
+      "table2": false,
+      "total": 14,
+      "sources": [
+        "SX0021"
+      ]
+    },
+    {
+      "id": "FX0001",
+      "primary": "GX10",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0002"
+      ]
+    },
+    {
+      "id": "FX0002",
+      "primary": "GX02",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0007",
+      "primary": "GX28",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0011",
+      "primary": "GX03",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0015",
+      "primary": "GX05",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0016",
+      "primary": "GX08",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0017",
+      "primary": "GX08",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0022",
+      "primary": "GX05",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0023",
+      "primary": "GX11",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0025",
+      "primary": "GX07",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0027",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0033",
+      "primary": "GX09",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0003"
+      ]
+    },
+    {
+      "id": "FX0035",
+      "primary": "GX09",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0008"
+      ]
+    },
+    {
+      "id": "FX0043",
+      "primary": "GX10",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0013"
+      ]
+    },
+    {
+      "id": "FX0044",
+      "primary": "GX10",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0013"
+      ]
+    },
+    {
+      "id": "FX0045",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0046",
+      "primary": "GX10",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0047",
+      "primary": "GX10",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0013"
+      ]
+    },
+    {
+      "id": "FX0050",
+      "primary": "GX12",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0015"
+      ]
+    },
+    {
+      "id": "FX0051",
+      "primary": "GX12",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0002"
+      ]
+    },
+    {
+      "id": "FX0052",
+      "primary": "GX13",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0053",
+      "primary": "GX13",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0012",
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0054",
+      "primary": "GX14",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0002"
+      ]
+    },
+    {
+      "id": "FX0056",
+      "primary": "GX11",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0002",
+        "SX0013"
+      ]
+    },
+    {
+      "id": "FX0057",
+      "primary": "GX11",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0002",
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0058",
+      "primary": "GX10",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0005"
+      ]
+    },
+    {
+      "id": "FX0059",
+      "primary": "GX15",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0060",
+      "primary": "GX18",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0061",
+      "primary": "GX15",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0062",
+      "primary": "GX16",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0002"
+      ]
+    },
+    {
+      "id": "FX0064",
+      "primary": "GX16",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0007"
+      ]
+    },
+    {
+      "id": "FX0065",
+      "primary": "GX16",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0002"
+      ]
+    },
+    {
+      "id": "FX0068",
+      "primary": "GX18",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0069",
+      "primary": "GX18",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0071",
+      "primary": "GX17",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0072",
+      "primary": "GX17",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0073",
+      "primary": "GX19",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0074",
+      "primary": "GX19",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0075",
+      "primary": "GX19",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0077",
+      "primary": "GX19",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0005"
+      ]
+    },
+    {
+      "id": "FX0079",
+      "primary": "GX20",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0080",
+      "primary": "GX21",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0082",
+      "primary": "GX21",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0083",
+      "primary": "GX21",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0084",
+      "primary": "GX22",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0086",
+      "primary": "GX22",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0087",
+      "primary": "GX21",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0088",
+      "primary": "GX21",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0089",
+      "primary": "GX21",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0090",
+      "primary": "GX23",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0013",
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0091",
+      "primary": "GX23",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0018"
+      ]
+    },
+    {
+      "id": "FX0092",
+      "primary": "GX23",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0095",
+      "primary": "GX24",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0096",
+      "primary": "GX24",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0099",
+      "primary": "GX24",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001",
+        "SX0003"
+      ]
+    },
+    {
+      "id": "FX0107",
+      "primary": "GX29",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0108",
+      "primary": "GX27",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0109",
+      "primary": "GX27",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001",
+        "SX0013"
+      ]
+    },
+    {
+      "id": "FX0110",
+      "primary": "GX29",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0005"
+      ]
+    },
+    {
+      "id": "FX0111",
+      "primary": "GX29",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0006"
+      ]
+    },
+    {
+      "id": "FX0112",
+      "primary": "GX30",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0114",
+      "primary": "GX28",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001",
+        "SX0018"
+      ]
+    },
+    {
+      "id": "FX0115",
+      "primary": "GX28",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0117",
+      "primary": "GX28",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0002"
+      ]
+    },
+    {
+      "id": "FX0118",
+      "primary": "GX28",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0008"
+      ]
+    },
+    {
+      "id": "FX0119",
+      "primary": "GX28",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0019"
+      ]
+    },
+    {
+      "id": "FX0125",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0126",
+      "primary": "GX26",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0131",
+      "primary": "GX03",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0134",
+      "primary": "GX12",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0136",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0137",
+      "primary": "GX09",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0140",
+      "primary": "GX17",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0144",
+      "primary": "GX11",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0145",
+      "primary": "GX12",
+      "status": "ambiguous",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0147",
+      "primary": "GX25",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0155",
+      "primary": "GX05",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0002"
+      ]
+    },
+    {
+      "id": "FX0163",
+      "primary": "GX14",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0003"
+      ]
+    },
+    {
+      "id": "FX0164",
+      "primary": "GX12",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0004"
+      ]
+    },
+    {
+      "id": "FX0170",
+      "primary": "GX15",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0006"
+      ]
+    },
+    {
+      "id": "FX0176",
+      "primary": "GX10",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0009"
+      ]
+    },
+    {
+      "id": "FX0177",
+      "primary": "GX11",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0009"
+      ]
+    },
+    {
+      "id": "FX0178",
+      "primary": "GX12",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0009"
+      ]
+    },
+    {
+      "id": "FX0179",
+      "primary": "GX28",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0180",
+      "primary": "GX25",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0184",
+      "primary": "GX15",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0192",
+      "primary": "GX10",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0195",
+      "primary": "GX14",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0197",
+      "primary": "GX14",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0204",
+      "primary": "GX10",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0215",
+      "primary": "GX16",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0216",
+      "primary": "GX13",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0220",
+      "primary": "GX14",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0227",
+      "primary": "GX17",
+      "status": "rewrite",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0232",
+      "primary": "GX16",
+      "status": "ambiguous",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0233",
+      "primary": "GX18",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0236",
+      "primary": "GX14",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0263",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0275",
+      "primary": "GX02",
+      "status": "rewrite",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0276",
+      "primary": "GX02",
+      "status": "rewrite",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0279",
+      "primary": "GX12",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0282",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0290",
+      "primary": "GX02",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0292",
+      "primary": "GX28",
+      "status": "rewrite",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0297",
+      "primary": "GX05",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0299",
+      "primary": "GX17",
+      "status": "rewrite",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0337",
+      "primary": "GX25",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0344",
+      "primary": "GX07",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0002"
+      ]
+    },
+    {
+      "id": "FX0346",
+      "primary": "GX13",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0004"
+      ]
+    },
+    {
+      "id": "FX0347",
+      "primary": "GX07",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0004"
+      ]
+    },
+    {
+      "id": "FX0349",
+      "primary": "GX13",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0004"
+      ]
+    },
+    {
+      "id": "FX0351",
+      "primary": "GX23",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0005"
+      ]
+    },
+    {
+      "id": "FX0355",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0008"
+      ]
+    },
+    {
+      "id": "FX0356",
+      "primary": "GX11",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0008"
+      ]
+    },
+    {
+      "id": "FX0358",
+      "primary": "GX20",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0008"
+      ]
+    },
+    {
+      "id": "FX0359",
+      "primary": "GX14",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0008"
+      ]
+    },
+    {
+      "id": "FX0360",
+      "primary": "GX24",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0008"
+      ]
+    },
+    {
+      "id": "FX0361",
+      "primary": "GX24",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0009"
+      ]
+    },
+    {
+      "id": "FX0362",
+      "primary": "GX15",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0010"
+      ]
+    },
+    {
+      "id": "FX0363",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0010"
+      ]
+    },
+    {
+      "id": "FX0364",
+      "primary": "GX11",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0010"
+      ]
+    },
+    {
+      "id": "FX0365",
+      "primary": "GX12",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0010"
+      ]
+    },
+    {
+      "id": "FX0366",
+      "primary": "GX14",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0368",
+      "primary": "GX12",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0369",
+      "primary": "GX26",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0370",
+      "primary": "GX24",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0371",
+      "primary": "GX26",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0372",
+      "primary": "GX11",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0373",
+      "primary": "GX18",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0375",
+      "primary": "GX10",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0376",
+      "primary": "GX17",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0377",
+      "primary": "GX22",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0378",
+      "primary": "GX12",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0381",
+      "primary": "GX18",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0382",
+      "primary": "GX18",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0384",
+      "primary": "GX08",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0392",
+      "primary": "GX28",
+      "status": "rewrite",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0399",
+      "primary": "GX18",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0018"
+      ]
+    },
+    {
+      "id": "FX0404",
+      "primary": "GX07",
+      "status": "direct",
+      "table2": true,
+      "total": 13,
+      "sources": [
+        "SX0018"
+      ]
+    },
+    {
+      "id": "FX0410",
+      "primary": "GX08",
+      "status": "direct",
+      "table2": false,
+      "total": 13,
+      "sources": [
+        "SX0020"
+      ]
+    },
+    {
+      "id": "FX0413",
+      "primary": "GX10",
+      "status": "direct",
+      "table2": false,
+      "total": 13,
+      "sources": [
+        "SX0021"
+      ]
+    },
+    {
+      "id": "FX0414",
+      "primary": "GX17",
+      "status": "direct",
+      "table2": false,
+      "total": 13,
+      "sources": [
+        "SX0021"
+      ]
+    },
+    {
+      "id": "FX0415",
+      "primary": "GX16",
+      "status": "direct",
+      "table2": false,
+      "total": 13,
+      "sources": [
+        "SX0021"
+      ]
+    },
+    {
+      "id": "FX0416",
+      "primary": "GX16",
+      "status": "direct",
+      "table2": false,
+      "total": 13,
+      "sources": [
+        "SX0021"
+      ]
+    },
+    {
+      "id": "FX0417",
+      "primary": "GX28",
+      "status": "direct",
+      "table2": false,
+      "total": 13,
+      "sources": [
+        "SX0021"
+      ]
+    },
+    {
+      "id": "FX0418",
+      "primary": "GX05",
+      "status": "direct",
+      "table2": false,
+      "total": 13,
+      "sources": [
+        "SX0021"
+      ]
+    },
+    {
+      "id": "FX0420",
+      "primary": "GX15",
+      "status": "direct",
+      "table2": false,
+      "total": 13,
+      "sources": [
+        "SX0021"
+      ]
+    },
+    {
+      "id": "FX0423",
+      "primary": "GX08",
+      "status": "direct",
+      "table2": false,
+      "total": 13,
+      "sources": [
+        "SX0021"
+      ]
+    },
+    {
+      "id": "FX0424",
+      "primary": "GX14",
+      "status": "direct",
+      "table2": false,
+      "total": 13,
+      "sources": [
+        "SX0021"
+      ]
+    },
+    {
+      "id": "FX0426",
+      "primary": "GX29",
+      "status": "direct",
+      "table2": false,
+      "total": 13,
+      "sources": [
+        "SX0021"
+      ]
+    },
+    {
+      "id": "FX0427",
+      "primary": "GX08",
+      "status": "direct",
+      "table2": false,
+      "total": 13,
+      "sources": [
+        "SX0021"
+      ]
+    },
+    {
+      "id": "FX0428",
+      "primary": "GX14",
+      "status": "direct",
+      "table2": false,
+      "total": 13,
+      "sources": [
+        "SX0021"
+      ]
+    },
+    {
+      "id": "FX0429",
+      "primary": "GX14",
+      "status": "direct",
+      "table2": false,
+      "total": 13,
+      "sources": [
+        "SX0021"
+      ]
+    },
+    {
+      "id": "FX0430",
+      "primary": "GX12",
+      "status": "direct",
+      "table2": false,
+      "total": 13,
+      "sources": [
+        "SX0021"
+      ]
+    },
+    {
+      "id": "FX0432",
+      "primary": "GX26",
+      "status": "direct",
+      "table2": false,
+      "total": 13,
+      "sources": [
+        "SX0021"
+      ]
+    },
+    {
+      "id": "FX0434",
+      "primary": "GX23",
+      "status": "direct",
+      "table2": false,
+      "total": 13,
+      "sources": [
+        "SX0021"
+      ]
+    },
+    {
+      "id": "FX0435",
+      "primary": "GX25",
+      "status": "direct",
+      "table2": false,
+      "total": 13,
+      "sources": [
+        "SX0021"
+      ]
+    },
+    {
+      "id": "FX0003",
+      "primary": "GX02",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0005",
+      "primary": "GX02",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0002"
+      ]
+    },
+    {
+      "id": "FX0006",
+      "primary": "GX02",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0010",
+      "primary": "GX03",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0013"
+      ]
+    },
+    {
+      "id": "FX0012",
+      "primary": "GX04",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0014",
+      "primary": "GX02",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0002"
+      ]
+    },
+    {
+      "id": "FX0020",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0021",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0024",
+      "primary": "GX07",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0007"
+      ]
+    },
+    {
+      "id": "FX0026",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0028",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0015"
+      ]
+    },
+    {
+      "id": "FX0029",
+      "primary": "GX07",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0015"
+      ]
+    },
+    {
+      "id": "FX0030",
+      "primary": "GX07",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0015"
+      ]
+    },
+    {
+      "id": "FX0031",
+      "primary": "GX07",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0037",
+      "primary": "GX07",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0009"
+      ]
+    },
+    {
+      "id": "FX0098",
+      "primary": "GX24",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0101",
+      "primary": "GX25",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0001",
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0103",
+      "primary": "GX25",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0008"
+      ]
+    },
+    {
+      "id": "FX0104",
+      "primary": "GX25",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0106",
+      "primary": "GX25",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0009"
+      ]
+    },
+    {
+      "id": "FX0116",
+      "primary": "GX17",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0120",
+      "primary": "GX28",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0150",
+      "primary": "GX15",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0002"
+      ]
+    },
+    {
+      "id": "FX0151",
+      "primary": "GX06",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0002"
+      ]
+    },
+    {
+      "id": "FX0152",
+      "primary": "GX02",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0002"
+      ]
+    },
+    {
+      "id": "FX0157",
+      "primary": "GX10",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0002"
+      ]
+    },
+    {
+      "id": "FX0158",
+      "primary": "GX15",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0002"
+      ]
+    },
+    {
+      "id": "FX0159",
+      "primary": "GX10",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0002"
+      ]
+    },
+    {
+      "id": "FX0165",
+      "primary": "GX15",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0004"
+      ]
+    },
+    {
+      "id": "FX0171",
+      "primary": "GX12",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0007"
+      ]
+    },
+    {
+      "id": "FX0172",
+      "primary": "GX16",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0007"
+      ]
+    },
+    {
+      "id": "FX0186",
+      "primary": "GX01",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0187",
+      "primary": "GX14",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0188",
+      "primary": "GX03",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0189",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0190",
+      "primary": "GX06",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0191",
+      "primary": "GX06",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0193",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0194",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0196",
+      "primary": "GX14",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0198",
+      "primary": "GX15",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0202",
+      "primary": "GX14",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0208",
+      "primary": "GX21",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0209",
+      "primary": "GX02",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0210",
+      "primary": "GX16",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0211",
+      "primary": "GX13",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0218",
+      "primary": "GX06",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0219",
+      "primary": "GX06",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0221",
+      "primary": "GX16",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0222",
+      "primary": "GX06",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0225",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0229",
+      "primary": "GX23",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0230",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0234",
+      "primary": "GX18",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0235",
+      "primary": "GX06",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0242",
+      "primary": "GX07",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0014"
+      ]
+    },
+    {
+      "id": "FX0244",
+      "primary": "GX10",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0015"
+      ]
+    },
+    {
+      "id": "FX0245",
+      "primary": "GX21",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0015"
+      ]
+    },
+    {
+      "id": "FX0246",
+      "primary": "GX18",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0015"
+      ]
+    },
+    {
+      "id": "FX0247",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0015"
+      ]
+    },
+    {
+      "id": "FX0248",
+      "primary": "GX07",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0015"
+      ]
+    },
+    {
+      "id": "FX0251",
+      "primary": "GX07",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0015"
+      ]
+    },
+    {
+      "id": "FX0253",
+      "primary": "GX07",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0015"
+      ]
+    },
+    {
+      "id": "FX0255",
+      "primary": "GX09",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0260",
+      "primary": "GX10",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0266",
+      "primary": "GX16",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0269",
+      "primary": "GX06",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0270",
+      "primary": "GX07",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0271",
+      "primary": "GX12",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0274",
+      "primary": "GX07",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0284",
+      "primary": "GX15",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0285",
+      "primary": "GX05",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0287",
+      "primary": "GX06",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0288",
+      "primary": "GX05",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0291",
+      "primary": "GX28",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0293",
+      "primary": "GX02",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0294",
+      "primary": "GX21",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0295",
+      "primary": "GX05",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0298",
+      "primary": "GX28",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0300",
+      "primary": "GX17",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0301",
+      "primary": "GX17",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0302",
+      "primary": "GX26",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0303",
+      "primary": "GX17",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0304",
+      "primary": "GX17",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0307",
+      "primary": "GX26",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0309",
+      "primary": "GX22",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0310",
+      "primary": "GX01",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0311",
+      "primary": "GX06",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0315",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0321",
+      "primary": "GX22",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0326",
+      "primary": "GX13",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0329",
+      "primary": "GX05",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0330",
+      "primary": "GX23",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0334",
+      "primary": "GX28",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0019"
+      ]
+    },
+    {
+      "id": "FX0336",
+      "primary": "GX05",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0019"
+      ]
+    },
+    {
+      "id": "FX0341",
+      "primary": "GX26",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0002"
+      ]
+    },
+    {
+      "id": "FX0342",
+      "primary": "GX26",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0002"
+      ]
+    },
+    {
+      "id": "FX0350",
+      "primary": "GX14",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0004"
+      ]
+    },
+    {
+      "id": "FX0353",
+      "primary": "GX07",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0007"
+      ]
+    },
+    {
+      "id": "FX0374",
+      "primary": "GX21",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0386",
+      "primary": "GX02",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0013"
+      ]
+    },
+    {
+      "id": "FX0390",
+      "primary": "GX04",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0015"
+      ]
+    },
+    {
+      "id": "FX0391",
+      "primary": "GX02",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0393",
+      "primary": "GX14",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0394",
+      "primary": "GX23",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0396",
+      "primary": "GX17",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0398",
+      "primary": "GX18",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0018"
+      ]
+    },
+    {
+      "id": "FX0401",
+      "primary": "GX12",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0018"
+      ]
+    },
+    {
+      "id": "FX0402",
+      "primary": "GX26",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0018"
+      ]
+    },
+    {
+      "id": "FX0403",
+      "primary": "GX10",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0018"
+      ]
+    },
+    {
+      "id": "FX0405",
+      "primary": "GX17",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0019"
+      ]
+    },
+    {
+      "id": "FX0406",
+      "primary": "GX07",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0019"
+      ]
+    },
+    {
+      "id": "FX0407",
+      "primary": "GX17",
+      "status": "rewrite",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0019"
+      ]
+    },
+    {
+      "id": "FX0408",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0019"
+      ]
+    },
+    {
+      "id": "FX0412",
+      "primary": "GX16",
+      "status": "direct",
+      "table2": false,
+      "total": 12,
+      "sources": [
+        "SX0021"
+      ]
+    },
+    {
+      "id": "FX0422",
+      "primary": "GX05",
+      "status": "direct",
+      "table2": false,
+      "total": 12,
+      "sources": [
+        "SX0021"
+      ]
+    },
+    {
+      "id": "FX0433",
+      "primary": "GX26",
+      "status": "direct",
+      "table2": false,
+      "total": 12,
+      "sources": [
+        "SX0021"
+      ]
+    },
+    {
+      "id": "FX0436",
+      "primary": "GX07",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0018"
+      ]
+    },
+    {
+      "id": "FX0437",
+      "primary": "GX07",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0018"
+      ]
+    },
+    {
+      "id": "FX0438",
+      "primary": "GX21",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0018"
+      ]
+    },
+    {
+      "id": "FX0130",
+      "primary": "GX18",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0258",
+      "primary": "GX05",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0345",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0003"
+      ]
+    },
+    {
+      "id": "FX0409",
+      "primary": "GX28",
+      "status": "direct",
+      "table2": false,
+      "total": 12,
+      "sources": [
+        "SX0020"
+      ]
+    },
+    {
+      "id": "FX0067",
+      "primary": "GX18",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0006"
+      ]
+    },
+    {
+      "id": "FX0383",
+      "primary": "GX18",
+      "status": "direct",
+      "table2": true,
+      "total": 12,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0004",
+      "primary": "GX02",
+      "status": "direct",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0139",
+      "primary": "GX18",
+      "status": "direct",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0160",
+      "primary": "GX14",
+      "status": "direct",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0002"
+      ]
+    },
+    {
+      "id": "FX0205",
+      "primary": "GX05",
+      "status": "direct",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0207",
+      "primary": "GX13",
+      "status": "rewrite",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0224",
+      "primary": "GX14",
+      "status": "direct",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0278",
+      "primary": "GX15",
+      "status": "direct",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0331",
+      "primary": "GX23",
+      "status": "direct",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0199",
+      "primary": "GX14",
+      "status": "direct",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0201",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0212",
+      "primary": "GX06",
+      "status": "rewrite",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0213",
+      "primary": "GX02",
+      "status": "rewrite",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0214",
+      "primary": "GX06",
+      "status": "rewrite",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0217",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0231",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0237",
+      "primary": "GX30",
+      "status": "rewrite",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0243",
+      "primary": "GX13",
+      "status": "direct",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0014"
+      ]
+    },
+    {
+      "id": "FX0265",
+      "primary": "GX16",
+      "status": "direct",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0312",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0333",
+      "primary": "GX02",
+      "status": "rewrite",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0019"
+      ]
+    },
+    {
+      "id": "FX0339",
+      "primary": "GX02",
+      "status": "rewrite",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0002"
+      ]
+    },
+    {
+      "id": "FX0340",
+      "primary": "GX02",
+      "status": "direct",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0002"
+      ]
+    },
+    {
+      "id": "FX0387",
+      "primary": "GX10",
+      "status": "direct",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0014"
+      ]
+    },
+    {
+      "id": "FX0388",
+      "primary": "GX03",
+      "status": "direct",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0014"
+      ]
+    },
+    {
+      "id": "FX0389",
+      "primary": "GX10",
+      "status": "direct",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0015"
+      ]
+    },
+    {
+      "id": "FX0397",
+      "primary": "GX14",
+      "status": "direct",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0348",
+      "primary": "GX28",
+      "status": "ambiguous",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0004"
+      ]
+    },
+    {
+      "id": "FX0379",
+      "primary": "GX25",
+      "status": "direct",
+      "table2": true,
+      "total": 11,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0175",
+      "primary": "GX02",
+      "status": "ambiguous",
+      "table2": true,
+      "total": 10,
+      "sources": [
+        "SX0009"
+      ]
+    },
+    {
+      "id": "FX0181",
+      "primary": "GX01",
+      "status": "ambiguous",
+      "table2": true,
+      "total": 10,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0200",
+      "primary": "GX06",
+      "status": "direct",
+      "table2": true,
+      "total": 10,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0206",
+      "primary": "GX17",
+      "status": "rewrite",
+      "table2": true,
+      "total": 10,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0223",
+      "primary": "GX17",
+      "status": "rewrite",
+      "table2": true,
+      "total": 10,
+      "sources": [
+        "SX0012"
+      ]
+    },
+    {
+      "id": "FX0259",
+      "primary": "GX15",
+      "status": "direct",
+      "table2": true,
+      "total": 10,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0268",
+      "primary": "GX16",
+      "status": "direct",
+      "table2": true,
+      "total": 10,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0277",
+      "primary": "GX05",
+      "status": "direct",
+      "table2": true,
+      "total": 10,
+      "sources": [
+        "SX0016"
+      ]
+    },
+    {
+      "id": "FX0322",
+      "primary": "GX29",
+      "status": "rewrite",
+      "table2": true,
+      "total": 10,
+      "sources": [
+        "SX0017"
+      ]
+    },
+    {
+      "id": "FX0338",
+      "primary": "GX26",
+      "status": "direct",
+      "table2": true,
+      "total": 10,
+      "sources": [
+        "SX0001"
+      ]
+    },
+    {
+      "id": "FX0343",
+      "primary": "GX06",
+      "status": "rewrite",
+      "table2": true,
+      "total": 10,
+      "sources": [
+        "SX0002"
+      ]
+    },
+    {
+      "id": "FX0367",
+      "primary": "GX18",
+      "status": "direct",
+      "table2": true,
+      "total": 10,
+      "sources": [
+        "SX0011"
+      ]
+    },
+    {
+      "id": "FX0380",
+      "primary": "GX26",
+      "status": "direct",
+      "table2": true,
+      "total": 10,
+      "sources": [
+        "SX0011"
+      ]
+    }
+  ],
+  "generalProblems": [
+    {
+      "id": "GX01",
+      "seeds": [
+        "FX0026",
+        "FX0002"
+      ]
+    },
+    {
+      "id": "GX02",
+      "seeds": [
+        "FX0002",
+        "FX0005"
+      ]
+    },
+    {
+      "id": "GX03",
+      "seeds": [
+        "FX0011",
+        "FX0131"
+      ]
+    },
+    {
+      "id": "GX04",
+      "seeds": [
+        "FX0172",
+        "FX0390"
+      ]
+    },
+    {
+      "id": "GX05",
+      "seeds": [
+        "FX0015",
+        "FX0263"
+      ]
+    },
+    {
+      "id": "GX06",
+      "seeds": [
+        "FX0045",
+        "FX0194"
+      ]
+    },
+    {
+      "id": "GX07",
+      "seeds": [
+        "FX0024",
+        "FX0030",
+        "FX0037"
+      ]
+    },
+    {
+      "id": "GX08",
+      "seeds": [
+        "FX0017",
+        "FX0410"
+      ]
+    },
+    {
+      "id": "GX09",
+      "seeds": [
+        "FX0137",
+        "FX0033"
+      ]
+    },
+    {
+      "id": "GX10",
+      "seeds": [
+        "FX0043",
+        "FX0047"
+      ]
+    },
+    {
+      "id": "GX11",
+      "seeds": [
+        "FX0056",
+        "FX0364"
+      ]
+    },
+    {
+      "id": "GX12",
+      "seeds": [
+        "FX0051",
+        "FX0164"
+      ]
+    },
+    {
+      "id": "GX13",
+      "seeds": [
+        "FX0052",
+        "FX0053"
+      ]
+    },
+    {
+      "id": "GX14",
+      "seeds": [
+        "FX0359",
+        "FX0393"
+      ]
+    },
+    {
+      "id": "GX15",
+      "seeds": [
+        "FX0059",
+        "FX0165"
+      ]
+    },
+    {
+      "id": "GX16",
+      "seeds": [
+        "FX0062",
+        "FX0064"
+      ]
+    },
+    {
+      "id": "GX17",
+      "seeds": [
+        "FX0071",
+        "FX0072"
+      ]
+    },
+    {
+      "id": "GX18",
+      "seeds": [
+        "FX0067",
+        "FX0399"
+      ]
+    },
+    {
+      "id": "GX19",
+      "seeds": [
+        "FX0073",
+        "FX0077"
+      ]
+    },
+    {
+      "id": "GX20",
+      "seeds": [
+        "FX0079",
+        "FX0358"
+      ]
+    },
+    {
+      "id": "GX21",
+      "seeds": [
+        "FX0080",
+        "FX0082",
+        "FX0083"
+      ]
+    },
+    {
+      "id": "GX22",
+      "seeds": [
+        "FX0084",
+        "FX0086"
+      ]
+    },
+    {
+      "id": "GX23",
+      "seeds": [
+        "FX0090",
+        "FX0091"
+      ]
+    },
+    {
+      "id": "GX24",
+      "seeds": [
+        "FX0095",
+        "FX0098"
+      ]
+    },
+    {
+      "id": "GX25",
+      "seeds": [
+        "FX0101",
+        "FX0104"
+      ]
+    },
+    {
+      "id": "GX26",
+      "seeds": [
+        "FX0371",
+        "FX0341"
+      ]
+    },
+    {
+      "id": "GX27",
+      "seeds": [
+        "FX0108",
+        "FX0109"
+      ]
+    },
+    {
+      "id": "GX28",
+      "seeds": [
+        "FX0117",
+        "FX0291"
+      ]
+    },
+    {
+      "id": "GX29",
+      "seeds": [
+        "FX0107",
+        "FX0111"
+      ]
+    },
+    {
+      "id": "GX30",
+      "seeds": [
+        "FX0112",
+        "FX0396"
+      ]
+    }
+  ],
+  "familyRelations": [
+    [
+      "FX0085",
+      "FX0084"
+    ],
+    [
+      "FX0039",
+      "FX0023"
+    ],
+    [
+      "FX0113",
+      "FX0071"
+    ],
+    [
+      "FX0093",
+      "FX0066"
+    ],
+    [
+      "FX0173",
+      "FX0064"
+    ],
+    [
+      "FX0174",
+      "FX0106"
+    ],
+    [
+      "FX0180",
+      "FX0105"
+    ],
+    [
+      "FX0182",
+      "FX0068"
+    ],
+    [
+      "FX0183",
+      "FX0069"
+    ],
+    [
+      "FX0185",
+      "FX0036"
+    ],
+    [
+      "FX0352",
+      "FX0024"
+    ],
+    [
+      "FX0354",
+      "FX0017"
+    ],
+    [
+      "FX0357",
+      "FX0033"
+    ],
+    [
+      "FX0360",
+      "FX0102"
+    ],
+    [
+      "FX0411",
+      "FX0062"
+    ],
+    [
+      "FX0419",
+      "FX0057"
+    ],
+    [
+      "FX0168",
+      "FX0058"
+    ],
+    [
+      "FX0132",
+      "FX0059"
+    ],
+    [
+      "FX0135",
+      "FX0061"
+    ],
+    [
+      "FX0136",
+      "FX0431"
+    ],
+    [
+      "FX0153",
+      "FX0062"
+    ],
+    [
+      "FX0154",
+      "FX0001"
+    ],
+    [
+      "FX0148",
+      "FX0005"
+    ],
+    [
+      "FX0131",
+      "FX0013"
+    ],
+    [
+      "FX0149",
+      "FX0014"
+    ],
+    [
+      "FX0141",
+      "FX0094"
+    ],
+    [
+      "FX0142",
+      "FX0095"
+    ],
+    [
+      "FX0143",
+      "FX0096"
+    ],
+    [
+      "FX0123",
+      "FX0073"
+    ],
+    [
+      "FX0124",
+      "FX0083"
+    ],
+    [
+      "FX0167",
+      "FX0110"
+    ],
+    [
+      "FX0169",
+      "FX0111"
+    ],
+    [
+      "FX0146",
+      "FX0108"
+    ],
+    [
+      "FX0129",
+      "FX0114"
+    ],
+    [
+      "FX0203",
+      "FX0020"
+    ],
+    [
+      "FX0228",
+      "FX0021"
+    ],
+    [
+      "FX0133",
+      "FX0022"
+    ],
+    [
+      "FX0138",
+      "FX0025"
+    ],
+    [
+      "FX0162",
+      "FX0033"
+    ],
+    [
+      "FX0155",
+      "FX0038"
+    ],
+    [
+      "FX0137",
+      "FX0041"
+    ],
+    [
+      "FX0122",
+      "FX0045"
+    ],
+    [
+      "FX0127",
+      "FX0046"
+    ],
+    [
+      "FX0121",
+      "FX0048"
+    ],
+    [
+      "FX0166",
+      "FX0049"
+    ],
+    [
+      "FX0161",
+      "FX0054"
+    ],
+    [
+      "FX0156",
+      "FX0051"
+    ],
+    [
+      "FX0238",
+      "FX0008"
+    ],
+    [
+      "FX0239",
+      "FX0043"
+    ],
+    [
+      "FX0240",
+      "FX0010"
+    ],
+    [
+      "FX0241",
+      "FX0044"
+    ],
+    [
+      "FX0249",
+      "FX0028"
+    ],
+    [
+      "FX0250",
+      "FX0029"
+    ],
+    [
+      "FX0252",
+      "FX0030"
+    ],
+    [
+      "FX0254",
+      "FX0050"
+    ],
+    [
+      "FX0313",
+      "FX0052"
+    ],
+    [
+      "FX0314",
+      "FX0055"
+    ],
+    [
+      "FX0316",
+      "FX0063"
+    ],
+    [
+      "FX0317",
+      "FX0081"
+    ],
+    [
+      "FX0318",
+      "FX0071"
+    ],
+    [
+      "FX0319",
+      "FX0058"
+    ],
+    [
+      "FX0320",
+      "FX0075"
+    ],
+    [
+      "FX0323",
+      "FX0084"
+    ],
+    [
+      "FX0324",
+      "FX0079"
+    ],
+    [
+      "FX0325",
+      "FX0086"
+    ],
+    [
+      "FX0327",
+      "FX0085"
+    ],
+    [
+      "FX0328",
+      "FX0082"
+    ],
+    [
+      "FX0332",
+      "FX0072"
+    ],
+    [
+      "FX0400",
+      "FX0114"
+    ],
+    [
+      "FX0335",
+      "FX0119"
+    ],
+    [
+      "FX0256",
+      "FX0027"
+    ],
+    [
+      "FX0257",
+      "FX0002"
+    ],
+    [
+      "FX0261",
+      "FX0003"
+    ],
+    [
+      "FX0262",
+      "FX0004"
+    ],
+    [
+      "FX0264",
+      "FX0045"
+    ],
+    [
+      "FX0267",
+      "FX0011"
+    ],
+    [
+      "FX0272",
+      "FX0344"
+    ],
+    [
+      "FX0273",
+      "FX0031"
+    ],
+    [
+      "FX0280",
+      "FX0074"
+    ],
+    [
+      "FX0281",
+      "FX0015"
+    ],
+    [
+      "FX0283",
+      "FX0023"
+    ],
+    [
+      "FX0286",
+      "FX0023"
+    ],
+    [
+      "FX0289",
+      "FX0118"
+    ],
+    [
+      "FX0296",
+      "FX0294"
+    ],
+    [
+      "FX0305",
+      "FX0080"
+    ],
+    [
+      "FX0306",
+      "FX0088"
+    ],
+    [
+      "FX0308",
+      "FX0087"
+    ]
+  ],
+  "editorialSyntheses": [
+    {
+      "id": "GX01.Q1",
+      "problem": "GX01",
+      "parents": [
+        "FX0026",
+        "FX0045"
+      ]
+    },
+    {
+      "id": "GX01.Q2",
+      "problem": "GX01",
+      "parents": [
+        "FX0253",
+        "FX0028"
+      ]
+    },
+    {
+      "id": "GX30.Q2",
+      "problem": "GX30",
+      "parents": [
+        "FX0112",
+        "FX0095"
+      ]
+    }
+  ],
+  "expected": [
+    [
+      "GX01.Q1",
+      null
+    ],
+    [
+      "GX01.Q2",
+      null
+    ],
+    [
+      "GX02.Q1",
+      "FX0002"
+    ],
+    [
+      "GX02.Q2",
+      "FX0005"
+    ],
+    [
+      "GX03.Q1",
+      "FX0011"
+    ],
+    [
+      "GX03.Q2",
+      "FX0131"
+    ],
+    [
+      "GX04.Q1",
+      "FX0390"
+    ],
+    [
+      "GX04.Q2",
+      "FX0012"
+    ],
+    [
+      "GX05.Q1",
+      "FX0015"
+    ],
+    [
+      "GX05.Q2",
+      "FX0022"
+    ],
+    [
+      "GX06.Q1",
+      "FX0045"
+    ],
+    [
+      "GX06.Q2",
+      "FX0194"
+    ],
+    [
+      "GX07.Q1",
+      "FX0024"
+    ],
+    [
+      "GX07.Q2",
+      "FX0030"
+    ],
+    [
+      "GX08.Q1",
+      "FX0017"
+    ],
+    [
+      "GX08.Q2",
+      "FX0410"
+    ],
+    [
+      "GX09.Q1",
+      "FX0137"
+    ],
+    [
+      "GX09.Q2",
+      "FX0033"
+    ],
+    [
+      "GX10.Q1",
+      "FX0043"
+    ],
+    [
+      "GX10.Q2",
+      "FX0001"
+    ],
+    [
+      "GX11.Q1",
+      "FX0056"
+    ],
+    [
+      "GX11.Q2",
+      "FX0364"
+    ],
+    [
+      "GX12.Q1",
+      "FX0051"
+    ],
+    [
+      "GX12.Q2",
+      "FX0164"
+    ],
+    [
+      "GX13.Q1",
+      "FX0052"
+    ],
+    [
+      "GX13.Q2",
+      "FX0053"
+    ],
+    [
+      "GX14.Q1",
+      "FX0359"
+    ],
+    [
+      "GX14.Q2",
+      "FX0393"
+    ],
+    [
+      "GX15.Q1",
+      "FX0059"
+    ],
+    [
+      "GX15.Q2",
+      "FX0165"
+    ],
+    [
+      "GX16.Q1",
+      "FX0062"
+    ],
+    [
+      "GX16.Q2",
+      "FX0064"
+    ],
+    [
+      "GX17.Q1",
+      "FX0071"
+    ],
+    [
+      "GX17.Q2",
+      "FX0140"
+    ],
+    [
+      "GX18.Q1",
+      "FX0067"
+    ],
+    [
+      "GX18.Q2",
+      "FX0399"
+    ],
+    [
+      "GX19.Q1",
+      "FX0073"
+    ],
+    [
+      "GX19.Q2",
+      "FX0077"
+    ],
+    [
+      "GX20.Q1",
+      "FX0079"
+    ],
+    [
+      "GX20.Q2",
+      "FX0358"
+    ],
+    [
+      "GX21.Q1",
+      "FX0080"
+    ],
+    [
+      "GX21.Q2",
+      "FX0082"
+    ],
+    [
+      "GX22.Q1",
+      "FX0084"
+    ],
+    [
+      "GX22.Q2",
+      "FX0377"
+    ],
+    [
+      "GX23.Q1",
+      "FX0090"
+    ],
+    [
+      "GX23.Q2",
+      "FX0091"
+    ],
+    [
+      "GX24.Q1",
+      "FX0095"
+    ],
+    [
+      "GX24.Q2",
+      "FX0099"
+    ],
+    [
+      "GX25.Q1",
+      "FX0101"
+    ],
+    [
+      "GX25.Q2",
+      "FX0104"
+    ],
+    [
+      "GX26.Q1",
+      "FX0371"
+    ],
+    [
+      "GX26.Q2",
+      "FX0341"
+    ],
+    [
+      "GX27.Q1",
+      "FX0108"
+    ],
+    [
+      "GX27.Q2",
+      "FX0109"
+    ],
+    [
+      "GX28.Q1",
+      "FX0117"
+    ],
+    [
+      "GX28.Q2",
+      "FX0007"
+    ],
+    [
+      "GX29.Q1",
+      "FX0107"
+    ],
+    [
+      "GX29.Q2",
+      "FX0111"
+    ],
+    [
+      "GX30.Q1",
+      "FX0112"
+    ],
+    [
+      "GX30.Q2",
+      null
+    ]
+  ]
+}
