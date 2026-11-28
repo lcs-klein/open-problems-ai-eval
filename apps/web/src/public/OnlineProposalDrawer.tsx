@@ -109,11 +109,16 @@ export const OnlineProposalDrawer: React.FC<{
 
   useEffect(() => {
     if (!open) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
     };
     window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener('keydown', onKeyDown);
+    };
   }, [open, onClose]);
 
   const knownIds = useMemo(() => {
@@ -273,13 +278,13 @@ export const OnlineProposalDrawer: React.FC<{
   ];
 
   return (
-    <>
-      <div className="ed-drawer-backdrop" onClick={onClose} aria-hidden="true" />
-      <aside
-        className="ed-drawer"
+    <div className="ed-modal-backdrop" onClick={onClose}>
+      <section
+        className="ed-modal-card"
         role="dialog"
         aria-modal="true"
         aria-label={t('drawer.onlineTitle', 'Submit Structured Agenda Proposal')}
+        onClick={(e) => e.stopPropagation()}
       >
         <div className="ed-drawer-head">
           <div>
@@ -749,7 +754,7 @@ export const OnlineProposalDrawer: React.FC<{
             </button>
           </div>
         </div>
-      </aside>
-    </>
+      </section>
+    </div>
   );
 };

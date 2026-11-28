@@ -29,8 +29,8 @@ const VALID_TABS: TabId[] = [
   'challenges',
   'sources',
   'methods',
-  'versions',
   'governance',
+  'versions',
 ];
 
 const STORAGE_PROPOSALS = 'opae_public_proposals_v2';
@@ -71,9 +71,7 @@ const OfflineAppShell: React.FC = () => {
   const initialRoute = parseHash();
   const [tab, setTab] = useState<TabId>(initialRoute.tab);
   const [focusedProblemId, setFocusedProblemId] = useState<string>(
-    initialRoute.tab === 'problems' && initialRoute.itemId
-      ? initialRoute.itemId
-      : bundle.open_problems[0]?.id ?? ''
+    initialRoute.tab === 'problems' && initialRoute.itemId ? initialRoute.itemId : ''
   );
   const [problemFilterMode, setProblemFilterMode] = useState<ProblemFilterMode>('all');
   const [challengeProblemFilter, setChallengeProblemFilter] = useState(
@@ -136,8 +134,8 @@ const OfflineAppShell: React.FC = () => {
     const onHashChange = () => {
       const parsed = parseHash();
       setTab(parsed.tab);
-      if (parsed.tab === 'problems' && parsed.itemId) {
-        setFocusedProblemId(parsed.itemId);
+      if (parsed.tab === 'problems') {
+        setFocusedProblemId(parsed.itemId ?? '');
       }
       if (parsed.tab === 'challenges') {
         setChallengeProblemFilter(parsed.problemFilter ?? '');
@@ -208,6 +206,7 @@ const OfflineAppShell: React.FC = () => {
   };
 
   const handleBrandHome = () => {
+    setFocusedProblemId('');
     setProblemFilterMode('all');
     setChallengeProblemFilter('');
     setFocusedSourceId('');
@@ -272,14 +271,14 @@ const OfflineAppShell: React.FC = () => {
       label: t('nav.methods', 'Methodology'),
     },
     {
-      id: 'versions',
-      label: t('nav.versions', 'Versions'),
-      count: versionCount > 0 ? versionCount : undefined,
-    },
-    {
       id: 'governance',
       label: t('nav.governance', 'Governance'),
       count: govRecordCount > 0 ? govRecordCount : undefined,
+    },
+    {
+      id: 'versions',
+      label: t('nav.versions', 'Versions'),
+      count: versionCount > 0 ? versionCount : undefined,
     },
   ];
 
@@ -381,7 +380,7 @@ const OfflineAppShell: React.FC = () => {
               onFilterModeChange={setProblemFilterMode}
               onSelectProblem={(id) => {
                 setFocusedProblemId(id);
-                syncHash(`problems/${encodeURIComponent(id)}`);
+                syncHash(id ? `problems/${encodeURIComponent(id)}` : 'problems');
               }}
               onJumpToChallenge={handleJumpToChallenge}
               onOpenSource={handleOpenSource}

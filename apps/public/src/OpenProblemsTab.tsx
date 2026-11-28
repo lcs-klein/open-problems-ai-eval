@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import type { CategoryCode, OpenProblem, PublicBundle } from '@opae/core';
 import {
   AUTHOR_LABELS,
@@ -7,7 +7,6 @@ import {
   BookOpenIcon,
   CopyButton,
   EditIcon,
-  FileTextIcon,
   GOVERNANCE_LABELS,
   MessageSquareIcon,
   PlusIcon,
@@ -56,8 +55,8 @@ export const OpenProblemsTab: React.FC<{
   const [cat, setCat] = useState<'ALL' | CategoryCode>('ALL');
   const [query, setQuery] = useState('');
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-  const [sheetOpen, setSheetOpen] = useState(false);
   const [showAllMappedChallenges, setShowAllMappedChallenges] = useState(false);
+  const inspectorRef = useRef<HTMLElement | null>(null);
 
   const filterLabels: Record<ProblemFilterMode, string> = {
     all: t('problems.filter.all', 'All Open Problems'),
@@ -70,15 +69,6 @@ export const OpenProblemsTab: React.FC<{
   useEffect(() => {
     setShowAllMappedChallenges(false);
   }, [selectedId]);
-
-  useEffect(() => {
-    if (!sheetOpen) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setSheetOpen(false);
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [sheetOpen]);
 
   const refById = useMemo(() => {
     const map: Record<string, { title: string; url?: string }> = {};
@@ -129,15 +119,55 @@ export const OpenProblemsTab: React.FC<{
     });
   }, [bundle.open_problems, cat, query, filterMode]);
 
-  const selected: OpenProblem | undefined =
-    filtered.find((p) => p.id === selectedId) ?? filtered[0];
+  const selected: OpenProblem | undefined = useMemo(
+    () =>
+      selectedId
+        ? filtered.find((p) => p.id === selectedId) ??
+          bundle.open_problems.find((p) => p.id === selectedId)
+        : undefined,
+    [selectedId, filtered, bundle.open_problems]
+  );
+
+  const [renderedProblem, setRenderedProblem] = useState<OpenProblem | null>(selected ?? null);
+  const [inspectorVisible, setInspectorVisible] = useState<boolean>(Boolean(selected));
+
+  useEffect(() => {
+    if (selected) {
+      setRenderedProblem(selected);
+      if (inspectorRef.current) {
+        inspectorRef.current.scrollTop = 0;
+      }
+      let raf2 = 0;
+      const raf1 = requestAnimationFrame(() => {
+        raf2 = requestAnimationFrame(() => setInspectorVisible(true));
+      });
+      return () => {
+        cancelAnimationFrame(raf1);
+        cancelAnimationFrame(raf2);
+      };
+    }
+    setInspectorVisible(false);
+    const timer = window.setTimeout(() => {
+      setRenderedProblem(null);
+    }, 320);
+    return () => window.clearTimeout(timer);
+  }, [selected]);
+
+  useEffect(() => {
+    if (!selected) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onSelectProblem('');
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [selected, onSelectProblem]);
 
   const mappedChallenges = useMemo(() => {
-    if (!selected) return [];
+    if (!renderedProblem) return [];
     return bundle.specific_challenges.filter((c) =>
-      c.problem_ids.includes(selected.id)
+      c.problem_ids.includes(renderedProblem.id)
     );
-  }, [bundle.specific_challenges, selected]);
+  }, [bundle.specific_challenges, renderedProblem]);
 
   const termAlertCount = bundle.open_problems.filter(
     (p) => p.terminology_alerts.length > 0
@@ -202,9 +232,13 @@ export const OpenProblemsTab: React.FC<{
     ? mappedChallenges
     : mappedChallenges.slice(0, 3);
 
-  const shareUrl = selected
-    ? `${window.location.href.split('#')[0]}#problems/${encodeURIComponent(selected.id)}`
+  const shareUrl = renderedProblem
+    ? `${window.location.href.split('#')[0]}#problems/${encodeURIComponent(renderedProblem.id)}`
     : window.location.href;
+
+  const handleCloseDetail = () => {
+    onSelectProblem('');
+  };
 
   return (
     <div className="ed-forum-grid">
@@ -380,7 +414,6 @@ export const OpenProblemsTab: React.FC<{
                 className={`ed-card ${selected?.id === p.id ? 'is-selected' : ''}`}
                 onClick={() => {
                   onSelectProblem(p.id);
-                  setSheetOpen(true);
                 }}
               >
                 <div className="ed-card-meta">
@@ -441,55 +474,54 @@ export const OpenProblemsTab: React.FC<{
       </section>
 
       {/* Tablet/Mobile Slide-Over Backdrop */}
-      {sheetOpen && (
+      {renderedProblem && (
         <div
-          className="ed-sheet-backdrop ed-tablet-only"
-          onClick={() => setSheetOpen(false)}
+          className={`ed-sheet-backdrop ed-tablet-only is-collapsible ${inspectorVisible ? 'is-open' : ''}`}
+          onClick={handleCloseDetail}
           aria-hidden="true"
         />
       )}
 
-      {/* Right Reading & Audit Sheet */}
-      <aside
-        className={`ed-inspector ${sheetOpen ? 'is-sheet-open' : ''}`}
-        aria-label="Open Problem detail drawer"
-      >
-        <div className="ed-between ed-tablet-only">
-          <span className="ed-section-label">
-            {t('problems.detailsTitle', 'Problem Details')}
-          </span>
-          <button
-            type="button"
-            className="ed-btn is-ghost is-sm"
-            onClick={() => setSheetOpen(false)}
-            aria-label={t('common.close', 'Close details')}
-          >
-            <XIcon size={15} />
-            <span>{t('common.close', 'Close')}</span>
-          </button>
-        </div>
-
-        {selected ? (
-          <>
-            <div className="ed-inline" style={{ flexWrap: 'wrap' }}>
-              <span className="ed-mono ed-code">{selected.id}</span>
+      {/* Right Reading & Audit Sheet (smooth slide-in when a problem is clicked, blank when closed) */}
+      {renderedProblem && (
+        <aside
+          ref={inspectorRef}
+          className={`ed-inspector is-collapsible ${inspectorVisible ? 'is-open' : ''}`}
+          aria-label="Open Problem detail drawer"
+          aria-hidden={!inspectorVisible}
+        >
+          <div className="ed-inspector-topbar">
+            <div className="ed-inline" style={{ flexWrap: 'wrap', minWidth: 0 }}>
+              <span className="ed-mono ed-code">{renderedProblem.id}</span>
               <span className="ed-sep">·</span>
               <span className="ed-muted">
-                {catLabel(selected.category, bundle.categories[selected.category])}
+                {catLabel(renderedProblem.category, bundle.categories[renderedProblem.category])}
               </span>
               <span className="ed-sep">·</span>
               <span className="ed-mono ed-faint">
-                {selected.paper_section_id === 'UNALIGNED_PROPOSAL'
+                {renderedProblem.paper_section_id === 'UNALIGNED_PROPOSAL'
                   ? t('problems.newProposalUnaligned', 'New proposal (unaligned)')
-                  : `§ ${selected.paper_section_id}`}
+                  : `§ ${renderedProblem.paper_section_id}`}
               </span>
             </div>
+            <button
+              type="button"
+              className="ed-btn is-ghost is-sm ed-inspector-close"
+              onClick={handleCloseDetail}
+              aria-label={t('common.close', 'Close')}
+              title={t('common.close', 'Close')}
+            >
+              <XIcon size={15} />
+              <span>{t('common.close', 'Close')}</span>
+            </button>
+          </div>
 
+          <div key={renderedProblem.id} className="ed-inspector-content">
             <div>
               <h2 className="ed-inspector-title" style={{ marginBottom: '8px' }}>
-                {selected.title}
+                {renderedProblem.title}
               </h2>
-              <p className="ed-inspector-body">{selected.description}</p>
+              <p className="ed-inspector-body">{renderedProblem.description}</p>
             </div>
 
             {/* Contextual Actions */}
@@ -497,7 +529,7 @@ export const OpenProblemsTab: React.FC<{
               <button
                 type="button"
                 className="ed-btn is-primary is-sm"
-                onClick={() => handleProposeRevision(selected)}
+                onClick={() => handleProposeRevision(renderedProblem)}
               >
                 <EditIcon size={13} />
                 <span>{t('problems.proposeRevision', 'Propose Revision')}</span>
@@ -505,7 +537,7 @@ export const OpenProblemsTab: React.FC<{
               <button
                 type="button"
                 className="ed-btn is-sm"
-                onClick={() => onOpenReview(selected.id)}
+                onClick={() => onOpenReview(renderedProblem.id)}
               >
                 <MessageSquareIcon size={13} />
                 <span>{t('problems.peerReview', 'Peer Review')}</span>
@@ -518,7 +550,7 @@ export const OpenProblemsTab: React.FC<{
                 onCopied={() =>
                   onNotify(
                     t('problems.linkCopiedToast', 'Direct link to {id} copied.', {
-                      id: selected.id,
+                      id: renderedProblem.id,
                     })
                   )
                 }
@@ -526,8 +558,8 @@ export const OpenProblemsTab: React.FC<{
             </div>
 
             <TerminologyAlertsPanel
-              alerts={selected.terminology_alerts}
-              onFixTerms={() => handleProposeTermFix(selected)}
+              alerts={renderedProblem.terminology_alerts}
+              onFixTerms={() => handleProposeTermFix(renderedProblem)}
               fixLabel={t('term.restoreLocked', 'Restore Locked Terms')}
             />
 
@@ -536,8 +568,9 @@ export const OpenProblemsTab: React.FC<{
                 <span className="ed-kv-label">{t('problems.kv.governance', 'Governance')}</span>
                 <span className="ed-kv-val">
                   {govLabel(
-                    selected.governance.status,
-                    GOVERNANCE_LABELS[selected.governance.status] ?? selected.governance.status
+                    renderedProblem.governance.status,
+                    GOVERNANCE_LABELS[renderedProblem.governance.status] ??
+                      renderedProblem.governance.status
                   )}
                 </span>
               </div>
@@ -545,19 +578,19 @@ export const OpenProblemsTab: React.FC<{
                 <span className="ed-kv-label">{t('problems.kv.authorship', 'Authorship')}</span>
                 <span className="ed-kv-val">
                   {authorLabel(
-                    selected.provenance.author_type,
-                    AUTHOR_LABELS[selected.provenance.author_type] ??
-                      selected.provenance.author_type
+                    renderedProblem.provenance.author_type,
+                    AUTHOR_LABELS[renderedProblem.provenance.author_type] ??
+                      renderedProblem.provenance.author_type
                   )}
                 </span>
               </div>
-              {selected.confidence && (
+              {renderedProblem.confidence && (
                 <div className="ed-kv-row">
                   <span className="ed-kv-label">
                     {t('problems.kv.confidence', 'Screening Confidence')}
                   </span>
                   <span className="ed-kv-val" style={{ textTransform: 'capitalize' }}>
-                    {selected.confidence}
+                    {renderedProblem.confidence}
                   </span>
                 </div>
               )}
@@ -566,8 +599,8 @@ export const OpenProblemsTab: React.FC<{
                   {t('problems.kv.signoff', 'Moderator Sign-off')}
                 </span>
                 <span className="ed-kv-val">
-                  {selected.governance.moderator_signoff.moderator_name
-                    ? `${selected.governance.moderator_signoff.moderator_name} (${selected.governance.moderator_signoff.decision_date})`
+                  {renderedProblem.governance.moderator_signoff.moderator_name
+                    ? `${renderedProblem.governance.moderator_signoff.moderator_name} (${renderedProblem.governance.moderator_signoff.decision_date})`
                     : t('problems.kv.pendingReview', 'Pending human review')}
                 </span>
               </div>
@@ -579,27 +612,28 @@ export const OpenProblemsTab: React.FC<{
                   {t('problems.whatChanged', 'What Changed')}
                 </span>
                 <p className="ed-muted" style={{ fontSize: '13.5px', lineHeight: 1.55 }}>
-                  {selected.lineage.what_changed}
+                  {renderedProblem.lineage.what_changed}
                 </p>
-                {selected.lineage.predecessors && selected.lineage.predecessors.length > 0 && (
-                  <div className="ed-inline" style={{ flexWrap: 'wrap', marginTop: '4px' }}>
-                    <span className="ed-faint ed-small">
-                      {t('problems.predecessors', 'Predecessors:')}
-                    </span>
-                    {selected.lineage.predecessors.map((pred) => (
-                      <span key={pred} className="ed-tag ed-mono">
-                        {pred}
+                {renderedProblem.lineage.predecessors &&
+                  renderedProblem.lineage.predecessors.length > 0 && (
+                    <div className="ed-inline" style={{ flexWrap: 'wrap', marginTop: '4px' }}>
+                      <span className="ed-faint ed-small">
+                        {t('problems.predecessors', 'Predecessors:')}
                       </span>
-                    ))}
-                  </div>
-                )}
+                      {renderedProblem.lineage.predecessors.map((pred) => (
+                        <span key={pred} className="ed-tag ed-mono">
+                          {pred}
+                        </span>
+                      ))}
+                    </div>
+                  )}
               </div>
               <div className="ed-lineage-box">
                 <span className="ed-section-label">
                   {t('problems.whyChanged', 'Why This Change Was Needed')}
                 </span>
                 <p className="ed-muted" style={{ fontSize: '13.5px', lineHeight: 1.55 }}>
-                  {selected.lineage.why_changed}
+                  {renderedProblem.lineage.why_changed}
                 </p>
               </div>
             </div>
@@ -608,16 +642,16 @@ export const OpenProblemsTab: React.FC<{
               <span className="ed-section-label">
                 {t('problems.rubricHeading', 'Five-Dimension Rubric Scores')}
               </span>
-              <ScorePills scores={selected.scores} />
+              <ScorePills scores={renderedProblem.scores} />
             </div>
 
-            {selected.research_targets && selected.research_targets.length > 0 && (
+            {renderedProblem.research_targets && renderedProblem.research_targets.length > 0 && (
               <div className="ed-lineage-box" style={{ gap: '6px' }}>
                 <span className="ed-section-label">
                   {t('problems.researchTargets', 'Research Targets')}
                 </span>
                 <ul style={{ margin: 0, paddingInlineStart: '18px', display: 'grid', gap: '4px' }}>
-                  {selected.research_targets.map((rt, idx) => (
+                  {renderedProblem.research_targets.map((rt, idx) => (
                     <li key={idx} className="ed-small ed-muted">
                       {rt}
                     </li>
@@ -626,15 +660,15 @@ export const OpenProblemsTab: React.FC<{
               </div>
             )}
 
-            {selected.reference_ids && selected.reference_ids.length > 0 && (
+            {renderedProblem.reference_ids && renderedProblem.reference_ids.length > 0 && (
               <div className="ed-stack" style={{ gap: '8px' }}>
                 <span className="ed-section-label">
                   {t('problems.citedLiterature', 'Cited Public Literature ({count})', {
-                    count: selected.reference_ids.length,
+                    count: renderedProblem.reference_ids.length,
                   })}
                 </span>
                 <div className="ed-chip-row">
-                  {selected.reference_ids.map((rid) => (
+                  {renderedProblem.reference_ids.map((rid) => (
                     <button
                       key={rid}
                       type="button"
@@ -656,16 +690,16 @@ export const OpenProblemsTab: React.FC<{
               </span>
               <p className="ed-small ed-muted">
                 <strong>{t('problems.attribution', 'Attribution:')}</strong>{' '}
-                {selected.provenance.proposer_name}
+                {renderedProblem.provenance.proposer_name}
               </p>
               <p className="ed-small ed-muted">
                 <strong>{t('problems.aiRole', 'AI Role:')}</strong>{' '}
-                {selected.provenance.known_ai_role}
+                {renderedProblem.provenance.known_ai_role}
               </p>
-              {selected.stakeholders && selected.stakeholders.length > 0 && (
+              {renderedProblem.stakeholders && renderedProblem.stakeholders.length > 0 && (
                 <p className="ed-small ed-muted">
                   <strong>{t('problems.stakeholders', 'Stakeholders:')}</strong>{' '}
-                  {selected.stakeholders.join(' · ')}
+                  {renderedProblem.stakeholders.join(' · ')}
                 </p>
               )}
             </div>
@@ -681,7 +715,7 @@ export const OpenProblemsTab: React.FC<{
                   <button
                     type="button"
                     className="ed-btn is-sm"
-                    onClick={() => onJumpToChallenge(selected.id)}
+                    onClick={() => onJumpToChallenge(renderedProblem.id)}
                   >
                     <span>{t('problems.openInChallenges', 'Open in Challenges')}</span>
                     <ArrowRightIcon size={13} />
@@ -690,7 +724,7 @@ export const OpenProblemsTab: React.FC<{
                   <button
                     type="button"
                     className="ed-btn is-sm"
-                    onClick={() => handleProposeChallenge(selected)}
+                    onClick={() => handleProposeChallenge(renderedProblem)}
                   >
                     <PlusIcon size={12} />
                     <span>{t('problems.proposeFirstChallenge', 'Propose First Challenge')}</span>
@@ -722,24 +756,14 @@ export const OpenProblemsTab: React.FC<{
                   {t(
                     'problems.noChallenges',
                     'No illustrative seed challenges are mapped yet for {id}. Community contributors can propose concrete, tractable challenges directly.',
-                    { id: selected.id }
+                    { id: renderedProblem.id }
                   )}
                 </p>
               )}
             </div>
-          </>
-        ) : (
-          <div className="ed-empty ed-inline">
-            <FileTextIcon size={15} />
-            <span>
-              {t(
-                'problems.selectPrompt',
-                'Select any Open Problem to inspect its provenance and audit details.'
-              )}
-            </span>
           </div>
-        )}
-      </aside>
+        </aside>
+      )}
     </div>
   );
 };

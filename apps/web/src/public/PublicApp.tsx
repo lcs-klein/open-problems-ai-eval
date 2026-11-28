@@ -26,8 +26,8 @@ const VALID_TABS: TabId[] = [
   'challenges',
   'sources',
   'methods',
-  'versions',
   'governance',
+  'versions',
 ];
 
 function parseHash(): { tab: TabId; itemId?: string; problemFilter?: string } {
@@ -81,7 +81,6 @@ const PublicAppShell: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) => {
       const res = await publicApi.getBootstrap();
       setBundle(res.bundle);
       setReleases(res.releases);
-      setFocusedProblemId((prev) => prev || res.bundle.open_problems[0]?.id || '');
       setReviewTargetId((prev) => prev || res.bundle.open_problems[0]?.id || '');
     } catch (err) {
       setLoadError(err instanceof Error ? err.message : 'Unable to load agenda data.');
@@ -104,7 +103,7 @@ const PublicAppShell: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) => {
     const onHashChange = () => {
       const parsed = parseHash();
       setTab(parsed.tab);
-      if (parsed.tab === 'problems' && parsed.itemId) setFocusedProblemId(parsed.itemId);
+      if (parsed.tab === 'problems') setFocusedProblemId(parsed.itemId ?? '');
       if (parsed.tab === 'challenges') setChallengeProblemFilter(parsed.problemFilter ?? '');
       if (parsed.tab === 'sources') setFocusedSourceId(parsed.itemId ?? '');
     };
@@ -262,14 +261,14 @@ const PublicAppShell: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) => {
       label: t('nav.methods', 'Methodology'),
     },
     {
-      id: 'versions',
-      label: t('nav.versions', 'Versions'),
-      count: releases.length > 0 ? releases.length : undefined,
-    },
-    {
       id: 'governance',
       label: t('nav.governance', 'Governance'),
       count: govRecordCount > 0 ? govRecordCount : undefined,
+    },
+    {
+      id: 'versions',
+      label: t('nav.versions', 'Versions'),
+      count: releases.length > 0 ? releases.length : undefined,
     },
   ];
 
@@ -281,6 +280,7 @@ const PublicAppShell: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) => {
             type="button"
             className="ed-brand"
             onClick={() => {
+              setFocusedProblemId('');
               setProblemFilterMode('all');
               setChallengeProblemFilter('');
               setFocusedSourceId('');
@@ -387,7 +387,7 @@ const PublicAppShell: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) => {
               onFilterModeChange={setProblemFilterMode}
               onSelectProblem={(id) => {
                 setFocusedProblemId(id);
-                syncHash(`problems/${encodeURIComponent(id)}`);
+                syncHash(id ? `problems/${encodeURIComponent(id)}` : 'problems');
               }}
               onJumpToChallenge={handleJumpToChallenge}
               onOpenSource={handleOpenSource}

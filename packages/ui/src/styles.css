@@ -295,6 +295,8 @@ button.ed-brand:hover {
 .ed-masthead-tabs {
   display: flex;
   align-items: stretch;
+  justify-content: center;
+  justify-content: safe center;
   gap: 2px;
   border-top: 1px solid var(--ed-border);
   border-bottom: 1px solid var(--ed-border);
@@ -996,6 +998,55 @@ button.ed-tag.is-ink:hover {
   gap: 18px;
 }
 
+.ed-inspector.is-collapsible {
+  opacity: 0;
+  transform: translateX(28px) scale(0.985);
+  pointer-events: none;
+  box-shadow: 0 12px 32px rgba(20, 20, 19, 0.06);
+  transition:
+    opacity 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+.ed-inspector.is-collapsible.is-open {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  pointer-events: auto;
+}
+
+.ed-inspector-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--ed-border);
+}
+
+.ed-inspector-close {
+  flex-shrink: 0;
+  margin-right: -4px;
+}
+
+.ed-inspector-content {
+  display: grid;
+  gap: 18px;
+  animation: ed-inspector-content-in 200ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes ed-inspector-content-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .ed-inspector-title {
   font-family: var(--ed-font-serif);
   font-size: 21px;
@@ -1632,6 +1683,57 @@ button.ed-tag.is-ink:hover {
   color: var(--ed-surface);
 }
 
+/* Centered Modal Card (Proposal Submission) */
+.ed-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background: rgba(20, 20, 19, 0.42);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: ed-backdrop-in 200ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ed-modal-card {
+  position: relative;
+  width: min(680px, 100%);
+  max-height: min(88vh, 860px);
+  background: var(--ed-white);
+  border: 1px solid var(--ed-border);
+  border-radius: 16px;
+  box-shadow:
+    0 24px 64px rgba(20, 20, 19, 0.18),
+    0 4px 16px rgba(20, 20, 19, 0.08);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: ed-modal-in 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes ed-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ed-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 /* Slide-over Proposal Drawer & Tablet Reading Sheet */
 .ed-drawer-backdrop,
 .ed-sheet-backdrop {
@@ -1641,6 +1743,17 @@ button.ed-tag.is-ink:hover {
   background: rgba(20, 20, 19, 0.36);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
+}
+
+.ed-sheet-backdrop.is-collapsible {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ed-sheet-backdrop.is-collapsible.is-open {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .ed-drawer {
@@ -1740,6 +1853,30 @@ button.ed-tag.is-ink:hover {
   .ed-inspector {
     display: none;
   }
+  .ed-inspector.is-collapsible {
+    display: grid;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    width: min(560px, 100vw);
+    max-height: 100vh;
+    border-radius: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+    box-shadow: -12px 0 36px rgba(20, 20, 19, 0.16);
+    align-content: start;
+    opacity: 0;
+    transform: translateX(100%);
+    pointer-events: none;
+  }
+  .ed-inspector.is-collapsible.is-open {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
   .ed-inspector.is-sheet-open {
     display: grid;
     position: fixed;
@@ -1759,6 +1896,13 @@ button.ed-tag.is-ink:hover {
 }
 
 @media (max-width: 760px) {
+  .ed-modal-backdrop {
+    padding: 12px;
+  }
+  .ed-modal-card {
+    max-height: 92vh;
+    border-radius: 14px;
+  }
   .ed-topbar-inner {
     padding: 10px 16px;
     gap: 10px;
@@ -1768,6 +1912,7 @@ button.ed-tag.is-ink:hover {
     gap: 10px;
   }
   .ed-masthead-tabs {
+    justify-content: flex-start;
     margin-bottom: 18px;
   }
   .ed-masthead-tab {
