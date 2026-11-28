@@ -162,6 +162,13 @@ p {
   gap: 20px;
 }
 
+.ed-topbar-inner.is-minimal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
 .ed-nav {
   display: flex;
   align-items: center;
@@ -281,7 +288,109 @@ button.ed-brand:hover {
 
 .ed-masthead {
   max-width: 860px;
+  margin-bottom: 18px;
+}
+
+/* Unified Editorial Masthead Tab Rail */
+.ed-masthead-tabs {
+  display: flex;
+  align-items: stretch;
+  gap: 2px;
+  border-top: 1px solid var(--ed-border);
+  border-bottom: 1px solid var(--ed-border);
   margin-bottom: 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.ed-masthead-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.ed-masthead-tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 16px;
+  border: 0;
+  background: transparent;
+  color: var(--ed-ink-muted);
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color 140ms ease, background-color 140ms ease;
+}
+
+.ed-masthead-tab:hover {
+  color: var(--ed-ink);
+  background: rgba(250, 249, 246, 0.85);
+}
+
+.ed-masthead-tab[aria-current='page'],
+.ed-masthead-tab[aria-current='page']:hover {
+  color: var(--ed-ink);
+  font-weight: 600;
+  background: var(--ed-white);
+}
+
+.ed-masthead-tab[aria-current='page']::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--ed-accent);
+}
+
+.ed-masthead-tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: var(--ed-subtle);
+  color: var(--ed-ink-muted);
+  font-family: var(--ed-font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+  transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease;
+}
+
+.ed-masthead-tab:hover .ed-masthead-tab-count {
+  background: var(--ed-border);
+  color: var(--ed-ink);
+}
+
+.ed-masthead-tab[aria-current='page'] .ed-masthead-tab-count,
+.ed-masthead-tab[aria-current='page']:hover .ed-masthead-tab-count {
+  background: var(--ed-accent-soft);
+  border-color: var(--ed-accent-border);
+  color: var(--ed-accent);
+}
+
+.ed-tab-intro {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-bottom: 18px;
+}
+
+.ed-tab-intro-title {
+  font-family: var(--ed-font-serif);
+  font-size: 18px;
+  line-height: 1.3;
+  font-weight: 600;
+  color: var(--ed-ink);
 }
 
 .ed-eyebrow {
@@ -1602,6 +1711,9 @@ button.ed-tag.is-ink:hover {
     grid-template-columns: 1fr auto;
     padding: 12px 20px;
   }
+  .ed-topbar-inner.is-minimal {
+    padding: 12px 20px;
+  }
   .ed-brand {
     justify-content: flex-start;
     order: -2;
@@ -1650,6 +1762,22 @@ button.ed-tag.is-ink:hover {
   .ed-topbar-inner {
     padding: 10px 16px;
     gap: 10px;
+  }
+  .ed-topbar-inner.is-minimal {
+    padding: 10px 16px;
+    gap: 10px;
+  }
+  .ed-masthead-tabs {
+    margin-bottom: 18px;
+  }
+  .ed-masthead-tab {
+    padding: 11px 12px;
+    font-size: 13px;
+    gap: 6px;
+  }
+  .ed-masthead-tab-count {
+    font-size: 11px;
+    padding: 2px 6px;
   }
   .ed-nav {
     flex-wrap: wrap;

@@ -246,16 +246,47 @@ const OfflineAppShell: React.FC = () => {
     syncHash('governance');
   };
 
-  const termAlertCount = bundle.open_problems.filter(
-    (p) => p.terminology_alerts.length > 0
-  ).length;
   const govRecordCount = proposals.length + reviews.length + decisions.length;
-  const govLabelText = t('nav.governance', 'Governance');
+  const versionCount =
+    (bundle.participation.releases?.length ?? 0) ||
+    Object.keys(bundle.version_snapshots ?? {}).length;
+
+  const navItems: Array<{ id: TabId; label: string; count?: number }> = [
+    {
+      id: 'problems',
+      label: t('nav.problems', 'Open Problems'),
+      count: bundle.open_problems.length,
+    },
+    {
+      id: 'challenges',
+      label: t('nav.challenges', 'Challenges'),
+      count: bundle.specific_challenges.length,
+    },
+    {
+      id: 'sources',
+      label: t('nav.sources', 'Sources'),
+      count: bundle.references.length,
+    },
+    {
+      id: 'methods',
+      label: t('nav.methods', 'Methodology'),
+    },
+    {
+      id: 'versions',
+      label: t('nav.versions', 'Versions'),
+      count: versionCount > 0 ? versionCount : undefined,
+    },
+    {
+      id: 'governance',
+      label: t('nav.governance', 'Governance'),
+      count: govRecordCount > 0 ? govRecordCount : undefined,
+    },
+  ];
 
   return (
     <div className="ed-shell">
       <header className="ed-topbar">
-        <div className="ed-topbar-inner">
+        <div className="ed-topbar-inner is-minimal">
           <button
             type="button"
             className="ed-brand"
@@ -265,32 +296,6 @@ const OfflineAppShell: React.FC = () => {
             <EditorialMark size={18} />
             <span>{t('brand.name', 'AI Eval Agenda')}</span>
           </button>
-
-          <nav className="ed-nav" aria-label="Primary navigation">
-            {(
-              [
-                ['problems', t('nav.problems', 'Open Problems')],
-                ['challenges', t('nav.challenges', 'Challenges')],
-                ['sources', t('nav.sources', 'Sources')],
-                ['methods', t('nav.methods', 'Methodology')],
-                ['versions', t('nav.versions', 'Versions')],
-                [
-                  'governance',
-                  govRecordCount > 0 ? `${govLabelText} (${govRecordCount})` : govLabelText,
-                ],
-              ] as Array<[TabId, string]>
-            ).map(([id, label]) => (
-              <button
-                key={id}
-                type="button"
-                className="ed-nav-pill"
-                aria-current={tab === id ? 'page' : undefined}
-                onClick={() => navigateTab(id)}
-              >
-                {label}
-              </button>
-            ))}
-          </nav>
 
           <div className="ed-topbar-actions">
             <button
@@ -307,99 +312,63 @@ const OfflineAppShell: React.FC = () => {
       </header>
 
       <main className="ed-container">
-        {tab === 'problems' ? (
-          <>
-            <section className="ed-masthead">
-              <div className="ed-eyebrow">
-                <span className="ed-eyebrow-dot" aria-hidden="true" />
-                <span>
-                  {t(
-                    'masthead.eyebrow',
-                    'Participatory Research Agenda · Human Moderator Governance · '
-                  )}
-                  <span className="ed-mono">{bundle.participation.current_version}</span>
-                </span>
-              </div>
-              <h1 className="ed-lead">
-                <strong>
-                  {isZh
-                    ? t('masthead.title', 'Open Problems in AI Evaluation.')
-                    : `${bundle.project.title || 'Open Problems in AI Evaluation'}.`}
-                </strong>{' '}
-                {isZh
-                  ? t(
-                      'masthead.subtitle',
-                      'A human-led participatory research agenda anchored in locked manuscript terminology, normative change justifications, and zero-gap numerical reproducibility.'
-                    )
-                  : bundle.project.subtitle ||
-                    'A human-led participatory research agenda anchored in locked manuscript terminology, normative change justifications, and zero-gap numerical reproducibility.'}
-              </h1>
-            </section>
+        <section className="ed-masthead">
+          <div className="ed-eyebrow">
+            <span className="ed-eyebrow-dot" aria-hidden="true" />
+            <span>
+              {t(
+                'masthead.eyebrow',
+                'Participatory Research Agenda · Human Moderator Governance · '
+              )}
+              <span className="ed-mono">{bundle.participation.current_version}</span>
+            </span>
+          </div>
+          <h1 className="ed-lead">
+            <strong>
+              {isZh
+                ? t('masthead.title', 'Open Problems in AI Evaluation.')
+                : `${bundle.project.title || 'Open Problems in AI Evaluation'}.`}
+            </strong>{' '}
+            {isZh
+              ? t(
+                  'masthead.subtitle',
+                  'A human-led participatory research agenda anchored in locked manuscript terminology, normative change justifications, and zero-gap numerical reproducibility.'
+                )
+              : bundle.project.subtitle ||
+                'A human-led participatory research agenda anchored in locked manuscript terminology, normative change justifications, and zero-gap numerical reproducibility.'}
+          </h1>
+        </section>
 
-            <section className="ed-metrics" aria-label="Agenda summary metrics">
-              <button
-                type="button"
-                className="ed-metric-cell"
-                onClick={() => setProblemFilterMode('all')}
-              >
-                <span className="ed-metric-label">
-                  {t('metrics.categories', 'Fixed Categories')}
-                </span>
-                <span className="ed-metric-value">{Object.keys(bundle.categories).length}</span>
-              </button>
-              <button
-                type="button"
-                className="ed-metric-cell"
-                onClick={() => setProblemFilterMode('all')}
-              >
-                <span className="ed-metric-label">{t('metrics.problems', 'Open Problems')}</span>
-                <span className="ed-metric-value">{bundle.open_problems.length}</span>
-              </button>
-              <button
-                type="button"
-                className="ed-metric-cell"
-                onClick={() => navigateTab('challenges')}
-              >
-                <span className="ed-metric-label">
-                  {t('metrics.challenges', 'Specific Challenges')}
-                </span>
-                <span className="ed-metric-value">{bundle.specific_challenges.length}</span>
-              </button>
-              <button
-                type="button"
-                className="ed-metric-cell"
-                onClick={() => navigateTab('sources')}
-              >
-                <span className="ed-metric-label">{t('metrics.sources', 'Public Sources')}</span>
-                <span className="ed-metric-value">{bundle.references.length}</span>
-              </button>
-              <button
-                type="button"
-                className="ed-metric-cell"
-                onClick={() =>
-                  setProblemFilterMode((prev) => (prev === 'term_alert' ? 'all' : 'term_alert'))
+        <nav className="ed-masthead-tabs" aria-label="Primary navigation">
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              className="ed-masthead-tab"
+              aria-current={tab === item.id ? 'page' : undefined}
+              onClick={() => {
+                if (item.id === 'problems') {
+                  setProblemFilterMode('all');
                 }
-              >
-                <span className="ed-metric-label">
-                  {t('metrics.termAlerts', 'Terminology Alerts')}
-                </span>
-                <span className={`ed-metric-value ${termAlertCount > 0 ? 'is-accent' : ''}`}>
-                  {termAlertCount}
-                </span>
-              </button>
-            </section>
-          </>
-        ) : (
-          <header className="ed-compact-header">
+                navigateTab(item.id);
+              }}
+            >
+              <span>{item.label}</span>
+              {item.count !== undefined && (
+                <span className="ed-masthead-tab-count">{item.count}</span>
+              )}
+            </button>
+          ))}
+        </nav>
+
+        {tab !== 'problems' && (
+          <header className="ed-tab-intro">
             <div>
-              <h1 className="ed-compact-title">{compactHeadings[tab].title}</h1>
-              <p className="ed-small ed-muted" style={{ marginTop: '4px' }}>
+              <h2 className="ed-tab-intro-title">{compactHeadings[tab].title}</h2>
+              <p className="ed-small ed-muted" style={{ marginTop: '3px' }}>
                 {compactHeadings[tab].subtitle}
               </p>
             </div>
-            <span className="ed-mono ed-faint ed-small">
-              {bundle.participation.current_version}
-            </span>
           </header>
         )}
 
