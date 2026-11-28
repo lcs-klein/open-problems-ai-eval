@@ -10,7 +10,11 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from sanitizer import SanitizationError, assert_public_safe
-from terminology import check_text_terminology, load_terminology_rules
+from terminology import (
+    check_text_terminology,
+    load_terminology_rules,
+    restore_locked_terminology,
+)
 
 
 class PipelineTests(unittest.TestCase):
@@ -23,6 +27,17 @@ class PipelineTests(unittest.TestCase):
         locked_terms = {a["locked_term"] for a in alerts}
         self.assertIn("capabilities", locked_terms)
         self.assertIn("propensities", locked_terms)
+
+    def test_restore_locked_terminology_clears_alerts(self) -> None:
+        rules = load_terminology_rules(ROOT / "data" / "terminology_lock.json")
+        fixed = restore_locked_terminology(
+            "Abilities, ability, tendencies, and tendency should be aligned."
+        )
+        self.assertEqual(
+            fixed,
+            "Capabilities, capability, propensities, and propensity should be aligned.",
+        )
+        self.assertEqual(check_text_terminology(fixed, rules), [])
 
     def test_sanitizer_blocks_private_leaks(self) -> None:
         with self.assertRaises(SanitizationError):
@@ -51,9 +66,16 @@ class PipelineTests(unittest.TestCase):
         # Ensure public bundle passes sanitization gate itself
         self.assertTrue(assert_public_safe(pub)["passed"])
 
-        # Verify C.F2a carries terminology alerts for capabilities/propensities
+        # Verify C.F2a and all public open problems have restored locked terminology (0 alerts)
         cf2a = next(p for p in pub["open_problems"] if p["id"] == "C.F2a")
-        self.assertGreaterEqual(len(cf2a["terminology_alerts"]), 2)
+        self.assertIn("capabilities", cf2a["title"].lower())
+        self.assertIn("propensities", cf2a["title"].lower())
+        self.assertEqual(len(cf2a["terminology_alerts"]), 0)
+        self.assertEqual(
+            sum(len(p["terminology_alerts"]) for p in pub["open_problems"]),
+            0,
+            "All public open problems should have zero remaining terminology alerts",
+        )
         self.assertIn("why_changed", cf2a["lineage"])
         self.assertIn("what_changed", cf2a["lineage"])
         self.assertIn("governance", cf2a)
@@ -84,6 +106,16 @@ class PipelineTests(unittest.TestCase):
             )
             self.assertGreater(
                 intl_aligned, 30, "Internal problems must map to manuscript section IDs"
+            )
+            self.assertEqual(
+                sum(len(p["terminology_alerts"]) for p in intl["open_problems"]),
+                0,
+                "All internal open problems should have zero remaining terminology alerts",
+            )
+            self.assertEqual(
+                sum(len(c["terminology_alerts"]) for c in intl.get("candidates", [])),
+                0,
+                "All internal candidates should have zero remaining terminology alerts",
             )
 
         # Verify reproduce zips exist

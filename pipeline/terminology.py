@@ -7,6 +7,33 @@ from pathlib import Path
 from typing import Any
 
 
+LOCKED_TERM_REPLACEMENTS: tuple[tuple[str, str], ...] = (
+    ("abilities", "capabilities"),
+    ("ability", "capability"),
+    ("tendencies", "propensities"),
+    ("tendency", "propensity"),
+)
+
+
+def _match_case(template: str, replacement: str) -> str:
+    if template.isupper():
+        return replacement.upper()
+    if template and template[0].isupper():
+        return replacement[0].upper() + replacement[1:]
+    return replacement
+
+
+def restore_locked_terminology(text: str) -> str:
+    """Restore manuscript-locked academic terms while preserving grammatical number and casing."""
+    if not text:
+        return text
+    updated = text
+    for old_term, new_term in LOCKED_TERM_REPLACEMENTS:
+        pattern = re.compile(rf"\b{re.escape(old_term)}\b", re.IGNORECASE)
+        updated = pattern.sub(lambda m, rep=new_term: _match_case(m.group(0), rep), updated)
+    return updated
+
+
 def load_terminology_rules(lock_path: Path) -> list[dict[str, Any]]:
     data = json.loads(lock_path.read_text(encoding="utf-8"))
     return list(data.get("rules", []))

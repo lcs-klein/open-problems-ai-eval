@@ -173,7 +173,7 @@
     {
       "id": "C.F2a",
       "category": "F",
-      "title": "Unclear definitions of abilities and tendencies",
+      "title": "Unclear definitions of capabilities and propensities",
       "description": "A test score alone cannot tell us what an AI system can do or what it tends to do in practice. We need definitions that distinguish these properties and can be revised when new evidence about behaviour or its causes disagrees with them.",
       "confidence": "high",
       "scores": [
@@ -233,30 +233,13 @@
           "notes": null
         }
       },
-      "terminology_alerts": [
-        {
-          "rule_id": "TERM-001",
-          "locked_term": "capabilities",
-          "found_term": "abilities",
-          "severity": "error",
-          "paper_context": "Section F.2 (Capabilities vs. Propensities)",
-          "rationale": "'Capabilities' is an established technical term in AI evaluation distinguishing what a system can do from what it tends to do; replacing it with 'abilities' dilutes precision and overrides human author terminology."
-        },
-        {
-          "rule_id": "TERM-002",
-          "locked_term": "propensities",
-          "found_term": "tendencies",
-          "severity": "error",
-          "paper_context": "Section F.2 (Capabilities vs. Propensities)",
-          "rationale": "'Propensities' is the intentional technical term in the manuscript for behavioral dispositions under deployment; replacing it with 'tendencies' introduces machine-chosen terminology drift."
-        }
-      ]
+      "terminology_alerts": []
     },
     {
       "id": "C.F3a",
       "category": "F",
       "title": "Scores lack a shared meaning across tests",
-      "description": "A higher score may reflect a different test, population or difficulty rather than a more capable system. Evaluators need defensible scales for comparing results and describing how broadly abilities apply, including when systems exceed existing tests.",
+      "description": "A higher score may reflect a different test, population or difficulty rather than a more capable system. Evaluators need defensible scales for comparing results and describing how broadly capabilities apply, including when systems exceed existing tests.",
       "confidence": "high",
       "scores": [
         4,
@@ -318,16 +301,7 @@
           "notes": null
         }
       },
-      "terminology_alerts": [
-        {
-          "rule_id": "TERM-001",
-          "locked_term": "capabilities",
-          "found_term": "abilities",
-          "severity": "error",
-          "paper_context": "Section F.2 (Capabilities vs. Propensities)",
-          "rationale": "'Capabilities' is an established technical term in AI evaluation distinguishing what a system can do from what it tends to do; replacing it with 'abilities' dilutes precision and overrides human author terminology."
-        }
-      ]
+      "terminology_alerts": []
     },
     {
       "id": "C.F4a",
@@ -587,7 +561,7 @@
       "id": "C.T.ELICIT",
       "category": "T",
       "title": "Eliciting consequential behaviour under known conditions",
-      "description": "How can evaluation procedures reveal consequential capabilities, tendencies and failures under a specified system configuration and resource budget? We need evidence that the evaluation gave the system a suitable opportunity to act and that the test conditions did not substitute a different capability for the one of interest.",
+      "description": "How can evaluation procedures reveal consequential capabilities, propensities and failures under a specified system configuration and resource budget? We need evidence that the evaluation gave the system a suitable opportunity to act and that the test conditions did not substitute a different capability for the one of interest.",
       "confidence": "medium",
       "scores": [
         4,
@@ -650,16 +624,7 @@
           "notes": null
         }
       },
-      "terminology_alerts": [
-        {
-          "rule_id": "TERM-002",
-          "locked_term": "propensities",
-          "found_term": "tendencies",
-          "severity": "error",
-          "paper_context": "Section F.2 (Capabilities vs. Propensities)",
-          "rationale": "'Propensities' is the intentional technical term in the manuscript for behavioral dispositions under deployment; replacing it with 'tendencies' introduces machine-chosen terminology drift."
-        }
-      ]
+      "terminology_alerts": []
     },
     {
       "id": "C.T.RARE",
@@ -854,7 +819,7 @@
       "id": "C.V1a",
       "category": "V",
       "title": "Scores can support the wrong conclusions",
-      "description": "An evaluation score can reflect shortcuts or features of the test instead of the ability or risk it is meant to measure. Evaluators need to show which conclusions a result supports, for which people or settings, and what evidence rules out other explanations.",
+      "description": "An evaluation score can reflect shortcuts or features of the test instead of the capability or risk it is meant to measure. Evaluators need to show which conclusions a result supports, for which people or settings, and what evidence rules out other explanations.",
       "confidence": "high",
       "scores": [
         4,
@@ -912,16 +877,7 @@
           "notes": null
         }
       },
-      "terminology_alerts": [
-        {
-          "rule_id": "TERM-001",
-          "locked_term": "capabilities",
-          "found_term": "ability",
-          "severity": "error",
-          "paper_context": "Section F.2 (Capabilities vs. Propensities)",
-          "rationale": "'Capabilities' is an established technical term in AI evaluation distinguishing what a system can do from what it tends to do; replacing it with 'abilities' dilutes precision and overrides human author terminology."
-        }
-      ]
+      "terminology_alerts": []
     },
     {
       "id": "C.V3a",
@@ -1501,7 +1457,7 @@
       "id": "C.D5",
       "category": "D",
       "title": "Limited anticipation of future capability needs",
-      "description": "New uses can require abilities that existing tests do not assess. We need ways to forecast which abilities future workflows will require and how far in advance those forecasts are reliable enough to guide evaluation planning.",
+      "description": "New uses can require capabilities that existing tests do not assess. We need ways to forecast which capabilities future workflows will require and how far in advance those forecasts are reliable enough to guide evaluation planning.",
       "confidence": "medium",
       "scores": [
         3,
@@ -1554,16 +1510,7 @@
           "notes": null
         }
       },
-      "terminology_alerts": [
-        {
-          "rule_id": "TERM-001",
-          "locked_term": "capabilities",
-          "found_term": "abilities",
-          "severity": "error",
-          "paper_context": "Section F.2 (Capabilities vs. Propensities)",
-          "rationale": "'Capabilities' is an established technical term in AI evaluation distinguishing what a system can do from what it tends to do; replacing it with 'abilities' dilutes precision and overrides human author terminology."
-        }
-      ]
+      "terminology_alerts": []
     },
     {
       "id": "R.L3",
@@ -2126,7 +2073,7 @@
       "id": "N.I3.duties",
       "category": "I",
       "title": "Assigning responsibility for evaluation after deployment",
-      "description": "Different organizations may control the model, deployment, logs and ability to intervene. How should evaluation, incident reporting and response duties be allocated so emerging problems are detected and acted on?",
+      "description": "Different organizations may control the model, deployment, logs and capability to intervene. How should evaluation, incident reporting and response duties be allocated so emerging problems are detected and acted on?",
       "confidence": "medium",
       "scores": [
         4,
@@ -2179,16 +2126,7 @@
           "notes": null
         }
       },
-      "terminology_alerts": [
-        {
-          "rule_id": "TERM-001",
-          "locked_term": "capabilities",
-          "found_term": "ability",
-          "severity": "error",
-          "paper_context": "Section F.2 (Capabilities vs. Propensities)",
-          "rationale": "'Capabilities' is an established technical term in AI evaluation distinguishing what a system can do from what it tends to do; replacing it with 'abilities' dilutes precision and overrides human author terminology."
-        }
-      ]
+      "terminology_alerts": []
     },
     {
       "id": "N.I4.incentives",
@@ -2318,7 +2256,7 @@
       "id": "R.P3",
       "category": "P",
       "title": "Misallocated evaluation effort",
-      "description": "No agenda can investigate every important question. We need principled ways to allocate effort across immediate harms, future risks, benefits and neglected evidence gaps. Priorities should consider decision value, irreversibility and uncertainty, while resisting the tendency to equate convenient tests or abundant publications with importance.",
+      "description": "No agenda can investigate every important question. We need principled ways to allocate effort across immediate harms, future risks, benefits and neglected evidence gaps. Priorities should consider decision value, irreversibility and uncertainty, while resisting the propensity to equate convenient tests or abundant publications with importance.",
       "confidence": "medium",
       "scores": [
         4,
@@ -2374,16 +2312,7 @@
           "notes": null
         }
       },
-      "terminology_alerts": [
-        {
-          "rule_id": "TERM-002",
-          "locked_term": "propensities",
-          "found_term": "tendency",
-          "severity": "error",
-          "paper_context": "Section F.2 (Capabilities vs. Propensities)",
-          "rationale": "'Propensities' is the intentional technical term in the manuscript for behavioral dispositions under deployment; replacing it with 'tendencies' introduces machine-chosen terminology drift."
-        }
-      ]
+      "terminology_alerts": []
     },
     {
       "id": "N.P2.horizons",

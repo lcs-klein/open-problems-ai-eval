@@ -6,7 +6,11 @@ import re
 from pathlib import Path
 from typing import Any
 
-from terminology import check_text_terminology, load_terminology_rules
+from terminology import (
+    check_text_terminology,
+    load_terminology_rules,
+    restore_locked_terminology,
+)
 from sanitizer import assert_public_safe
 
 
@@ -144,6 +148,12 @@ def enrich_open_problem(
             "notes": None,
         },
     }
+
+    # Restore locked manuscript terminology before scanning for remaining alerts
+    if isinstance(enriched.get("title"), str):
+        enriched["title"] = restore_locked_terminology(enriched["title"])
+    if isinstance(enriched.get("description"), str):
+        enriched["description"] = restore_locked_terminology(enriched["description"])
 
     # Terminology lock scan
     combined_text = f"{enriched.get('title', '')} {enriched.get('description', '')}"
