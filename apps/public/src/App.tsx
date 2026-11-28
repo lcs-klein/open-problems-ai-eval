@@ -299,7 +299,7 @@ const OfflineAppShell: React.FC = () => {
           <div className="ed-topbar-actions">
             <button
               type="button"
-              className="ed-btn is-primary"
+              className="ed-btn is-primary ed-topbar-cta"
               onClick={() => handleOpenProposal(null)}
             >
               <PlusIcon size={14} />

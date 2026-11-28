@@ -297,16 +297,17 @@ const PublicAppShell: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) => {
           <div className="ed-topbar-actions">
             <button
               type="button"
-              className="ed-btn is-ghost is-sm"
+              className="ed-btn is-ghost is-sm ed-topbar-editorial"
               onClick={onGoAdmin}
               title={t('nav.editorialTitle', 'Co-author & Moderator Login')}
+              aria-label={t('nav.editorialTitle', 'Co-author & Moderator Login')}
             >
               <ShieldIcon size={13} />
-              <span>{t('nav.editorial', 'Editorial')}</span>
+              <span className="ed-topbar-editorial-label">{t('nav.editorial', 'Editorial')}</span>
             </button>
             <button
               type="button"
-              className="ed-btn is-primary"
+              className="ed-btn is-primary ed-topbar-cta"
               onClick={() => handleOpenProposal(null)}
             >
               <PlusIcon size={14} />
