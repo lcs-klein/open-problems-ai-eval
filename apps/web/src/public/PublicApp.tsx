@@ -318,7 +318,7 @@ const PublicAppShell: React.FC<{ onGoAdmin: () => void }> = ({ onGoAdmin }) => {
       </header>
 
       <main className="ed-container">
-        <section className="ed-masthead">
+        <section className="ed-masthead is-centered">
           <div className="ed-eyebrow">
             <span className="ed-eyebrow-dot" aria-hidden="true" />
             <span>
